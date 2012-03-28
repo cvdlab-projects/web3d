@@ -1,7 +1,5 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Max
- * Date: 28/03/12
- * Time: 20.47
- * To change this template use File | Settings | File Templates.
- */
+$(document).ready(function() {
+    var web3d_ide=$('.web3d-ide');
+
+});
+
