@@ -8,12 +8,24 @@
         <!--<script src="js/lib/three/Three.js"></script>-->
         <script src="js/lib/backbone/backbone.min.js"></script>
         <script src="js/lib/raphael/raphael.min.js"></script>
+        <script src="js/utils.js"></script>
         <script src="js/web3d.js"></script>
         <title>Progetto Biomedica - web3d</title>
 
     </head>
     
     <body>
-        <div class="web3d-ide"></div>
+        <div id="web3d-ide"></div>
+
+        <script>
+            $(document).ready(
+                    function(){
+                        var plugins = new Array();
+                        plugins[0]="circle";
+                        plugins[1]="prova";
+                        getWeb3d("#web3d-ide",plugins);
+                    }
+            );
+        </script>
     </body>
 </html>
