@@ -1,20 +1,73 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="css/reset.css"/>-->
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
         <script src="js/lib/jquery/jquery.min.js"></script>
         <!--<script src="js/lib/three/Three.js"></script>-->
-        <script src="js/lib/backbone/backbone.min.js"></script>
+        <!--<script src="js/lib/backbone/backbone.min.js"></script>-->
         <script src="js/lib/raphael/raphael.min.js"></script>
+<<<<<<< HEAD
+        <script src="js/lib/map/HashMap.js"></script>
+
+
+
+        <script src="js/model/object/Point.js"></script>
+        <script src="js/model/object/Figure.js"></script>
+        <script src="js/model/object/Slice.js"></script>
+        <script src="js/plugins/polyline/polyline.js"></script>
+        <script src="js/plugins/polygon/polygon.js"></script>
+=======
         <script src="js/utils.js"></script>
         <script src="js/web3d.js"></script>
+>>>>>>> origin/master
         <title>Progetto Biomedica - web3d</title>
 
     </head>
     
     <body>
+<<<<<<< HEAD
+    <script>
+        //config
+        var plugins=new Array();
+        plugins.push(new Polyline());
+    </script>
+        <div id="web3d-ide">
+            <img src="test.jpg" width="100" height="100"/>
+            <img src="prova.jpg" width="500" height="500"/>
+            <div id="web3d-ide-container">
+                <canvas id="web3d-ide-canvas" width="800" height="600">Your browser doesn't support HTML5 Canvas.</canvas>
+            </div>
+            <div id="form-div">
+                <input type="button" class="actions" value="select"/>
+                <input type="button" class="actions" value="edit"/>
+                <input type="button" class="actions" value="draw"/>
+            </div>
+            <div></div>
+        </div>
+        <div id="settings" style="display:none;">
+            <div><label for="scrollingX">ScrollingX: </label><input type="checkbox" id="scrollingX" checked/></div>
+            <div><label for="scrollingY">ScrollingY: </label><input type="checkbox" id="scrollingY" checked/></div>
+            <div><label for="animating">Animating: </label><input type="checkbox" id="animating" checked/></div>
+            <div><label for="bouncing">Bouncing: </label><input type="checkbox" id="bouncing" checked/></div>
+            <div><label for="locking">Locking: </label><input type="checkbox" id="locking" checked/></div>
+
+            <div><label for="zooming">Zooming: </label><input type="checkbox" id="zooming" checked/></div>
+            <div><label for="minZoom">Min Zoom: </label><input type="text" id="minZoom" size="5" value="0.5"/></div>
+            <div><label for="maxZoom">Max Zoom: </label><input type="text" id="maxZoom" size="5" value="3"/></div>
+            <div><label for="zoomLevel">Zoom Level: </label><input type="text" id="zoomLevel" size="5"/></div>
+            <div><button id="zoom">Zoom to Level</button><button id="zoomIn">+</button><button id="zoomOut">-</button></div>
+
+            <div><label for="scrollLeft">Scroll Left: </label><input type="text" id="scrollLeft" size="9"/></div>
+            <div><label for="scrollTop">Scroll Top: </label><input type="text" id="scrollTop" size="9"/></div>
+            <div><button id="scrollTo">Scroll to Coords</button></div>
+
+            <div><button id="scrollByUp">&uarr;</button><button id="scrollByDown">&darr;</button><button id="scrollByLeft">&larr;</button><button id="scrollByRight">&rarr;</button></div>
+        </div>
+        <script src="js/web3d.js"></script>
+    <script src="js/view/userui.js"></script>
+=======
         <div id="web3d-ide"></div>
 
         <script>
@@ -27,5 +80,6 @@
                     }
             );
         </script>
+>>>>>>> origin/master
     </body>
 </html>
