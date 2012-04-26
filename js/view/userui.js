@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var gkhead = new Image;
 var ball   = new Image;
 window.onload = function(){
@@ -109,9 +108,3 @@ function trackTransforms(ctx){
         return pt.matrixTransform(xform.inverse());
     }
 }
-=======
-function setUserUi(container,plugin){
-    $(container).load('plugins/plugin/form/');
-}
-
->>>>>>> origin/master
