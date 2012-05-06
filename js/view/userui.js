@@ -1,5 +1,7 @@
 var gkhead = new Image;
 var ball   = new Image;
+var offset_x=0;
+var offset_y=0;
 window.onload = function(){
     trackTransforms(ctx);
 
@@ -7,11 +9,13 @@ window.onload = function(){
     var dragStart,dragged;
 
     canvas.bind('mousedown',function(evt){
-        document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
-        lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
-        lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
-        dragStart = ctx.transformedPoint(lastX,lastY);
-        dragged = false;
+        if (cur_action=='drag'){
+            document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
+            lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
+            lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
+            dragStart = ctx.transformedPoint(lastX,lastY);
+            dragged = false;
+        }
     });
 
     canvas.bind('mousemove',function(evt){
@@ -20,11 +24,18 @@ window.onload = function(){
         dragged = true;
         if (dragStart){
             var pt = ctx.transformedPoint(lastX,lastY);
+            offset_x=pt.x-dragStart.x;
+            offset_y=pt.y-dragStart.y;
             ctx.translate(pt.x-dragStart.x,pt.y-dragStart.y);
             drawAll();
         }
     });
     canvas.bind('mouseup',function(evt){
+        dragStart = null;
+    });
+
+    //Se esci fuori dalla canvas mentre trascini, il trascinamento finisce
+    $(document).bind('mouseup',function(evt){
         dragStart = null;
     });
 
@@ -34,6 +45,8 @@ window.onload = function(){
         ctx.translate(pt.x,pt.y);
         var factor = Math.pow(scaleFactor,clicks);
         ctx.scale(factor,factor);
+        offset_x*=factor;
+        offset_y*=factor;
         ctx.translate(-pt.x,-pt.y);
         drawAll();
     }
@@ -108,3 +121,4 @@ function trackTransforms(ctx){
         return pt.matrixTransform(xform.inverse());
     }
 }
+

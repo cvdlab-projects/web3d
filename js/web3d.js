@@ -1,21 +1,10 @@
 
-var web3d_ide;
-var canvas;
-var form;
-var cur_z=0;        // variabile che indica la slice corrente dell'immagine
-var ctx;
-var scale;
-var backgrounds = new Array();
-var n_points=0;
-var points =new Array();
-var cur_plugin;
-var cur_action;
 
 function getWeb3d(){
     web3d_ide=$("#web3d-ide");
     canvas=web3d_ide.find("#web3d-ide-canvas");
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = 1024;
+    canvas.height = 768;
     form=web3d_ide.find('#form-div');
     ctx= canvas[0].getContext("2d");
 
@@ -42,6 +31,8 @@ function getPluginSelect(){
 
 //  Funzione che mi setta il background della canvas. Ci servirà utile al fine di prendere i vari slice del DICOM
 function setBackground(i) {
+    clearCanvas();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     var img = new Image();
     img.onload = function(){
         ctx.drawImage(img, 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
@@ -77,6 +68,19 @@ function eventsManager(){
         cur_action=$(this).val();
     });
 
+    $('.selectFrame').live('click',function(){
+        cur_z=cur_z+parseInt($(this).val());
+        $('#curFrame').val(cur_z);
+        $('.selectFrame').removeAttr("disabled", "disabled");
+        if (cur_z==0)
+            $(this).attr("disabled", "disabled");
+
+        if (cur_z==backgrounds.length-1)
+            $(this).attr("disabled", "disabled");
+
+        setBackground(cur_z);
+    });
+
     $("#web3d_plugins").live("change",function(){
         if ($(this).val()!='s'){
             cur_plugin=plugins[$(this).val()];
@@ -103,11 +107,8 @@ function eventsManager(){
     canvas.live('dblclick', function(event) {
         if (cur_plugin){
             if (cur_action=='draw') {
-                if (!cur_plugin.addPoint(new Point(event.offsetX , event.offsetY,cur_z))){
-                    alert("No more points for this tool.");
-                }else{
-                    cur_plugin.endSet();
-                }
+                cur_plugin.removeLast();
+                cur_plugin.endSet();
             }
         }
     });
@@ -116,7 +117,8 @@ function eventsManager(){
 function leftClick(event){
     if (cur_plugin){
         if (cur_action=='draw') {
-            if (!cur_plugin.addPoint(new Point(event.offsetX , event.offsetY,cur_z))){
+            var pt=ctx.transformedPoint(event.offsetX , event.offsetY);
+            if (!cur_plugin.addPoint(new Point(pt.x,pt.y,cur_z))){
                 alert("No more points for this tool.");
             }
         }
@@ -132,7 +134,14 @@ function middleClick(event){
 }
 
 function drawAll(){
-    ctx.clearRect(0, 0, canvas.width,canvas.height);
+    clearCanvas();
+
+    var img = new Image();
+    img.onload = function(){
+        ctx.drawImage(img, 0, 0, backgrounds[cur_z].getWidth(), backgrounds[cur_z].getHeight());
+    }
+    img.src = backgrounds[cur_z].getImg();
+
     for (var n=0;n<plugins.length;n++){
         plugins[n].draw();
     }
@@ -148,3 +157,9 @@ Array.prototype.remove = function(from, to) {
 };
 
 
+function clearCanvas(){
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+}

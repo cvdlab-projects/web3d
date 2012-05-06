@@ -5,6 +5,7 @@ html{
 }
 #web3d-ide{
     text-align: center;
+    width:1224px;
     margin: auto;
 }
 
@@ -14,10 +15,6 @@ html{
 
 #web3d-ide-container{
     position: absolute;
-    left: 20px;
-    top: 20px;
-    bottom: 20px;
-    right: 240px;
     border: 5px solid black;
     cursor: default;
     overflow: hidden;
@@ -46,4 +43,10 @@ html{
     width:200px;
     height:600px;
     float:right;
+}
+
+.clearBoth{
+    margin-top: 5px;
+    width:100%;
+    clear:both;
 }

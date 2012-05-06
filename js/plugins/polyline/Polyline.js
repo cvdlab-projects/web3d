@@ -1,17 +1,15 @@
 function Polyline(){
-    this.sets=new Array();
-    this.sets.push(new Array());
-    this.cur=this.sets[0];
-    this.curId=0;
+    this.sets=new Map();
 }
 
 Polyline.prototype.addPoint=function(point){
-    var tmp=this.cur;
+
+    var tmp=this.getCurSet();
     tmp.push(point);
 
     if (this.isValidSet(tmp)){
         points[cur_z].push(point);
-        this.cur.push(point);
+        this.getCurSet().push(point);
         drawAll();
         return true;
     }else{
@@ -21,38 +19,44 @@ Polyline.prototype.addPoint=function(point){
 }
 
 Polyline.prototype.getCurSet=function(){
-    return this.cur;
+    if (!this.sets.get(cur_z)){
+        this.sets.put(cur_z,new Array());
+        this.sets.get(cur_z).push(new Array());
+        return this.sets.get(cur_z)[0];
+    }
+
+    return this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
 }
 
-Polyline.prototype.getCurSetId=function(){
-    return this.curId;
+Polyline.prototype.removeLast=function(){
+    this.getCurSet().pop();
 }
+
 
 Polyline.prototype.setCurSet=function(n){
-    this.curId=n;
-    this.cur=this.sets[n];
+    var tmp=this.sets.get(cur_z)[n];
+    this.sets.get(cur_z)[n]=this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
+    this.sets.get(cur_z)[this.sets.get(cur_z).length-1]=tmp;
 }
 
 Polyline.prototype.endSet=function(){
     var p=new Array();
-    this.sets.push(p);
-    this.cur=p;
-    this.curId++;
+    this.sets.get(cur_z).push(p);
 }
 
 Polyline.prototype.addSet=function(set){
     var result=this.isValidSet(set);
     if (result)
-        this.sets.push(set);
+        this.sets.get(cur_z).push(set);
     return result;
 }
 
 Polyline.prototype.removeSet=function(n){
-    this.sets.remove(n);
+    this.sets.get(cur_z).remove(n);
 }
 
 Polyline.prototype.getSet=function(n){
-    return this.sets[n];
+    return this.sets.get(cur_z)[n];
 }
 
 Polyline.prototype.toString=function(){
@@ -72,8 +76,8 @@ Polyline.prototype.isValidSet=function(set){
 
 Polyline.prototype.draw=function(){
     var out="";
-    for (var i=0;i<this.sets.length;i++){
-        var tmp=this.sets[i];
+    for (var i=0;i<this.sets.get(cur_z).length;i++){
+        var tmp=this.sets.get(cur_z)[i];
         if (tmp.length>0){
             var startPoint=tmp[0];
 
