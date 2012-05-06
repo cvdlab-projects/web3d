@@ -1,0 +1,161 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/Three.js"></script>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        var camera, scene, renderer, geometry, material, mesh;
+        var angolo;
+        init();
+        animate();
+
+        function init() {
+
+            scene = new THREE.Scene();
+            angolo = 0;
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+            camera.position.z = 100;
+            camera.position.y = 0;
+            camera.position.x = 40;
+            scene.add(camera);
+            renderer = new THREE.CanvasRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            AddShape();
+            AddShape2();
+            document.body.appendChild(renderer.domElement);
+        }
+
+        function AddShape() {
+            var triangleShape = new THREE.Shape();
+
+            triangleShape.moveTo(6, 19);
+            triangleShape.lineTo(4,13 );
+            triangleShape.lineTo(6,9 );
+            triangleShape.lineTo(10,7 );
+            triangleShape.lineTo(13,10 );
+            triangleShape.lineTo(16,14 );
+            triangleShape.lineTo(20,12 );
+            triangleShape.lineTo(22,8 );
+            triangleShape.lineTo(25,7 );
+            triangleShape.lineTo(33,10 );
+            triangleShape.lineTo(36,15 );
+            triangleShape.lineTo(32,20 );
+            triangleShape.lineTo(28,23 );
+            triangleShape.lineTo(35,29 );
+            triangleShape.lineTo(40,33 );            
+            triangleShape.lineTo(41,41 );
+            triangleShape.lineTo(35,46 );
+            triangleShape.lineTo(28,46 );
+            triangleShape.lineTo(23,42 );
+            triangleShape.lineTo(24,36 );            
+            triangleShape.lineTo(24,31 );
+            triangleShape.lineTo(18,34 );
+            triangleShape.lineTo(20,41 );
+            triangleShape.lineTo(21,46 );
+            triangleShape.lineTo(17,50 );            
+            triangleShape.lineTo(11,50 );
+            triangleShape.lineTo(7,45 );
+            triangleShape.lineTo(6, 39);
+            triangleShape.lineTo(8,33 );
+            triangleShape.lineTo(12,30 );            
+            triangleShape.lineTo(15,25 );
+            triangleShape.lineTo(12,20 );
+            
+
+            var extrudeSettings = { amount: 1, bevelEnabled: false, bevelSegments: 1, steps: 1 };
+            var triangle3d = triangleShape.extrude(extrudeSettings);
+            var trianglePoints = triangleShape.createPointsGeometry();
+            var triangleSpacedPoints = triangleShape.createSpacedPointsGeometry();
+
+            addGeometry(triangle3d, trianglePoints, triangleSpacedPoints, 0xeeeeee, 0);
+        }
+
+
+        function AddShape2() {
+            var triangleShape = new THREE.Shape();
+
+            triangleShape.moveTo(4, 20);
+            triangleShape.lineTo(2,14 );
+            triangleShape.lineTo(4, 8);
+            triangleShape.lineTo(8,5 );
+            triangleShape.lineTo(13, 5);
+            triangleShape.lineTo(14,7 );
+            triangleShape.lineTo(17,12 );
+            triangleShape.lineTo(21,7 );
+            triangleShape.lineTo(26,5 );
+            triangleShape.lineTo(33,7 );
+            triangleShape.lineTo(37,12 );
+            triangleShape.lineTo(38,17 );
+            triangleShape.lineTo(33,21 );
+            triangleShape.lineTo(30,24 );
+            triangleShape.lineTo(36,27 );
+            triangleShape.lineTo(42,33 );
+            triangleShape.lineTo(43,40 );
+            triangleShape.lineTo(40,46 );
+            triangleShape.lineTo(36,48 );
+            triangleShape.lineTo(32,49 );
+            triangleShape.lineTo(28,48 );
+            triangleShape.lineTo(24,46 );
+            triangleShape.lineTo(22,43 );
+            triangleShape.lineTo(21.5,38 );
+            triangleShape.lineTo(23,33 );
+            triangleShape.lineTo(19,36 );
+            triangleShape.lineTo(21,41 );
+            triangleShape.lineTo(22,43 );
+            triangleShape.lineTo(21,49 );
+            triangleShape.lineTo(18,52 );
+            triangleShape.lineTo(14,53 );
+            triangleShape.lineTo(11,52 );
+            triangleShape.lineTo(6,48 );
+            triangleShape.lineTo(4,41 );
+            triangleShape.lineTo(5,34 );
+            triangleShape.lineTo(10,29 );
+            triangleShape.lineTo(13,25 );
+            triangleShape.lineTo(9,22 );
+            
+            
+
+            var extrudeSettings = { amount: 1, bevelEnabled: false, bevelSegments: 1, steps: 1 };
+            var triangle3d = triangleShape.extrude(extrudeSettings);
+            var trianglePoints = triangleShape.createPointsGeometry();
+            var triangleSpacedPoints = triangleShape.createSpacedPointsGeometry();
+
+            addGeometry(triangle3d, trianglePoints, triangleSpacedPoints, 0xeeeeee, -4);
+        }
+
+        function addGeometry(geometry, points, spacedPoints, color,z) {
+
+            // 3d shape
+            mesh = THREE.SceneUtils.createMultiMaterialObject(geometry, [new THREE.MeshLambertMaterial({ color: color }), new THREE.MeshBasicMaterial({ color: 0x000000, wireframe: true, transparent: true })]);
+            mesh.position.z = z;
+            scene.add(mesh);
+        }
+
+
+        function animate() {
+
+            // note: three.js includes requestAnimationFrame shim
+            requestAnimationFrame(animate);
+            render();
+        }
+
+        function render() {
+//            angolo += 0.02;
+//            camera.position.x = 100 * Math.sin(angolo);
+//            camera.position.y = 0;
+//            camera.position.z = 100 * Math.cos(angolo);
+//            camera.t
+            renderer.render(scene, camera);
+        }
+
+    </script>
+    <canvas>
+    </canvas>
+</body>
+</html>
+<!--
+http://mrdoob.github.com/three.js/examples/webgl_geometry_shapes.html-->
