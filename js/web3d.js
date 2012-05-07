@@ -11,10 +11,12 @@ function getWeb3d(){
     loadGeneralConf();
     form.prepend(getPluginSelect());
     scale = 1;
+
+
+    for (var n=0;n<backgrounds.length;n++){
+        points.push(new Array());
+    }
     setBackground(cur_z);
-
-    points.push(new Array());
-
     eventsManager();
 }
 
@@ -66,6 +68,12 @@ function getLastPoint(){
 function eventsManager(){
     $('.actions').live('click',function(){
         cur_action=$(this).val();
+        if (cur_action=='drag')
+            canvas.css('cursor', 'pointer');
+        else if (cur_action=='draw')
+            canvas.css('cursor', 'crosshair');
+        else
+            canvas.css('cursor', 'auto');
     });
 
     $('.selectFrame').live('click',function(){
@@ -79,6 +87,7 @@ function eventsManager(){
             $(this).attr("disabled", "disabled");
 
         setBackground(cur_z);
+        drawAll();
     });
 
     $("#web3d_plugins").live("change",function(){
@@ -139,15 +148,17 @@ function drawAll(){
     var img = new Image();
     img.onload = function(){
         ctx.drawImage(img, 0, 0, backgrounds[cur_z].getWidth(), backgrounds[cur_z].getHeight());
+        ctx.lineWidth = linewidth;
+        for (var n=0;n<plugins.length;n++){
+            plugins[n].draw();
+        }
+        for (var n=0;n<points[cur_z].length;n++){
+            points[cur_z][n].draw();
+        }
     }
     img.src = backgrounds[cur_z].getImg();
 
-    for (var n=0;n<plugins.length;n++){
-        plugins[n].draw();
-    }
-    for (var n=0;n<points[cur_z].length;n++){
-        points[cur_z][n].draw();
-    }
+
 }
 
 Array.prototype.remove = function(from, to) {

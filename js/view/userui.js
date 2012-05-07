@@ -44,9 +44,8 @@ window.onload = function(){
         var pt = ctx.transformedPoint(lastX,lastY);
         ctx.translate(pt.x,pt.y);
         var factor = Math.pow(scaleFactor,clicks);
+        linewidth=linewidth/factor;
         ctx.scale(factor,factor);
-        offset_x*=factor;
-        offset_y*=factor;
         ctx.translate(-pt.x,-pt.y);
         drawAll();
     }

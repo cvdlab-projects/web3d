@@ -76,11 +76,12 @@ Polyline.prototype.isValidSet=function(set){
 
 Polyline.prototype.draw=function(){
     var out="";
-    for (var i=0;i<this.sets.get(cur_z).length;i++){
-        var tmp=this.sets.get(cur_z)[i];
+    this.getCurSet();
+    var cur=this.sets.get(cur_z);
+    for (var i=0;i<cur.length;i++){
+        var tmp=cur[i];
         if (tmp.length>0){
             var startPoint=tmp[0];
-
             ctx.beginPath();
             ctx.moveTo(startPoint.getX(),startPoint.getY());
 

@@ -9,6 +9,7 @@ var n_points=0;
 var points =new Array();
 var cur_plugin;
 var cur_action;
+var linewidth=1;
 
 //config
 var plugins=new Array();

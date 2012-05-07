@@ -19,7 +19,7 @@ Point.prototype.getZ=function(){
 
 Point.prototype.draw=function(){
     ctx.beginPath();
-    ctx.arc(this.x,this.y, 3, 0, 2*Math.PI, true);
+    ctx.arc(this.x,this.y,linewidth*2, 0, 2*Math.PI, true);
     ctx.strokeStyle = "red";
     ctx.stroke();
 }
