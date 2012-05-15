@@ -55,3 +55,12 @@ html{
     border:1px solid;
     position:fixed;
 }
+
+#form-color{
+    width:100%;
+    text-align: center;
+}
+
+.color{
+    width:50px;
+}

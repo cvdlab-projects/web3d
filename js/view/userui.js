@@ -182,6 +182,15 @@ function deletePoint(x,y){
     }
 }
 
+var data = imageData.data;
+for (var i = 0; i < data.length; i += 4) {
+    //Note: data[i], data[i+1], data[i+2] represent RGB respectively
+    //Increases brightness of RGB channel by 2
+    data[i] = data[i]*2;
+    data[i+1] = data[i+1]*2;
+    data[i+2] = data[i+2]*2;
+}
+
 /*
 function selectPoint(x,y){
     var tmp2=points[cur_z];

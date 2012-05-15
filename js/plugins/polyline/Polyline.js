@@ -146,7 +146,7 @@ Polyline.prototype.draw=function(){
                 var point=tmp[n];
                 ctx.lineTo(point.getX(),point.getY());
             }
-            ctx.strokeStyle = "blue";
+            ctx.strokeStyle = lineColor;
             ctx.stroke();
         }
     }

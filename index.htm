@@ -9,6 +9,7 @@
         <script src="js/lib/map/HashMap.js"></script>
         <script src="js/model/object/Point.js"></script>
         <script src="js/model/object/Figure.js"></script>
+        <script src="js/lib/jscolor/jscolor.js"></script>
         <script src="js/model/object/Slice.js"></script>
         <script src="js/plugins/polyline/polyline.js"></script>
         <script src="js/plugins/polygon/polygon.js"></script>
@@ -31,6 +32,10 @@
                 <input type="button" class="actions" value="delete"/>
                 <input type="button" class="actions" value="draw"/>
                 <input type="button" class="actions" value="drag"/>
+                <div id="form-color">
+                    Points color: <input id="pointColor" class="color" value="FF0505"/><br/>
+                    Lines color: <input id="lineColor"  class="color" value="0008FF"/>
+                </div>
                 <div class="clearBoth">
                     Select the current DICOM Slice.
                     <input type="button" class="selectFrame" value="-1" disabled="disabled"/>

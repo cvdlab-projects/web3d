@@ -72,7 +72,7 @@ function loadGeneralConf(){
 getWeb3d();
 /*
  Il metodo eventsManager gestisce tutti gli eventi di interazione dell'utente per le seguenti operazioni:
-
+ -color picking
  -draw
  -selezione del plugin
  -selezione e cancellazione di punti
@@ -89,6 +89,14 @@ function eventsManager(){
             canvas.css('cursor', 'crosshair');
         else
             canvas.css('cursor', 'auto');
+    });
+
+    $('#lineColor').live('change',function(){
+        lineColor=$(this).val();
+    });
+
+    $('#pointColor').live('change',function(){
+        pointColor=$(this).val();
     });
 
     $('.selectFrame').live('click',function(){

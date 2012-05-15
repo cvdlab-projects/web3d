@@ -17,6 +17,8 @@ var cur_action;
 var linewidth=1;
 var selected_point;
 var drag=false;
+var pointColor="red";
+var lineColor="blue";
 /*
 ogni plugin è contenuto nella cartella plugins ed ha un suo file .js
 Per caricarli basta aggiungere un nuovo oggetto plugin all'array plugins.
