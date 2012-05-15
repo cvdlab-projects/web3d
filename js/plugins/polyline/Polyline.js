@@ -5,6 +5,7 @@
  */
 function Polyline(){
     this.sets=new Map();
+    this.id=plugins.length;
 }
 
 /*
@@ -12,7 +13,6 @@ function Polyline(){
  Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con questo plugin.
  */
 Polyline.prototype.addPoint=function(point){
-
     this.getCurSet().push(point);
 
     if (this.isValidSet(this.getCurSet())){
@@ -72,17 +72,20 @@ Polyline.prototype.setCurSet=function(n){
  Il metodo endSet permette all'utente di specificare quando un disegno è finito.
  */
 Polyline.prototype.endSet=function(){
-    var p=new Array();
-    this.sets.get(cur_z).push(p);
+    if (this.getCurSet().length>0){
+        var p=new Array();
+        this.sets.get(cur_z).push(p);
+    }
 }
 
 /*
  Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
  */
-Polyline.prototype.addSet=function(set){
+Polyline.prototype.addSet=function(set,z){
+    this.getCurSet();
     var result=this.isValidSet(set);
     if (result)
-        this.sets.get(cur_z).push(set);
+        this.sets.get(z).push(set);
     return result;
 }
 
@@ -91,6 +94,20 @@ Polyline.prototype.addSet=function(set){
  */
 Polyline.prototype.removeSet=function(n){
     this.sets.get(cur_z).remove(n);
+}
+
+/*
+ Ritorna l'id dell'istanza del plugin all'interno dell'IDE.
+ */
+Polyline.prototype.getId=function(){
+    return this.id;
+}
+
+/*
+ Elimina il set corrente.
+ */
+Polyline.prototype.removeCurSet=function(){
+    this.sets.get(cur_z).pop();
 }
 
 /*
@@ -108,10 +125,17 @@ Polyline.prototype.getSets=function(){
 }
 
 /*
+ Restituisce tutti i set presenti di tutte le slice.
+ */
+Polyline.prototype.getAllSets=function(){
+    return this.sets.get;
+}
+
+/*
  Restituisce il tipo del plugin
  */
 Polyline.prototype.toString=function(){
-    return "polyline";
+    return "Polyline";
 }
 /*
  verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
@@ -127,6 +151,16 @@ Polyline.prototype.isValidSet=function(set){
 
     return result;
 }
+/*
+ Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
+ */
+Polyline.prototype.addSet=function(set,z){
+    var result=this.isValidSet(set);
+    if (result)
+        this.sets.get(z).push(set);
+    return result;
+}
+
 
 /*
  Il metodo draw disegna tutte le figure appartenenti al plugin nella slice corrente.

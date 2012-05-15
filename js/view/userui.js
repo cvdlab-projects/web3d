@@ -1,11 +1,9 @@
 /*
-Gestisce le variazioni della canvas in seguito ai comandi dell'utente:
--zoom
--drag
--scroll
+ Gestisce le variazioni della canvas in seguito ai comandi dell'utente:
+ -zoom
+ -drag
+ -scroll
  */
-//var gkhead = new Image;
-//var ball   = new Image;
 var offset_x=0;
 var offset_y=0;
 window.onload = function(){
@@ -23,11 +21,11 @@ window.onload = function(){
             dragged = false;
         }
     });
-/*
-Effettua il drag di tutta la canvas all'interno di un div con overflow nascosto. Consente di lavorare su una superficie
-molto ampia e scrollabile.
-Si preserva l'allineamento tra la posizione del cursore e le coordinate della canvas, grazie al metodo transformedPoint.
- */
+    /*
+     Effettua il drag di tutta la canvas all'interno di un div con overflow nascosto. Consente di lavorare su una superficie
+     molto ampia e scrollabile.
+     Si preserva l'allineamento tra la posizione del cursore e le coordinate della canvas, grazie al metodo transformedPoint.
+     */
     canvas.bind('mousemove',function(evt){
         lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
         lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
@@ -48,12 +46,12 @@ Si preserva l'allineamento tra la posizione del cursore e le coordinate della ca
     $(document).bind('mouseup',function(evt){
         dragStart = null;
     });
-/*
-Zoom
-Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
-Viene mantenuto lo stesso livello di zoom fra gli oggetti disegnati, evitando disallineamenti fra questi e l'immagine dicom.
-Si è prestata attenzione a non ingrandire lo spessore delle linee e dei punti all'aumentare dello zoom.
- */
+    /*
+     Zoom
+     Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
+     Viene mantenuto lo stesso livello di zoom fra gli oggetti disegnati, evitando disallineamenti fra questi e l'immagine dicom.
+     Si è prestata attenzione a non ingrandire lo spessore delle linee e dei punti all'aumentare dello zoom.
+     */
 
     var scaleFactor = 1.1;
     var zoom = function(clicks){
@@ -136,7 +134,7 @@ function trackTransforms(ctx){
 }
 
 /*
-Permette di selezionare un oggetto disegnato sulla canvas solo in base alla posizione dichiarata nel modello.
+ Permette di selezionare un oggetto disegnato sulla canvas solo in base alla posizione dichiarata nel modello.
  Si possono effettuare operazioni di drag e drop selezionando con il puntatore del mouse le figure nella canvas,
  senza ricorrere alla rappresentazione con elementi HTML.
  */
@@ -152,6 +150,8 @@ function selectPoint(x,y){
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     selected_point=p;
                     plugins[n].setCurSet(i);
+                    cur_plugin=plugins[n];
+                    $('#web3d_plugins').val(cur_plugin.getId());
                     drag=true;
                 }
             }
@@ -159,7 +159,7 @@ function selectPoint(x,y){
     }
 }
 /*
-Come il metodo precedente, per l'operazione di cancellazione.
+ Come il metodo precedente, per l'operazione di cancellazione.
  */
 function deletePoint(x,y){
     var d=3;
@@ -180,31 +180,66 @@ function deletePoint(x,y){
     }
 }
 
-function brightness(adjustment) {
-    var imageData = ctx.getImageData(0,0, backgrounds[cur_z].getWidth(), backgrounds[cur_z].getHeight());
+function contrast(val) {
+    var adjustment =-2;
+    if (val==true)
+        adjustment=2;
+    contrastStatic(adjustment);
+};
+
+function contrastStatic(adjustment) {
+    var t=parseInt($('#threshold').val());
+    var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
     var data = imageData.data;
     for (var i=0; i<data.length; i+=4) {
-        altt(data[i]);
-        data[i] += adjustment;
-        data[i+1] += adjustment;
-        data[i+2] += adjustment;
-        data[i+3] += adjustment;
+        if (data[i]>t)
+            data[i] += adjustment;
+        else
+            data[i] -= adjustment;
+
+        if (data[i+1]>t)
+            data[i+1] += adjustment;
+        else
+            data[i+1] -= adjustment;
+
+        if (data[i+2]>t)
+            data[i+2] += adjustment;
+        else
+            data[i+2] -= adjustment;
+
     }
     ctx.putImageData(imageData, 0, 0);
 };
 
+function brightness(val) {
+    var d =-2;
+    if (val==true)
+        d=2;
+    brightnessStatic(d);
+};
+
+function brightnessStatic(d) {
+    var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
+    var data = imageData.data;
+    for (var i=0; i<data.length; i+=4) {
+        data[i] += d;
+        data[i+1] += d;
+        data[i+2] += d;
+    }
+    ctx.putImageData(imageData, 0, 0);
+};
 
 /*
-function selectPoint(x,y){
-    var tmp2=points[cur_z];
-    for (var z=0;z<tmp2.length;z++){
-        var p=tmp2[z];
-        var m=ctx.transformedPoint(x,y);
-        if ((m.x>=p.getX()-2 && m.x<=p.getX()+2)&&(m.y>=p.getY()-2 && m.y<=p.getY()+2)){
-            alert("dentro"+z);
-            selected_point=p;
-        }
-    }
+ function selectPoint(x,y){
+ var tmp2=points[cur_z];
+ for (var z=0;z<tmp2.length;z++){
+ var p=tmp2[z];
+ var m=ctx.transformedPoint(x,y);
+ if ((m.x>=p.getX()-2 && m.x<=p.getX()+2)&&(m.y>=p.getY()-2 && m.y<=p.getY()+2)){
+ alert("dentro"+z);
+ selected_point=p;
+ }
+ }
 
-}
-    */
+ }
+ */

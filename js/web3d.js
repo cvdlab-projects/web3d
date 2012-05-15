@@ -19,10 +19,6 @@ function getWeb3d(){
     form.prepend(getPluginSelect());
     scale = 1;
 
-
-    for (var n=0;n<backgrounds.length;n++){
-        //points.push(new Array());
-    }
     setBackground(cur_z);
     eventsManager();
 }
@@ -31,7 +27,7 @@ function getWeb3d(){
  Il metodo getPluginSelect posiziona i pulsanti di input nell'IDE.
  */
 function getPluginSelect(){
-    var out='<select id=\"web3d_plugins\">';
+    var out='Select plugin: <select id=\"web3d_plugins\">';
     out+='<option value="s">Select..</option>';
     for (var n=0;n<plugins.length;n++) {
         out+='<option value="'+n+'">'+plugins[n].toString()+'</option>';
@@ -85,18 +81,21 @@ function eventsManager(){
         cur_action=$(this).val();
         if (cur_action=='drag'||cur_action=='edit')
             canvas.css('cursor', 'pointer');
-        else if (cur_action=='draw')
+        else if (cur_action=='draw'){
+            $('#web3d_plugins').val(cur_plugin.getId());
             canvas.css('cursor', 'crosshair');
-        else
+        }else
             canvas.css('cursor', 'auto');
     });
 
     $('#lineColor').live('change',function(){
         lineColor=$(this).val();
+        drawAll();
     });
 
     $('#pointColor').live('change',function(){
         pointColor=$(this).val();
+        drawAll();
     });
 
     $('.selectFrame').live('click',function(){
@@ -112,11 +111,28 @@ function eventsManager(){
         setBackground(cur_z);
         drawAll();
     });
+    $('.inpsel').live('click',function(){
+        var el=$(this).parent().find('input[type=text]');
+        el.val(parseInt(el.val())+parseInt($(this).val()));
+    });
 
     $("#web3d_plugins").live("change",function(){
         if ($(this).val()!='s'){
-            cur_plugin=plugins[$(this).val()];
+            var old_plugin=cur_plugin;
+            var new_plugin=plugins[$(this).val()];
+            cur_plugin=new_plugin;
             $(this).find("option[value=s]").remove();
+
+            if (old_plugin){
+                if (cur_action=='draw'){
+                    old_plugin.endSet();
+                }else if (cur_action=='edit'){
+                    var set=old_plugin.getCurSet();
+                    old_plugin.removeCurSet();
+                    new_plugin.addSet(set,cur_z);
+                    drawAll();
+                }
+            }
         }
     });
 
@@ -213,6 +229,8 @@ function drawAll(){
                 }
             }
         }
+        contrastStatic(parseInt($('#contrast').val()));
+        brightnessStatic(parseInt($('#brightness').val()));
     }
     img.src = backgrounds[cur_z].getImg();
 }
