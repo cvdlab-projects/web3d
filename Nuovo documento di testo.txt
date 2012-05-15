@@ -1,3 +1,0 @@
-prestazioni migliori sistema a coordinate
-spiego area
-spiego peso div, anche div fuori canvas...
