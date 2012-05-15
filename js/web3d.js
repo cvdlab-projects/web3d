@@ -182,11 +182,14 @@ function leftClick(event){
     }
 }
 
-
-
 function middleClick(event){
 
 }
+
+function rightClick(event){
+
+}
+
 /*
  Il metodo drawAll disegna l'immagine di sfondo e invoca su ogni Plugin e ogni Point il metodo draw()
  per il disegno delle figure.

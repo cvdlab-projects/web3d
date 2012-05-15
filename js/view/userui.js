@@ -75,8 +75,6 @@ Si è prestata attenzione a non ingrandire lo spessore delle linee e dei punti a
     document.getElementById('web3d-ide-canvas').addEventListener('mousewheel',handleScroll,false);
 
 };
-gkhead.src = 'http://phrogz.net/tmp/gkhead.jpg';
-ball.src   = 'http://phrogz.net/tmp/alphaball.png';
 
 
 // Adds ctx.getTransform() - returns an SVGMatrix
@@ -182,14 +180,19 @@ function deletePoint(x,y){
     }
 }
 
-var data = imageData.data;
-for (var i = 0; i < data.length; i += 4) {
-    //Note: data[i], data[i+1], data[i+2] represent RGB respectively
-    //Increases brightness of RGB channel by 2
-    data[i] = data[i]*2;
-    data[i+1] = data[i+1]*2;
-    data[i+2] = data[i+2]*2;
-}
+function brightness(adjustment) {
+    var imageData = ctx.getImageData(0,0, backgrounds[cur_z].getWidth(), backgrounds[cur_z].getHeight());
+    var data = imageData.data;
+    for (var i=0; i<data.length; i+=4) {
+        altt(data[i]);
+        data[i] += adjustment;
+        data[i+1] += adjustment;
+        data[i+2] += adjustment;
+        data[i+3] += adjustment;
+    }
+    ctx.putImageData(imageData, 0, 0);
+};
+
 
 /*
 function selectPoint(x,y){
