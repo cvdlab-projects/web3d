@@ -1,0 +1,26 @@
+function punto(a,b){
+	this.x=a;
+	this.y=b;
+}
+
+function distanza(p1,p2){
+	return Math.sqrt(Math.pow((p1.x-p2.x),2)+Math.pow((p1.y-p2.y),2))
+}
+
+function triangolo(p1,p2,p3){
+	this.vertici=[];
+	this.vertici[0]=p1;
+	this.vertici[1]=p2;
+	this.vertici[2]=p3;
+
+	triangolo.prototype.getPerimeter=function(){
+		return (distanza(p1,p2)+distanza(p2,p3)+distanza(p1,p3));
+	};
+	triangolo.prototype.getArea= function(){
+		return (distanza(p1,p2)*distanza(new punto((p1.x-p2.x)/2,(p1.y-p2.y)/2),p3))/2;
+	};
+}
+
+var p1= new punto(0,0);
+var p2= new punto(0,2);
+var p3= new punto(2,0);

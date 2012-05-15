@@ -6,10 +6,11 @@ var ctx;
 var scale;
 var backgrounds = new Array();
 var n_points=0;
-var points =new Array();
+//var points =new Array();
 var cur_plugin;
 var cur_action;
 var linewidth=1;
+var selected_point;
 
 //config
 var plugins=new Array();

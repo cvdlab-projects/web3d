@@ -121,3 +121,66 @@ function trackTransforms(ctx){
     }
 }
 
+/*
+function addElement(point,plugin){
+    var point =new Point(0,0,0);
+    point.
+    canvas.find("#"+plugin.toString()+"-"+point.getId()).remove();
+    canvas.append("<div id=\"#"+plugin.toString()+"-"+point.getId()+"\" class=\"point\"/>");
+}
+ */
+
+
+function selectPoint(x,y){
+    var d=3;
+    for (var n=0;n<plugins.length;n++){
+        var tmp=plugins[n].getSets();
+        for (var i=0;i<tmp.length;i++){
+            var tmp2=tmp[i];
+            for (var z=0;z<tmp2.length;z++){
+                var p=tmp2[z];
+                var m=ctx.transformedPoint(x,y);
+                if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
+                    alert("dentro"+z);
+                    selected_point=p;
+                    plugins[n].setCurSet(i);
+                }
+            }
+        }
+    }
+}
+
+function deletePoint(x,y){
+    var d=3;
+    for (var n=0;n<plugins.length;n++){
+        var tmp=plugins[n].getSets();
+        for (var i=0;i<tmp.length;i++){
+            var tmp2=tmp[i];
+            for (var z=0;z<tmp2.length;z++){
+                var p=tmp2[z];
+                var m=ctx.transformedPoint(x,y);
+                if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
+                    alert("dentro"+z);
+                    plugins[n].setCurSet(i);
+                    plugins[n].removePoint(z);
+                    drawAll();
+                }
+            }
+        }
+    }
+}
+
+/*
+function selectPoint(x,y){
+    var tmp2=points[cur_z];
+    for (var z=0;z<tmp2.length;z++){
+        var p=tmp2[z];
+        var m=ctx.transformedPoint(x,y);
+        if ((m.x>=p.getX()-2 && m.x<=p.getX()+2)&&(m.y>=p.getY()-2 && m.y<=p.getY()+2)){
+            alert("dentro"+z);
+            selected_point=p;
+        }
+    }
+
+}
+    */

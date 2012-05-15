@@ -2,6 +2,8 @@ function Point(x,y,z){
     this.x=x;
     this.y=y;
     this.z=z;
+    this.id;
+    this.element;
 }
 
 Point.prototype.getX=function(){
@@ -14,7 +16,22 @@ Point.prototype.getY=function(){
 
 Point.prototype.getZ=function(){
     return this.z;
+}
 
+Point.prototype.setId=function(id){
+    this.id=id;
+}
+
+Point.prototype.getId=function(){
+    return this.id;
+}
+
+Point.prototype.getElement=function(){
+    return this.element;
+}
+
+Point.prototype.setElement=function(element){
+    this.element=element;
 }
 
 Point.prototype.draw=function(){

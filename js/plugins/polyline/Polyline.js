@@ -4,19 +4,30 @@ function Polyline(){
 
 Polyline.prototype.addPoint=function(point){
 
-    var tmp=this.getCurSet();
-    tmp.push(point);
+    this.getCurSet().push(point);
 
-    if (this.isValidSet(tmp)){
-        points[cur_z].push(point);
-        this.getCurSet().push(point);
+    if (this.isValidSet(this.getCurSet())){
+        //points[cur_z].push(point);
         drawAll();
         return true;
     }else{
+        this.getCurSet().pop();
         return false;
     }
 
 }
+
+Polyline.prototype.removePoint=function(n){
+
+    if (n==this.getCurSet().length){
+        this.removeLast();
+    }else{
+        var tmp1=this.getCurSet().slice(0,n);
+        var tmp2=this.getCurSet().slice(n+1);
+        this.sets.get(cur_z)[this.sets.get(cur_z).length-1]=tmp1.concat(tmp2);
+    }
+}
+
 
 Polyline.prototype.getCurSet=function(){
     if (!this.sets.get(cur_z)){
@@ -57,6 +68,10 @@ Polyline.prototype.removeSet=function(n){
 
 Polyline.prototype.getSet=function(n){
     return this.sets.get(cur_z)[n];
+}
+
+Polyline.prototype.getSets=function(){
+    return this.sets.get(cur_z);
 }
 
 Polyline.prototype.toString=function(){

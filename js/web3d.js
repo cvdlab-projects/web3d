@@ -14,7 +14,7 @@ function getWeb3d(){
 
 
     for (var n=0;n<backgrounds.length;n++){
-        points.push(new Array());
+        //points.push(new Array());
     }
     setBackground(cur_z);
     eventsManager();
@@ -35,6 +35,7 @@ function getPluginSelect(){
 function setBackground(i) {
     clearCanvas();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    linewidth=1;
     var img = new Image();
     img.onload = function(){
         ctx.drawImage(img, 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
@@ -97,7 +98,7 @@ function eventsManager(){
         }
     });
 
-    canvas.live('mousedown', function(event) {
+    canvas.live('click', function(event) {
         switch (event.which) {
             case 1:
                 leftClick(event);
@@ -127,16 +128,21 @@ function leftClick(event){
     if (cur_plugin){
         if (cur_action=='draw') {
             var pt=ctx.transformedPoint(event.offsetX , event.offsetY);
-            if (!cur_plugin.addPoint(new Point(pt.x,pt.y,cur_z))){
+            var inserted=cur_plugin.addPoint(new Point(pt.x,pt.y,cur_z));
+            if (!inserted){
                 alert("No more points for this tool.");
             }
         }
+        if (cur_action=='delete') {
+            deletePoint(event.offsetX , event.offsetY);
+        }
+    }
+    if (cur_action=='edit') {
+        selectPoint(event.offsetX , event.offsetY);
     }
 }
 
-function rightClick(event){
 
-}
 
 function middleClick(event){
 
@@ -151,9 +157,14 @@ function drawAll(){
         ctx.lineWidth = linewidth;
         for (var n=0;n<plugins.length;n++){
             plugins[n].draw();
-        }
-        for (var n=0;n<points[cur_z].length;n++){
-            points[cur_z][n].draw();
+
+            var tmp=plugins[n].getSets();
+            for (var i=0;i<tmp.length;i++){
+                var tmp2=tmp[i];
+                for (var z=0;z<tmp2.length;z++){
+                    tmp2[z].draw();
+                }
+            }
         }
     }
     img.src = backgrounds[cur_z].getImg();

@@ -50,3 +50,8 @@ html{
     width:100%;
     clear:both;
 }
+
+.point{
+    border:1px solid;
+    position:fixed;
+}
