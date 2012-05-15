@@ -18,6 +18,19 @@ Point.prototype.getZ=function(){
     return this.z;
 }
 
+Point.prototype.setX=function(x){
+    this.x=x;
+}
+
+Point.prototype.setY=function(y){
+    this.y=y;
+}
+
+Point.prototype.setZ=function(z){
+    this.z=z;
+}
+
+
 Point.prototype.setId=function(id){
     this.id=id;
 }

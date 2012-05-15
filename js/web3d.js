@@ -83,7 +83,7 @@ getWeb3d();
 function eventsManager(){
     $('.actions').live('click',function(){
         cur_action=$(this).val();
-        if (cur_action=='drag')
+        if (cur_action=='drag'||cur_action=='edit')
             canvas.css('cursor', 'pointer');
         else if (cur_action=='draw')
             canvas.css('cursor', 'crosshair');
@@ -119,8 +119,8 @@ function eventsManager(){
     canvas.live('mousemove',function(event){
         if (drag==true && cur_action=='edit'){
             var p = ctx.transformedPoint(event.offsetX , event.offsetY);
-            selected_point.setX();
-            selected_point.setY();
+            selected_point.setX(p.x);
+            selected_point.setY(p.y);
             drawAll();
         }
     });

@@ -4,8 +4,8 @@ Gestisce le variazioni della canvas in seguito ai comandi dell'utente:
 -drag
 -scroll
  */
-var gkhead = new Image;
-var ball   = new Image;
+//var gkhead = new Image;
+//var ball   = new Image;
 var offset_x=0;
 var offset_y=0;
 window.onload = function(){
