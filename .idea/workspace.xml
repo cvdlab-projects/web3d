@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e3e969-a359-4697-b853-0735eda6f7f1" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\conf\plugins.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\js\model\dao\Prova2.txt" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\js\model\ide\Prova3.txt" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\js\model\object\Prova4.txt" afterPath="" />
@@ -16,10 +15,7 @@
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\js\utils.js" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\prova.jpg" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Max\Desktop\web3d\test.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.htm" afterPath="$PROJECT_DIR$/index.htm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/plugins/polyline/Polyline.js" afterPath="$PROJECT_DIR$/js/plugins/polyline/Polyline.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/view/userui.js" afterPath="$PROJECT_DIR$/js/view/userui.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/web3d.js" afterPath="$PROJECT_DIR$/js/web3d.js" />
     </list>
@@ -55,7 +51,7 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="73" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
+            <state line="18" column="15" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -63,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web3d.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="web3d.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/web3d.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="35" selection-start="5241" selection-end="5241" vertical-scroll-proportion="0.0">
+            <state line="128" column="26" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.51264757">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -74,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userui.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="userui.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/view/userui.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="36" selection-start="2430" selection-end="2430" vertical-scroll-proportion="-0.26034483">
+            <state line="154" column="0" selection-start="5398" selection-end="5398" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -117,10 +113,10 @@
         <option value="$PROJECT_DIR$/js/plugins/circle/form/form.html" />
         <option value="$PROJECT_DIR$/js/utils.js" />
         <option value="$PROJECT_DIR$/index.htm" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/plugins/polyline/Polyline.js" />
-        <option value="$PROJECT_DIR$/js/web3d.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/view/userui.js" />
+        <option value="$PROJECT_DIR$/js/web3d.js" />
       </list>
     </option>
   </component>
@@ -401,15 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="73" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/plugins/polyline/Polyline.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="134" column="15" selection-start="3680" selection-end="3680" vertical-scroll-proportion="0.0">
@@ -419,9 +406,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/web3d.js">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="35" selection-start="5241" selection-end="5241" vertical-scroll-proportion="0.0">
+        <state line="18" column="15" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -430,7 +417,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/view/userui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="36" selection-start="2430" selection-end="2430" vertical-scroll-proportion="-0.26034483">
+        <state line="154" column="0" selection-start="5398" selection-end="5398" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/web3d.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="26" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.51264757">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

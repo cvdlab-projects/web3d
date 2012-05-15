@@ -111,8 +111,22 @@ function eventsManager(){
             $(this).find("option[value=s]").remove();
         }
     });
+
+    canvas.live('mouseup',function(event){
+        drag=false;
+    });
+
+    canvas.live('mousemove',function(event){
+        if (drag==true && cur_action=='edit'){
+            var p = ctx.transformedPoint(event.offsetX , event.offsetY);
+            selected_point.setX();
+            selected_point.setY();
+            drawAll();
+        }
+    });
+
 // gestione dei tasti del mouse
-    canvas.live('click', function(event) {
+    canvas.live('mousedown', function(event) {
         switch (event.which) {
             case 1:
                 leftClick(event);

@@ -152,9 +152,9 @@ function selectPoint(x,y){
             for (var z=0;z<tmp2.length;z++){
                 var p=tmp2[z];
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
-                    alert("dentro"+z);
                     selected_point=p;
                     plugins[n].setCurSet(i);
+                    drag=true;
                 }
             }
         }
@@ -173,7 +173,6 @@ function deletePoint(x,y){
             for (var z=0;z<tmp2.length;z++){
                 var p=tmp2[z];
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
-                    alert("dentro"+z);
                     plugins[n].setCurSet(i);
                     plugins[n].removePoint(z);
                     drawAll();
