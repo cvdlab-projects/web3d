@@ -1,3 +1,9 @@
+/*
+Gestisce le variazioni della canvas in seguito ai comandi dell'utente:
+-zoom
+-drag
+-scroll
+ */
 var gkhead = new Image;
 var ball   = new Image;
 var offset_x=0;
@@ -17,7 +23,11 @@ window.onload = function(){
             dragged = false;
         }
     });
-
+/*
+Effettua il drag di tutta la canvas all'interno di un div con overflow nascosto. Consente di lavorare su una superficie
+molto ampia e scrollabile.
+Si preserva l'allineamento tra la posizione del cursore e le coordinate della canvas, grazie al metodo transformedPoint.
+ */
     canvas.bind('mousemove',function(evt){
         lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
         lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
@@ -38,6 +48,12 @@ window.onload = function(){
     $(document).bind('mouseup',function(evt){
         dragStart = null;
     });
+/*
+Zoom
+Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
+Viene mantenuto lo stesso livello di zoom fra gli oggetti disegnati, evitando disallineamenti fra questi e l'immagine dicom.
+Si è prestata attenzione a non ingrandire lo spessore delle linee e dei punti all'aumentare dello zoom.
+ */
 
     var scaleFactor = 1.1;
     var zoom = function(clicks){
@@ -122,24 +138,19 @@ function trackTransforms(ctx){
 }
 
 /*
-function addElement(point,plugin){
-    var point =new Point(0,0,0);
-    point.
-    canvas.find("#"+plugin.toString()+"-"+point.getId()).remove();
-    canvas.append("<div id=\"#"+plugin.toString()+"-"+point.getId()+"\" class=\"point\"/>");
-}
+Permette di selezionare un oggetto disegnato sulla canvas solo in base alla posizione dichiarata nel modello.
+ Si possono effettuare operazioni di drag e drop selezionando con il puntatore del mouse le figure nella canvas,
+ senza ricorrere alla rappresentazione con elementi HTML.
  */
-
-
 function selectPoint(x,y){
     var d=3;
     for (var n=0;n<plugins.length;n++){
         var tmp=plugins[n].getSets();
         for (var i=0;i<tmp.length;i++){
             var tmp2=tmp[i];
+            var m=ctx.transformedPoint(x,y);
             for (var z=0;z<tmp2.length;z++){
                 var p=tmp2[z];
-                var m=ctx.transformedPoint(x,y);
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     alert("dentro"+z);
                     selected_point=p;
@@ -149,16 +160,18 @@ function selectPoint(x,y){
         }
     }
 }
-
+/*
+Come il metodo precedente, per l'operazione di cancellazione.
+ */
 function deletePoint(x,y){
     var d=3;
     for (var n=0;n<plugins.length;n++){
         var tmp=plugins[n].getSets();
         for (var i=0;i<tmp.length;i++){
             var tmp2=tmp[i];
+            var m=ctx.transformedPoint(x,y);
             for (var z=0;z<tmp2.length;z++){
                 var p=tmp2[z];
-                var m=ctx.transformedPoint(x,y);
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     alert("dentro"+z);
                     plugins[n].setCurSet(i);

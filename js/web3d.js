@@ -1,4 +1,11 @@
-
+/*
+ Il metodo getWeb3d inizializza l'IDE.
+ Ricava gli elementi HTML da popolare.
+ Carica i parametri di configurazione.
+ Aggiunge i comandi di default all'IDE per l'interazione utente.
+ Imposta la slice di partenza.
+ Inizializza il gestore degli eventi.
+ */
 
 function getWeb3d(){
     web3d_ide=$("#web3d-ide");
@@ -20,6 +27,9 @@ function getWeb3d(){
     eventsManager();
 }
 
+/*
+ Il metodo getPluginSelect posiziona i pulsanti di input nell'IDE.
+ */
 function getPluginSelect(){
     var out='<select id=\"web3d_plugins\">';
     out+='<option value="s">Select..</option>';
@@ -31,7 +41,10 @@ function getPluginSelect(){
 }
 
 
-//  Funzione che mi setta il background della canvas. Ci servirà utile al fine di prendere i vari slice del DICOM
+/*
+ Il metodo setBackground consente di selezionare la slice i richiesta dall'utente.
+ Posiziona nella canvas l'immagine DICOM caricata.
+ */
 function setBackground(i) {
     clearCanvas();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -43,7 +56,9 @@ function setBackground(i) {
     img.src = backgrounds[i].getImg();
 }
 
-//Serve a caricare
+/*
+ Il metodo loadGeneralConf consente di leggere e inizializzare i parametri di configurazione della slice corrente.
+ */
 function loadGeneralConf(){
     web3d_ide.find('img').each(function(){
         var slice=new Slice();
@@ -54,18 +69,17 @@ function loadGeneralConf(){
     })
 }
 
-function getNumberPoints(){
-    return n_points;
-}
-
 getWeb3d();
+/*
+ Il metodo eventsManager gestisce tutti gli eventi di interazione dell'utente per le seguenti operazioni:
 
-function getLastPoint(){
-    var cur_set=cur_plugin.getCurSet();
-    return cur_set[cur_set.length-1];
-}
+ -draw
+ -selezione del plugin
+ -selezione e cancellazione di punti
+ -selezione e modifica di set di punti
+ -drag and drop di punti
 
-
+ */
 function eventsManager(){
     $('.actions').live('click',function(){
         cur_action=$(this).val();
@@ -97,7 +111,7 @@ function eventsManager(){
             $(this).find("option[value=s]").remove();
         }
     });
-
+// gestione dei tasti del mouse
     canvas.live('click', function(event) {
         switch (event.which) {
             case 1:
@@ -123,7 +137,10 @@ function eventsManager(){
         }
     });
 }
-
+/*
+ leftClick gestisce tutti gli eventi scatenati dal click sinistro del mouse sulla canvas.
+ A seconda dell'azione selezionata potremo inserire selezionare o cancellare punti.
+ */
 function leftClick(event){
     if (cur_plugin){
         if (cur_action=='draw') {
@@ -132,6 +149,7 @@ function leftClick(event){
             if (!inserted){
                 alert("No more points for this tool.");
             }
+            drawAll();
         }
         if (cur_action=='delete') {
             deletePoint(event.offsetX , event.offsetY);
@@ -147,7 +165,11 @@ function leftClick(event){
 function middleClick(event){
 
 }
-
+/*
+ Il metodo drawAll disegna l'immagine di sfondo e invoca su ogni Plugin e ogni Point il metodo draw()
+ per il disegno delle figure.
+ Viene invocato ogni volta che si verifica una variazione del dominio.
+ */
 function drawAll(){
     clearCanvas();
 
@@ -168,8 +190,6 @@ function drawAll(){
         }
     }
     img.src = backgrounds[cur_z].getImg();
-
-
 }
 
 Array.prototype.remove = function(from, to) {
@@ -178,7 +198,9 @@ Array.prototype.remove = function(from, to) {
     return this.push.apply(this, rest);
 };
 
-
+/*
+ Ripristina la canvas alle condizioni iniziali.
+ */
 function clearCanvas(){
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
