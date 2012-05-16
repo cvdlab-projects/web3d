@@ -1,39 +1,36 @@
-/*
- Il plugin Polyline disegna una polilinea sul set di punti definito dall'utente.
+﻿/*
+ Il plugin Freepol disegna una polilinea sul set di punti definito dall'utente.
  Il set di punti è un oggetto Map dove la chiave è la slice corrente.
- Per ogni slice è possibile inserire più set di punti, cioè definire più polyline sullo stesso livello.
+ Per ogni slice è possibile inserire più set di punti, cioè definire più Freepol sullo stesso livello.
  */
-function Polyline(){
+function Freepol(){
     this.sets=new Map();
     this.id=plugins.length;
+    this.drawed=0;
 }
 
 /*
  Il metodo addPoint aggiunge un punto al set corrente, definito come l'ultimo utilizzato dall'utente.
  Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con questo plugin.
  */
-Polyline.prototype.addPoint=function(point){
+Freepol.prototype.addPoint=function(point){
     this.getCurSet().push(point);
-
-    if (this.isValidSet(this.getCurSet())){
-        return true;
-    }else{
-        this.getCurSet().pop();
-        return false;
-    }
-
+    //vanno bene tutti, nessun controllo sul set
+    return true;
 }
 
 /*
  Il metodo mouseMove gestisce l'evento di movimento del mouse di un plugin.
  */
-Polyline.prototype.mouseMove=function(x,y){
-    return false;
+Freepol.prototype.mouseMove=function(x,y){
+    this.getCurSet().push(new Point(x,y,cur_z));
+    this.draw(true);
 }
+
 /*
  Il metodo removePoint elimina dal set corrente il punto selezionato dall'utente.
  */
-Polyline.prototype.removePoint=function(n){
+Freepol.prototype.removePoint=function(n){
 //se il punto è un estremo
     if (n==this.getCurSet().length){
         this.removeLast();
@@ -48,7 +45,7 @@ Polyline.prototype.removePoint=function(n){
 /*
  Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultima polilinea modificata.
  */
-Polyline.prototype.getCurSet=function(){
+Freepol.prototype.getCurSet=function(){
     if (!this.sets.get(cur_z)){
         this.sets.put(cur_z,new Array());
         this.sets.get(cur_z).push(new Array());
@@ -58,7 +55,7 @@ Polyline.prototype.getCurSet=function(){
     return this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
 }
 
-Polyline.prototype.removeLast=function(){
+Freepol.prototype.removeLast=function(){
     this.getCurSet().pop();
 }
 
@@ -68,7 +65,8 @@ Polyline.prototype.removeLast=function(){
  Il set corrente è sempre l'ultimo nella lista.
  */
 
-Polyline.prototype.setCurSet=function(n){
+Freepol.prototype.setCurSet=function(n){
+    this.drawed=0;
     var tmp=this.sets.get(cur_z)[n];
     this.sets.get(cur_z)[n]=this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
     this.sets.get(cur_z)[this.sets.get(cur_z).length-1]=tmp;
@@ -77,78 +75,67 @@ Polyline.prototype.setCurSet=function(n){
 /*
  Il metodo endSet permette all'utente di specificare quando un disegno è finito.
  */
-Polyline.prototype.endSet=function(){
+Freepol.prototype.endSet=function(){
     if (this.getCurSet().length>0){
         var p=new Array();
         this.sets.get(cur_z).push(p);
+        this.drawed=0;
     }
-}
-
-/*
- Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
- */
-Polyline.prototype.addSet=function(set,z){
-    this.getCurSet();
-    var result=this.isValidSet(set);
-    if (result){
-        this.sets.get(z).push(set);
-    }
-    return result;
 }
 
 /*
  Elimina il set n dalla slice corrente, cioè cancella la figura n.
  */
-Polyline.prototype.removeSet=function(n){
+Freepol.prototype.removeSet=function(n){
     this.sets.get(cur_z).remove(n);
 }
 
 /*
  Ritorna l'id dell'istanza del plugin all'interno dell'IDE.
  */
-Polyline.prototype.getId=function(){
+Freepol.prototype.getId=function(){
     return this.id;
 }
 
 /*
  Elimina il set corrente.
  */
-Polyline.prototype.removeCurSet=function(){
+Freepol.prototype.removeCurSet=function(){
     this.sets.get(cur_z).pop();
 }
 
 /*
  Restituisce il set corrente.
  */
-Polyline.prototype.getSet=function(n){
+Freepol.prototype.getSet=function(n){
     return this.sets.get(cur_z)[n];
 }
 
 /*
  Restituisce tutti i set presenti sulla slice corrente.
  */
-Polyline.prototype.getSets=function(){
+Freepol.prototype.getSets=function(){
     return this.sets.get(cur_z);
 }
 
 /*
  Restituisce tutti i set presenti di tutte le slice.
  */
-Polyline.prototype.getAllSets=function(){
+Freepol.prototype.getAllSets=function(){
     return this.sets.get;
 }
 
 /*
  Restituisce il tipo del plugin
  */
-Polyline.prototype.toString=function(){
-    return "Polyline";
+Freepol.prototype.toString=function(){
+    return "Freepol";
 }
 /*
  verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
  Es: Un quadrato non può avere un set di più di quattro punti.
  */
-Polyline.prototype.isValidSet=function(set){
+Freepol.prototype.isValidSet=function(set){
     var result=true;
     //mettete qui in mezzo tutti i casi in cui il set non va bene
 
@@ -158,18 +145,47 @@ Polyline.prototype.isValidSet=function(set){
 
     return result;
 }
+/*
+ Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
+ */
+Freepol.prototype.addSet=function(set,z){
+    var result=this.isValidSet(set);
+    if (result){
+        this.sets.get(z).push(set);
+        this.drawed=0;
+    }
+    return result;
+}
 
 /*
  Questa funzione decide se il plugin mostra o meno i punti tracciati.
  */
-Polyline.prototype.drawPoints=function(){
-    return true;
+Freepol.prototype.drawPoints=function(){
+    if (cur_action=='draw')
+        return false
+    else
+        return true;
 }
 
 /*
  Il metodo draw disegna tutte le figure appartenenti al plugin nella slice corrente.
  */
-Polyline.prototype.draw=function(){
+Freepol.prototype.draw=function(light){
+    //migliora le prestazioni
+    if (light){
+        var tmp=this.getCurSet();
+        var startPoint=tmp[this.drawed];
+        ctx.beginPath();
+        ctx.moveTo(startPoint.getX(),startPoint.getY());
+        var start=this.drawed+1;
+        for(var n=start;n<tmp.length;n++){
+            var point=tmp[n];
+            ctx.lineTo(point.getX(),point.getY());
+            this.drawed++;
+        }
+        ctx.strokeStyle = lineColor;
+        ctx.stroke();
+    }else{
         this.getCurSet();
         var cur=this.sets.get(cur_z);
         for (var i=0;i<cur.length;i++){
@@ -182,12 +198,12 @@ Polyline.prototype.draw=function(){
                 for(var n=1;n<tmp.length;n++){
                     var point=tmp[n];
                     ctx.lineTo(point.getX(),point.getY());
-                    this.drawed++;
                 }
-
+                this.drawed=this.getCurSet().length-1;
                 ctx.strokeStyle = lineColor;
                 ctx.stroke();
             }
         }
-}
 
+    }
+}

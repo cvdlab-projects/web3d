@@ -14,6 +14,8 @@ function getWeb3d(){
     canvas.height = 768;
     form=web3d_ide.find('#form-div');
     ctx= canvas[0].getContext("2d");
+    el_contrast=$('#contrast');
+    el_brightness=$('#brightness');
 
     loadGeneralConf();
     form.prepend(getPluginSelect());
@@ -45,24 +47,55 @@ function setBackground(i) {
     clearCanvas();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     linewidth=1;
-    var img = new Image();
-    img.onload = function(){
-        ctx.drawImage(img, 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+    if (backgrounds[i].getBytecode()){
+        ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+    }else{
+        backgrounds[i].setBytecode(new Image());
+        backgrounds[i].getBytecode().onload = function(){
+            backgrounds[i].setWidth(this.width);
+            backgrounds[i].setHeight(this.height);
+            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+        }
+        backgrounds[i].getBytecode().src = backgrounds[i].getImg();
     }
-    img.src = backgrounds[i].getImg();
+
 }
 
 /*
  Il metodo loadGeneralConf consente di leggere e inizializzare i parametri di configurazione della slice corrente.
  */
 function loadGeneralConf(){
-    web3d_ide.find('img').each(function(){
-        var slice=new Slice();
-        slice.setImg($(this).attr('src'));
-        slice.setHeight($(this).attr('width'));
-        slice.setWidth($(this).attr('height'));
-        backgrounds.push(slice);
-    })
+    var dicom=getParameterByName('dicom');
+    var num=parseInt(getParameterByName('frames'));
+    if (!dicom || dicom=="")
+        alert('File dicom non selezionato');
+    else{
+        for (var i=0;i<num;i++){
+            var url="http://wbr1.webrobotics.net/infobio/dicom/dicom_png.php?file="+dicom+"&frame="+(i+1);
+            var slice=new Slice();
+            slice.setImg(url);
+            backgrounds.push(slice);
+        }
+
+    }
+    /*
+     web3d_ide.find('img').each(function(){
+     var slice=new Slice();
+     slice.setImg($(this).attr('src'));
+     slice.setHeight($(this).attr('width'));
+     slice.setWidth($(this).attr('height'));
+     backgrounds.push(slice);
+     })
+     */
+}
+
+function getParameterByName(name) {
+
+    var match = RegExp('[?&]' + name + '=([^&]*)')
+        .exec(window.location.search);
+
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+
 }
 
 getWeb3d();
@@ -86,6 +119,7 @@ function eventsManager(){
             canvas.css('cursor', 'crosshair');
         }else
             canvas.css('cursor', 'auto');
+        drawAll();
     });
 
     $('#lineColor').live('change',function(){
@@ -130,17 +164,23 @@ function eventsManager(){
                     var set=old_plugin.getCurSet();
                     old_plugin.removeCurSet();
                     new_plugin.addSet(set,cur_z);
-                    drawAll();
                 }
             }
+            drawAll();
         }
     });
 
     canvas.live('mouseup',function(event){
         drag=false;
+        paint=false;
     });
 
     canvas.live('mousemove',function(event){
+        if (paint==true && cur_action=='draw' && cur_plugin){
+            var p = ctx.transformedPoint(event.offsetX , event.offsetY);
+            cur_plugin.mouseMove(p.x,p.y);
+        }
+
         if (drag==true && cur_action=='edit'){
             var p = ctx.transformedPoint(event.offsetX , event.offsetY);
             selected_point.setX(p.x);
@@ -182,12 +222,13 @@ function eventsManager(){
 function leftClick(event){
     if (cur_plugin){
         if (cur_action=='draw') {
+            paint=true;
             var pt=ctx.transformedPoint(event.offsetX , event.offsetY);
             var inserted=cur_plugin.addPoint(new Point(pt.x,pt.y,cur_z));
             if (!inserted){
                 alert("No more points for this tool.");
-            }
-            drawAll();
+            }else
+                drawAll();
         }
         if (cur_action=='delete') {
             deletePoint(event.offsetX , event.offsetY);
@@ -213,14 +254,20 @@ function rightClick(event){
  */
 function drawAll(){
     clearCanvas();
+    var i=cur_z;
+    if (backgrounds[i].getBytecode()){
+        ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+    }else{
+        backgrounds[i].setBytecode(new Image());
+        backgrounds[i].getBytecode().onload = function(){
+            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+        }
+        backgrounds[i].getBytecode().src = backgrounds[i].getImg();
+    }
+    for (var n=0;n<plugins.length;n++){
+        plugins[n].draw();
 
-    var img = new Image();
-    img.onload = function(){
-        ctx.drawImage(img, 0, 0, backgrounds[cur_z].getWidth(), backgrounds[cur_z].getHeight());
-        ctx.lineWidth = linewidth;
-        for (var n=0;n<plugins.length;n++){
-            plugins[n].draw();
-
+        if (plugins[n].drawPoints()){
             var tmp=plugins[n].getSets();
             for (var i=0;i<tmp.length;i++){
                 var tmp2=tmp[i];
@@ -229,10 +276,10 @@ function drawAll(){
                 }
             }
         }
-        contrastStatic(parseInt($('#contrast').val()));
-        brightnessStatic(parseInt($('#brightness').val()));
     }
-    img.src = backgrounds[cur_z].getImg();
+    contrastStatic(parseInt(el_contrast.val()));
+    brightnessStatic(parseInt(el_brightness.val()));
+
 }
 
 Array.prototype.remove = function(from, to) {

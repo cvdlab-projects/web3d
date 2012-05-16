@@ -3,6 +3,7 @@ function Slice(){
     this.img=null;
     this.width=0;
     this.height=0;
+    this.bytecode;
 }
 
 //setter
@@ -29,5 +30,12 @@ Slice.prototype.getWidth=function(){
 
 Slice.prototype.getHeight=function(){
     return this.height;
+}
 
+Slice.prototype.getBytecode=function(){
+    return this.bytecode;
+}
+
+Slice.prototype.setBytecode=function(b){
+    this.bytecode=b;
 }

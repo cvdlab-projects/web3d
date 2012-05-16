@@ -185,61 +185,51 @@ function contrast(val) {
     if (val==true)
         adjustment=2;
     contrastStatic(adjustment);
-};
+
+}
 
 function contrastStatic(adjustment) {
-    var t=parseInt($('#threshold').val());
-    var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
-    var data = imageData.data;
-    for (var i=0; i<data.length; i+=4) {
-        if (data[i]>t)
-            data[i] += adjustment;
-        else
-            data[i] -= adjustment;
+    if (adjustment!=0){
+        var t=parseInt($('#threshold').val());
+        var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
+        var data = imageData.data;
+        for (var i=0; i<data.length; i+=4) {
+            if (data[i]>t)
+                data[i] += adjustment;
+            else
+                data[i] -= adjustment;
 
-        if (data[i+1]>t)
-            data[i+1] += adjustment;
-        else
-            data[i+1] -= adjustment;
+            if (data[i+1]>t)
+                data[i+1] += adjustment;
+            else
+                data[i+1] -= adjustment;
 
-        if (data[i+2]>t)
-            data[i+2] += adjustment;
-        else
-            data[i+2] -= adjustment;
+            if (data[i+2]>t)
+                data[i+2] += adjustment;
+            else
+                data[i+2] -= adjustment;
 
+        }
+        ctx.putImageData(imageData, 0, 0);
     }
-    ctx.putImageData(imageData, 0, 0);
-};
+}
 
 function brightness(val) {
     var d =-2;
     if (val==true)
         d=2;
     brightnessStatic(d);
-};
+}
 
 function brightnessStatic(d) {
-    var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
-    var data = imageData.data;
-    for (var i=0; i<data.length; i+=4) {
-        data[i] += d;
-        data[i+1] += d;
-        data[i+2] += d;
+    if (d!=0){
+        var imageData = ctx.getImageData(0,0, canvas.width,canvas.height);
+        var data = imageData.data;
+        for (var i=0; i<data.length; i+=4) {
+            data[i] += d;
+            data[i+1] += d;
+            data[i+2] += d;
+        }
+        ctx.putImageData(imageData, 0, 0);
     }
-    ctx.putImageData(imageData, 0, 0);
-};
-
-/*
- function selectPoint(x,y){
- var tmp2=points[cur_z];
- for (var z=0;z<tmp2.length;z++){
- var p=tmp2[z];
- var m=ctx.transformedPoint(x,y);
- if ((m.x>=p.getX()-2 && m.x<=p.getX()+2)&&(m.y>=p.getY()-2 && m.y<=p.getY()+2)){
- alert("dentro"+z);
- selected_point=p;
- }
- }
-
- }
- */
+}

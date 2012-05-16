@@ -34,6 +34,13 @@ Polygon.prototype.addPoint=function(point){
 }
 
 /*
+ Il metodo mouseMove gestisce l'evento di movimento del mouse di un plugin.
+ */
+Polygon.prototype.mouseMove=function(x,y){
+    return false;
+}
+
+/*
  Il metodo removePoint elimina dal set corrente il punto selezionato dall'utente.
  */
 Polygon.prototype.removePoint=function(n){
@@ -156,6 +163,13 @@ Polygon.prototype.isValidSet=function(set){
         result=false;
 
     return result;
+}
+
+/*
+ Questa funzione decide se il plugin mostra o meno i punti tracciati.
+ */
+Polygon.prototype.drawPoints=function(){
+    return true;
 }
 
 /*
