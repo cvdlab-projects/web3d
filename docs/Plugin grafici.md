@@ -4,10 +4,12 @@ In questa sezione vengono mostrati i plugin grafici sviluppati per la generazion
 Ogni plugin è dotato di un id, che consente l'identificazione univoca dell'istanza del plugin.
 Nella slice corrente, il set di punti è un oggetto Map, la cui chiave è rappresentata dalla slice stessa.
 
-  function Polyline(){
+```js
+function Polyline(){
     this.sets=new Map();
     this.id=plugins.length;
 }
+```
 
 La versione attuale comprende i seguenti plugin:
 
