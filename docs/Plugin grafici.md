@@ -16,16 +16,13 @@ La versione attuale comprende i seguenti plugin:
 - Polyline
 - Polygon
 
+Polyline e Polygon consentono di disegnare una polilinea in modo dinamico, congiungendo con dei segmenti i punti definiti dall'utente.
 
+Qui di seguito verranno illustrati i metodi principali comuni alle due classi, parlando indifferentemente di polilinee e poligoni.
 
-Polyline
---------
-Il plugin Polyline disegna una polilinea in modo dinamico, congiungendo con dei segmenti i punti definiti dall'utente.
+Sulla stessa slice è possibile definire più set di polilinee, memorizzate in un array di cui il set corrente è sempre l'ultimo elemento.
 
-Inoltre, è possibile definire sulla stessa slice più set di polilinee, memorizzate in un array.
-Il set corrente è sempre l'ultimo nella lista.
-
-I metodi `getCurSet` e `setCurSet` consentono rispettivamente di conoscere il set corrente di punti, cioè l'ultima polilinea modificata, e di impostare come corrente il set n della slice attuale.
+I metodi `getCurSet` e `setCurSet` consentono rispettivamente di conoscere il set corrente di punti, cioè la più recente polilinea modificata, e di impostare come corrente il set n della slice attuale.
 
 Il metodo `addPoint` aggiunge un punto al set attuale; prima dell'inserimento viene verificata la compatibilità geometrica del nuovo set con questo plugin, mediante l'invocazione della funzione `isValidSet`.
 
