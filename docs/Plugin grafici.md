@@ -28,5 +28,10 @@ Il metodo `addPoint` aggiunge un punto al set attuale; prima dell'inserimento vi
 
 Il disegno vero e proprio della polilinea è effettuato dal metodo `draw`, congiungendo i punti mediante segmenti.
 
+Si possono eliminare i punti di una polilinea o di un poligono con la funzione `removePoint`, mediante la quale non solo si rimuove il punto selezionato ma si assicura l'integrità della figura con la ricostruzione del segmento mancante.
+
+A differenza del plugin Polyline, Polygon effettua il disegno di spezzate chiuse.
+
+
 
 
