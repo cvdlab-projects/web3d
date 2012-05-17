@@ -36,13 +36,13 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 **Installazione servizio di conversione immagini DICOM**
 
 * Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale).
-* Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/,"dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
+* Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/ "dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
 * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
 * Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
 
 <h3 id="13">Come iniziare</h3>
 _____________________________
-Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://wbr1.webrobotics.net/infobio/](http://wbr1.webrobotics.net/infobio/?dicom=example.dcm&frames=133,"infobio webrobotics.net").
+Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://wbr1.webrobotics.net/infobio/](http://wbr1.webrobotics.net/infobio/?dicom=example.dcm&frames=133 "infobio webrobotics.net").
 
 Nell'url è necessario specificare i seguenti parametri:
 * `dicom` - con il nome del file DICOM da manipolare.
@@ -59,7 +59,7 @@ Come prima cosa sarà necessario selezionare un'azione, le disponibili sono:
 E' disponibile una select box per scegliere uno dei plug-in inizializzati e quindi pronti all'uso. Ogni plug-in permette di disegnare una figura e quindi ha sue caratteristiche di rappresentazione e di gestione dell'input e degli eventi.
 
 E' importante ricordare le seguenti operazioni con il mouse:
-* `click` - dipendente dall'azione corrente e dal plug-in scelto, ad esempio in fase di **draw<b/> inserisce un punto o inizia un disegnare un tratto.
+* `click` - dipendente dall'azione corrente e dal plug-in scelto, ad esempio in fase di **draw** inserisce un punto o inizia un disegnare un tratto.
 * `doppio click` - chiusura di un set durante un'azione di **draw**.
 * `scroll` - effettua zoom-in e zoom-out su tutta l'area di lavoro.
 
@@ -73,7 +73,7 @@ Altri strumenti messi a disposizione:
 <h3 id="14">Autori</h3>
 _____________________________
 Gli autori di questo progetto sono:
-* [Massimo Candela](https://github.com/MaxCam,"Massimo Candela"), mat. 281191
-* [Daniele Malta](https://github.com/,""), mat.
-* [Elisabetta Melis](https://github.com/,""), mat.
-* [Lorena Nacchia](https://github.com/,""), mat.
+* [Massimo Candela](https://github.com/MaxCam "Massimo Candela"), mat. 281191
+* [Daniele Malta](https://github.com/ ""), mat.
+* [Elisabetta Melis](https://github.com/ ""), mat.
+* [Lorena Nacchia](https://github.com/ ""), mat.
