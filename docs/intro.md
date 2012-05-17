@@ -27,12 +27,14 @@ Con installazione si intende l'avvio del progetto come servizio, sia in locale c
 Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'installazione, si potrà passare direttamente all'argomento successivo.
 
 **Per installare il servizio**
+
     * Scaricare l'intero progetto e caricarlo su un web server.
     * Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
         ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sulla stesso dominio.
 
 
 **Installazione servizio di conversione immagini DICOM**
+
     * Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale).
     * Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/,"dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
     * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
