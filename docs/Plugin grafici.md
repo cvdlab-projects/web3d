@@ -1,11 +1,19 @@
 Plugin grafici
 ==============
 In questa sezione vengono mostrati i plugin grafici sviluppati per la generazione delle figure.
+Ogni plugin √® dotato di un id, che consente l'identificazione univoca dell'istanza del plugin.
+Nella slice corrente, il set di punti √® un oggetto Map, la cui chiave √® rappresentata dalla slice stessa.
+
+```js
+function Polyline(){
+    this.sets=new Map();
+    this.id=plugins.length;
+}
+```
+
 La versione attuale comprende i seguenti plugin:
 
 - Polyline
-<<<<<<< HEAD
-=======
 - Polygon
 - Freepol
 
@@ -14,29 +22,19 @@ A differenza del plugin Polyline, Polygon effettua il disegno di spezzate chiuse
 Invece, Freepol √® deputato alla costruzione di un tratto continuo "a mano libera".
 
 Qui di seguito verranno illustrati i metodi principali comuni alle classi, parlando indifferentemente di polilinee, poligoni e freepol.
->>>>>>> 03a8fe1ef46e95185a90135fb38b9b1542aa115f
+
+Sulla stessa slice √® possibile definire pi√π set di polilinee, memorizzate in un array di cui il set corrente √® sempre l'ultimo elemento.
+
+I metodi `getCurSet` e `setCurSet` consentono rispettivamente di conoscere il set corrente di punti, cio√® la pi√π recente polilinea modificata, e di impostare come corrente il set n della slice attuale.
+
+Il metodo `addPoint` aggiunge un punto al set attuale; prima dell'inserimento viene verificata la compatibilit√† geometrica del nuovo set con questo plugin, mediante l'invocazione della funzione `isValidSet`.
+
+Il disegno vero e proprio della polilinea √® effettuato dal metodo `draw`, congiungendo i punti mediante segmenti.
+
+Si possono eliminare i punti di una polilinea o di un poligono con la funzione `removePoint`, mediante la quale non solo si rimuove il punto selezionato ma si assicura l'integrit√† della figura con la ricostruzione del segmento mancante.
 
 
 
-Polyline
---------
-Il plugin Polyline disegna una polilinea in modo dinamico, congiungendo con dei segmenti i punti definiti dall'utente.
-
-Nella slice corrente, il set di punti Ë un oggetto Map, la cui chiave Ë rappresentata dalla slice stessa.
-Inoltre, Ë possibile definire sulla stessa slice pi˘ set di polilinee, memorizzate in un array.
-Il set corrente Ë sempre l'ultimo nella lista.
-
-I metodi 'getCurSet' e 'setCurSet' consentono rispettivamente di conoscere il set corrente di punti, cioË l'ultima polilinea modificata,
-e di impostare come corrente il set n della slice attuale.
-
-<<<<<<< HEAD
-Il metodo 'addPoint' aggiunge un punto al set attuale; prima dell'inserimento viene verificata la compatibilit‡ geometrica 
-del nuovo set con questo plugin, mediante l'invocazione della funzione 'isValidSet'.
-=======
-
->>>>>>> 03a8fe1ef46e95185a90135fb38b9b1542aa115f
-
-Il disegno vero e proprio della polilinea Ë effettuato dal metodo 'draw', congiungendo i punti mediante segmenti.
 
 
 
