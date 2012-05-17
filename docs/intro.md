@@ -26,12 +26,12 @@ _____________________________
 Con installazione si intende l'avvio del progetto come servizio, sia in locale che remoto.
 Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'installazione, si potrà passare direttamente all'argomento successivo.
 
-    <b>Per installare il servizio</b>
+    **Per installare il servizio**
     * Scaricare l'intero progetto e caricarlo su un web server.
     * Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
         ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sulla stesso dominio.
 
-    <b>Installazione servizio di conversione immagini DICOM</b>
+    **Installazione servizio di conversione immagini DICOM**
     * Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale).
     * Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/,"dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
     * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
@@ -45,7 +45,7 @@ Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indir
      * `dicom` con il nome del file DICOM da manipolare.
      * `frames` per indicare su quanti frames si vuole operare.
 
-<b>Ora siete operativi!</b>
+**Ora siete operativi!**
 
 Come prima cosa sarà necessario selezionare un'azione, le disponibili sono:
 * `draw` - per disegnare con il plug-in corrente.
@@ -56,8 +56,8 @@ Come prima cosa sarà necessario selezionare un'azione, le disponibili sono:
 E' disponibile una select box per scegliere uno dei plug-in inizializzati e quindi pronti all'uso. Ogni plug-in rappresenta una figura, ha quindi sue caratteristiche di rappresentazione e di gestione dell'input e degli eventi.
 
 E' importante ricordare le seguenti operazioni con il mouse:
-* `click` dipendente dall'azione corrente e dal plug-in scelto, ad esempio in fase di <b>draw<b/> inserisce un punto o inizia un disegnare un tratto.
-* `doppio click` chiusura di un set durante un'azione di <b>draw</b>.
+* `click` dipendente dall'azione corrente e dal plug-in scelto, ad esempio in fase di **draw<b/> inserisce un punto o inizia un disegnare un tratto.
+* `doppio click` chiusura di un set durante un'azione di **draw**.
 * `scroll` effettua zoom-in e zoom-out su tutta l'area di lavoro.
 
 Altri strumenti messi a disposizione:
