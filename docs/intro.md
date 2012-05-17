@@ -19,6 +19,7 @@ Gli obiettivi specifici di questo progetto sono quelli di permettere:
 * il salvataggio della sessione di lavoro in formato Json;
 * il secupero della sessione di lavoro dal formato Json, con la possibilità di aggiungere modelli alla sessione corrente;
 
+
 Inoltre, a supporto di questo progetto, è stato realizzato un un servizio di conversione di immagini DICOM in formato immagine comune;
 
 <h3 id="12">Installazione</h3>
@@ -29,8 +30,9 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 **Per installare il servizio**
 
 * Scaricare l'intero progetto e caricarlo su un web server.
-* Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
-        ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
+* Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM.
+
+    ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
 
 
 **Installazione servizio di conversione immagini DICOM**
