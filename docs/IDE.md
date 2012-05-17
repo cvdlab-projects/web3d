@@ -5,11 +5,12 @@ rispettivamente degli eventi relativi alla canvas e dell'inizializzazione dell'I
 
 Userui
 ------
-Questa classe si occupa di metere in relazione le azioni selezionate dall'utente con le corrispondenti variazioni
+Questa classe si occupa di mettere in relazione le azioni selezionate dall'utente con le corrispondenti variazioni
 della canvas e degli oggetti su di essa raffigurati.
 In particolare, mediante l'uso del mouse, è possibile effettuare sull'immagine lo zoom, il drag e drop, la selezione, la cancellazione e lo spostamento di punti appartenenti a un plugin grafico.
 
   -Zoom
+  
   Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
   Si è prestata particolare cura nel garantire che questi ultimi fossero caratterizzati da un livello di zoom coerente,
   preservando le proporzioni e gli allineamenti reciprochi.
