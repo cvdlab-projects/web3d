@@ -15,10 +15,13 @@ La versione attuale comprende i seguenti plugin:
 
 - Polyline
 - Polygon
+- Freepol
 
-Polyline e Polygon consentono di disegnare una polilinea in modo dinamico, congiungendo con dei segmenti i punti definiti dall'utente.
+Polyline e Polygon consentono di disegnare una polilinea in modo dinamico, congiungendo uno ad uno con dei segmenti i punti definiti dall'utente.
+A differenza del plugin Polyline, Polygon effettua il disegno di spezzate chiuse.
+Invece, Freepol è deputato alla costruzione di un tratto continuo "a mano libera".
 
-Qui di seguito verranno illustrati i metodi principali comuni alle due classi, parlando indifferentemente di polilinee e poligoni.
+Qui di seguito verranno illustrati i metodi principali comuni alle classi, parlando indifferentemente di polilinee, poligoni e freepol.
 
 Sulla stessa slice è possibile definire più set di polilinee, memorizzate in un array di cui il set corrente è sempre l'ultimo elemento.
 
@@ -30,7 +33,7 @@ Il disegno vero e proprio della polilinea è effettuato dal metodo `draw`, congi
 
 Si possono eliminare i punti di una polilinea o di un poligono con la funzione `removePoint`, mediante la quale non solo si rimuove il punto selezionato ma si assicura l'integrità della figura con la ricostruzione del segmento mancante.
 
-A differenza del plugin Polyline, Polygon effettua il disegno di spezzate chiuse.
+
 
 
 
