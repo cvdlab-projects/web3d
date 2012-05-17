@@ -1,6 +1,6 @@
 Introduzione
 ============
-Web 3D Object Definition è un progetto realizzato per il corso di Informatica Biomedica tenuto dal Professor Alberto Paoluzzi, dal Professor Mauro Ceccanti, dall'Ing. Enrico Marino e dall'Ing. Federico Spini nel 2012 presso l'Università degli Studi Roma Tre - Dipartimento Informatica e Automazione.
+Web 3D Object Definition è un progetto realizzato per il corso di Informatica Biomedica tenuto dal Professor Alberto Paoluzzi, dal Professor Mauro Ceccanti, dall'Ing. Enrico Marino e dall'Ing. Federico Spini nell'A.A. 2011-2012 presso l'Università degli Studi Roma Tre - Dipartimento Informatica e Automazione.
 
 <h3 id="11">Obiettivi</h3>
 ________________________
@@ -28,17 +28,17 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 
 **Per installare il servizio**
 
-    * Scaricare l'intero progetto e caricarlo su un web server.
-    * Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
+* Scaricare l'intero progetto e caricarlo su un web server.
+* Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
         ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sulla stesso dominio.
 
 
 **Installazione servizio di conversione immagini DICOM**
 
-    * Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale).
-    * Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/,"dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
-    * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
-    * Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
+* Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale).
+* Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/,"dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi.
+* Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
+* Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
 
 <h3 id="13">Come iniziare</h3>
 _____________________________
