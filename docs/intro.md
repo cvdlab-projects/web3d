@@ -22,7 +22,7 @@ Gli obiettivi specifici di questo progetto sono quelli di permettere:
 
 Inoltre, a supporto di questo progetto, è stato realizzato un un servizio di conversione di immagini DICOM in formato immagine comune;
 
-<h3 id="12">Installazione</h3>
+<h3 name="12">Installazione</h3>
 _____________________________
 Con installazione si intende l'avvio del progetto come servizio, sia in locale che remoto.
 Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'installazione, si potrà passare direttamente all'argomento successivo.
@@ -32,7 +32,7 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 * Scaricare l'intero progetto e caricarlo su un web server.
 * Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM.
 
-    ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
+    ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
 
 
 **Installazione servizio di conversione immagini DICOM**
