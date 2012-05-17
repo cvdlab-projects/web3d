@@ -161,7 +161,7 @@ Freepol.prototype.addSet=function(set,z){
  Questa funzione decide se il plugin mostra o meno i punti tracciati.
  */
 Freepol.prototype.drawPoints=function(){
-    if (cur_action=='draw')
+    if (cur_action=='draw' || cur_action=='drag')
         return false
     else
         return true;
