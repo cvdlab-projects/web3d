@@ -122,7 +122,7 @@ Freepol.prototype.getSets=function(){
  Restituisce tutti i set presenti di tutte le slice.
  */
 Freepol.prototype.getAllSets=function(){
-    return this.sets.get;
+    return this.sets;
 }
 
 /*

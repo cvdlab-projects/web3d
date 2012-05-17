@@ -135,7 +135,7 @@ Polyline.prototype.getSets=function(){
  Restituisce tutti i set presenti di tutte le slice.
  */
 Polyline.prototype.getAllSets=function(){
-    return this.sets.get;
+    return this.sets;
 }
 
 /*
