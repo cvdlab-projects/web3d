@@ -16,11 +16,11 @@ if (!file_exists("$dir/$frame.png")){
 
 $out=file_get_contents("$dir/$frame.png");
 
-//if ($out==false){
-	//header("HTTP/1.0 404 Not Found");
-//}else{
+if ($out==false){
+	header("HTTP/1.0 404 Not Found");
+}else{
 
 	header("Content-type: image/png");
 	echo $out;
-//}
+}
 ?>
