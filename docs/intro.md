@@ -6,20 +6,20 @@ Web 3D Object Definition è un progetto realizzato per il corso di Informatica B
 ________________________
 L'obiettivo generale di questo progetto è la realizzazione di un ambiente/servizio completamente usufruibile da browser, quindi senza alcun tipo di installazione, per la realizzazione di modelli 2D e 3D a partire da immagini medicali DICOM.
 
-Gli obiettivi specifici sono elencati di seguito:
-* Permettere la semplice selezione di punti nello spazio di lavoro.
-* Permettere l'utilizzo di più strumenti di disegno.
-* Permettere l'aggiunta, semplice, di strumenti di lavoro grazie ad una struttura a plug-in.
-* Realizzazione di un servizio di conversione di immagini DICOM in formato immagine semplice.
-* Permettere la visualizzazione e manipolazione di DICOM multi slice.
-* Permettere la semplice manipolazione e gestione delle immagini medicali, contrasto con soglia, luminosità, zoom e drag.
-* Permettere ai plug-in di fornire proprie funzionalità e interfacce a tempo di esecuzione e di reagire agli eventi in modo personalizzato.
-* Permettere la semplice selezione di colori.
-* Permettere la manipolazione delle figure già inserite tramite eliminazione di punti e drag.
-* Ottimizzare al massimo il consumo di risorse affinché l'utilizzo dell'ambiente sia il più fluido possibile.
-* Realizzazione automatica di strutture 3D a partire dai punti raccolti.
-* Salvataggio della sessione di larovo in formato Json.
-* Recupero della sessione di lavoro dal formato Json, con la possibilità di aggiungere modelli alla sessione corrente.
+Gli obiettivi specifici di questo progetto sono quelli di permettere:
+* la selezione in modo semplice di punti nello spazio di lavoro;
+* l'utilizzo di più strumenti di disegno;
+* l'installazione in modo semplice di nuovi strumenti di lavoro grazie ad una struttura a plug-in;
+* la visualizzazione e manipolazione di DICOM multi slice con gestione del contrasto con soglia, luminosità, zoom e drag;
+* l'utilizzo di funzionalità e interfacce fornite dai plug-in a tempo di esecuzione che reagiscono agli eventi dell'utente in modo personalizzato;
+* la selezione dei colori tramite color picker;
+* la manipolazione delle figure già inserite tramite eliminazione di punti e drag;
+* la massima ottimizzazione del consumo delle risorse affinché l'utilizzo dell'ambiente sia il più fluido possibile;
+* la realizzazione automatica di strutture 3D a partire dai punti raccolti;
+* il salvataggio della sessione di lavoro in formato Json;
+* il secupero della sessione di lavoro dal formato Json, con la possibilità di aggiungere modelli alla sessione corrente;
+
+Inoltre, a supporto di questo progetto, è stato realizzato un un servizio di conversione di immagini DICOM in formato immagine comune;
 
 <h3 id="12">Installazione</h3>
 _____________________________
@@ -30,7 +30,7 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 
 * Scaricare l'intero progetto e caricarlo su un web server.
 * Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM
-        ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sulla stesso dominio.
+        ATTENZIONE: su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il richiamo del metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
 
 
 **Installazione servizio di conversione immagini DICOM**
@@ -56,7 +56,7 @@ Come prima cosa sarà necessario selezionare un'azione, le disponibili sono:
 * `drag` - serve per traslare tutta l'area di lavoro solamente quando si vuole e non involontariamente durante il draw.
 * `delete` - serve per cancellare i punti.
 
-E' disponibile una select box per scegliere uno dei plug-in inizializzati e quindi pronti all'uso. Ogni plug-in rappresenta una figura, ha quindi sue caratteristiche di rappresentazione e di gestione dell'input e degli eventi.
+E' disponibile una select box per scegliere uno dei plug-in inizializzati e quindi pronti all'uso. Ogni plug-in permette di disegnare una figura e quindi ha sue caratteristiche di rappresentazione e di gestione dell'input e degli eventi.
 
 E' importante ricordare le seguenti operazioni con il mouse:
 * `click` - dipendente dall'azione corrente e dal plug-in scelto, ad esempio in fase di **draw<b/> inserisce un punto o inizia un disegnare un tratto.
