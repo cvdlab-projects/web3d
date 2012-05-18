@@ -2,7 +2,7 @@ Introduzione
 ============
 Web 3D Object Definition è un progetto realizzato per il corso di Informatica Biomedica tenuto dal Professor Alberto Paoluzzi, dal Professor Mauro Ceccanti, dall'Ing. Enrico Marino e dall'Ing. Federico Spini nell'A.A. 2011-2012 presso l'Università degli Studi Roma Tre - Dipartimento Informatica e Automazione.
 
-<h3 id="11">Obiettivi</h3>
+###Obiettivi
 ________________________
 L'obiettivo generale di questo progetto è la realizzazione di un ambiente/servizio completamente usufruibile da browser, quindi senza alcun tipo di installazione, per la realizzazione di modelli 2D e 3D a partire da immagini medicali DICOM.
 
@@ -22,8 +22,7 @@ Gli obiettivi specifici di questo progetto sono quelli di permettere:
 
 Inoltre, a supporto di questo progetto, è stato realizzato un un servizio di conversione di immagini DICOM in formato immagine comune;
 
-<h3 name="12">Installazione</h3>
-_____________________________
+###Installazione
 Con installazione si intende l'avvio del progetto come servizio, sia in locale che remoto.
 Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'installazione, si potrà passare direttamente all'argomento successivo.
 
@@ -42,7 +41,7 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script.
 * Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
 
-<h3 id="13">Come iniziare</h3>
+###Come iniziare
 _____________________________
 Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://wbr1.webrobotics.net/infobio/](http://wbr1.webrobotics.net/infobio/?dicom=example.dcm&frames=133 "infobio webrobotics.net").
 
@@ -72,7 +71,7 @@ Altri strumenti messi a disposizione:
 * `Colore dei punti` - varia il colore dei punti con un comodo color picker.
 * `Colore delle linee` - varia il colore delle linee con un comodo color picker.
 
-<h3 id="14">Autori</h3>
+###Autori
 _____________________________
 Gli autori di questo progetto sono:
 * [Massimo Candela](https://github.com/MaxCam "Massimo Candela"), mat. 281191
