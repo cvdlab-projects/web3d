@@ -103,8 +103,8 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
   Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
   canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
-1. i div sono attualmente fuori dalla canvas;
-2. i div rientrano nella canvas a seguito di un drag.
+  1. i div sono attualmente fuori dalla canvas;
+  2. i div rientrano nella canvas a seguito di un drag.
 
   Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
   selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
