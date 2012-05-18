@@ -154,24 +154,45 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta
   agli eventi dell'utente.
 
-  `drawAll()` può essere invocato da:
+`drawAll()` può essere invocato da:
 1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
 2. un metodo di web3d.js che si rende conto una variazione sul modello;
 3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
 
 Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
 
+#####clearCanvas()
+Questa funzione riporta la canvas alle condizioni iniziali.
+
+#####selectPoint(x,y)
+Questa funzione implementa il sistema di selezione di punti basato sul modello senza elementi HTML come descritto in precedenza.
+
+#####brightness(val) e contrast(val)
+Queste funzioni gestiscono la luminosità ed il contrasto.
+
 ###Controller
 Il controller è composto dai file `main.js` e `web3d.js`.
+
 In main.js è possibile settare i parametri di default e i plugin da istanziare durante la fase di inizializzazione dell'ide.
 
-Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relative modifiche sugli oggetti del modello.
-Oltre che sul modello può intervenire sulla vista, implementando di fatto il livello di controllo.
-
+Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relative modifiche sugli oggetti del modello. Oltre che sul modello può intervenire sulla vista, implementando di fatto il livello di controllo.
 
 ####Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:
 
-La funzione di inizializzazione....
+#####getWeb3d()
+Questa funzione è la prima ad essere invocata, svolge le seguenti importanti operazioni:
+1. individua l'elemento html, avente id `web3d-ide`, nel quale si vuole inserire l'ide;
+2. inizializza le variabili globali a cui gli altri oggetti faranno riferimento, tra queste le più importanti sono: `canvas`, `ctx` e `form`;
+3. avvia la creazione della tavolozza degli strumenti a destra;
+4. avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
+5. setta la slice corrente;
+6. avvia il gestore degli eventi `eventsManager()`
+
+#####setBackground(i)
+Il metodo setBackground consente di impostare come corrente la slice i-esima, richiesta dall'utente tramite l'apposito strumento.
+
+#####getParameterByName(name)
+Questo metodo è di supporto alla lettura dei parametri passati nell'url.
 
 #####eventsManager()
 intercetta tutti gli eventi di interazione dell'utente effettuando un dispatch alle varie funzioni di gestione.
