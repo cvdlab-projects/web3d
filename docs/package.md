@@ -33,9 +33,9 @@ Di seguito è riportata uno schema dell'organizzazione:
 Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria deve essere contenuta in una sua cartella nella quale verranno inseriti tutti i file a essa necessari.
 
 Le librerie attualmente utilizzate sono:
-    * `jQuery` - per la manipolazione del DOM e la gestione degli eventi.
-    * `HashMap` - una semplice implementazione personale delle HashMap in javascript.
-    * `jscolor` - semplice libreria per la realizzazione di color picker.
+* `jQuery` - per la manipolazione del DOM e la gestione degli eventi.
+* `HashMap` - una semplice implementazione personale delle HashMap in javascript.
+* `jscolor` - semplice libreria per la realizzazione di color picker.
 
 ###Modello
 Nella cartella `model` sono presenti tutte le classi che rappresentano gli oggetti del modello dell'intero progetto.
@@ -54,9 +54,7 @@ Rappresenta le varie slice della DICOM all'interno del nostro progetto.
 
 In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `loadGeneralConf()`, tutte le singole slice del file DICOM prescelto e per ognuna di esse verrà istanziato e popolato un oggetto Slice.
 Poichè l'immagine di una slice del DICOM può essere pesante, non è possibile:
-
 * caricare realmente tutte le immagini di un DICOM, il quale può arrivare tranquillamente a superare 300 slice;
-
 * caricare la singola slice ad ogni volta che risulta necessario un ridisegno della canvas.
 
 Per risolvere queste due problematiche, l'oggetto Slice implementa un recupero lazy con cache dello stream dell'immagine.
@@ -73,7 +71,7 @@ Uno degli obiettivi fondamentali di questo progetto, come in precedenza dichiara
 
 Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, sul quale è possibile fare zoom e drag a piacimento per potersi posizionare su una porzione di lavoro specifica dalla dimensione compatibile con la finestra del browser.
 
-**userui.js** in particolare offre dei metodi generici per la gestione della canvas:
+**Fra le funzioni di userui.js abbiamo:**
 
 ####Zoom
 
@@ -100,9 +98,9 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
   canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
 
-    * i div sono attualmente fuori dalla canvas
+  1. i div sono attualmente fuori dalla canvas
 
-    * i div rientrano nella canvas a seguito di un drag
+  2. i div rientrano nella canvas a seguito di un drag
 
   Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
   selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
@@ -136,7 +134,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   diagnostica; quindi, la gestione dei livelli di grigio è fondamentale per un corretto esame visivo dell'immagine
   anche al solo fine di volerne ricreare un modello 3d.
 
-**Alcuni dei metodi più importanti di **userui.js** vengono descritti di seguito:**
+**Alcuni dei metodi più importanti di userui.js vengono descritti di seguito:**
 
 ####DrawAll()
   Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello
@@ -150,12 +148,9 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   agli eventi dell'utente.
 
   `drawAll()` può essere invocato da:
-  
-    * un medoto di userui.js che si rende conto di una variazione dell'area di lavoro
-
-    * un metodo di web3d.js che si rende conto una variazione sul modello
-
-    * un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno
+1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro
+2. un metodo di web3d.js che si rende conto una variazione sul modello
+3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno
     selettivo non risulta possibile.
 
   Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
@@ -168,7 +163,7 @@ Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relat
 Oltre che sul modello può intervenire sulla vista, implementando di fatto il livello di controllo.
 
 
-Vengono riportate di seguito le descrizioni di alcuni metodi di **web3d.js**:
+Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:**
 
 La funzione di inizializzazione....
 
