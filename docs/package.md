@@ -39,20 +39,26 @@ Le librerie attualmente utilizzate sono:
 
 ###Modello
 Nella cartella `model` sono presenti tutte le classi che rappresentano gli oggetti del modello dell'intero progetto.
+
 L'approccio di avere un modello completamente separato dalla vista, oltre che rispettare tutte le qualità note del pattern MVC, ci hanno permesso la realizzazione di metodi molto ottimizzati e flessibili.
+
 Nello specifico è possibile effettuare considerevoli variazioni sugli oggetti del modello senza che queste si ripercuotano né sulla canvas né sugli elementi dell'html.
+
 Alcuni oggetti, inoltre, possono implementare cache e recupero lazy di informazioni.
 
 **Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:**
 ####Point
 E' la classe che descrive l'oggetto punto, l'unità informativa più piccola per le varie rappresentazioni.
+
 Per istanziare un nuovo oggetto punto è sufficiente `new Point(x,y,z)` dove x, y e z sono le sue coordinate.
-Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere al numero della slice corrente `cur_z`;
+
+Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere al numero della slice corrente `cur_z`.
 
 ####Slice
 Rappresenta le varie slice della DICOM all'interno del nostro progetto.
 
 In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `loadGeneralConf()`, tutte le singole slice del file DICOM prescelto e per ognuna di esse verrà istanziato e popolato un oggetto Slice.
+
 Poichè l'immagine di una slice del DICOM può essere pesante, non è possibile:
 * caricare realmente tutte le immagini di un DICOM, il quale può arrivare tranquillamente a superare 300 slice;
 * caricare la singola slice ad ogni volta che risulta necessario un ridisegno della canvas.
@@ -97,10 +103,8 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
   Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
   canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
-
-  1. i div sono attualmente fuori dalla canvas
-
-  2. i div rientrano nella canvas a seguito di un drag
+1. i div sono attualmente fuori dalla canvas
+2. i div rientrano nella canvas a seguito di un drag
 
   Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
   selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
@@ -113,6 +117,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
   Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
   spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
+
   Per le proprietà della canvas sopra enunciate, risulta necessario il metodo `transformedPoint` che
   mantiene l'allineamento tra le coordinate del mouse e l'area di lavoro selezionata al momento sulla canvas:
   la posizione del cursorse sull'intera canvas viene calcolata come la posizione del cursore sulla porzione di
@@ -122,11 +127,13 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 ####Contrasto con soglia e luminosità
 
   La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
+
   Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
   poi sul contrasto si possono schiarire i toni chiari e scurire i toni scuri. La soglia nello specifico
   identifica la sensibilità di selezione dei toni.
 
   Il valore di default, 50, è un ottimo compromesso per una immagine DICOM.
+
   E' possibile inoltre modificare il la luminosità dell'immagine.
 
   Questi sono strumenti molto importanti in quanto nelle immagini biomediche di differenti sezioni anatomiche
@@ -148,12 +155,11 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   agli eventi dell'utente.
 
   `drawAll()` può essere invocato da:
-1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro
-2. un metodo di web3d.js che si rende conto una variazione sul modello
-3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno
-    selettivo non risulta possibile.
+1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
+2. un metodo di web3d.js che si rende conto una variazione sul modello;
+3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
 
-  Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
+Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
 
 ###Controller
 Il controller è composto dai file `main.js` e `web3d.js`.
