@@ -46,15 +46,15 @@ Nello specifico è possibile effettuare considerevoli variazioni sugli oggetti d
 
 Alcuni oggetti, inoltre, possono implementare cache e recupero lazy di informazioni.
 
-**Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:**
-####Point
+####Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:
+#####Point
 E' la classe che descrive l'oggetto punto, l'unità informativa più piccola per le varie rappresentazioni.
 
 Per istanziare un nuovo oggetto punto è sufficiente `new Point(x,y,z)` dove x, y e z sono le sue coordinate.
 
 Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere al numero della slice corrente `cur_z`.
 
-####Slice
+#####Slice
 Rappresenta le varie slice della DICOM all'interno del nostro progetto.
 
 In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `loadGeneralConf()`, tutte le singole slice del file DICOM prescelto e per ognuna di esse verrà istanziato e popolato un oggetto Slice.
