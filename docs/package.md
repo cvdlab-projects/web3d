@@ -182,12 +182,12 @@ Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relat
 #####getWeb3d()
 
 Questa funzione è la prima ad essere invocata, svolge le seguenti importanti operazioni:
-1. individua l'elemento html, avente id `web3d-ide`, nel quale si vuole inserire l'ide;
-2. inizializza le variabili globali a cui gli altri oggetti faranno riferimento, tra queste le più importanti sono: `canvas`, `ctx` e `form`;
-3. avvia la creazione della tavolozza degli strumenti a destra;
-4. avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
-5. setta la slice corrente;
-6. avvia il gestore degli eventi `eventsManager()`
+* individua l'elemento html, avente id `web3d-ide`, nel quale si vuole inserire l'ide;
+* inizializza le variabili globali a cui gli altri oggetti faranno riferimento, tra queste le più importanti sono: `canvas`, `ctx` e `form`;
+* avvia la creazione della tavolozza degli strumenti a destra;
+* avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
+* setta la slice corrente;
+* avvia il gestore degli eventi `eventsManager()`
 
 #####setBackground(i)
 Il metodo setBackground consente di impostare come corrente la slice i-esima, richiesta dall'utente tramite l'apposito strumento.
