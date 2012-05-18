@@ -34,3 +34,9 @@ Progetto web3d
 	4.1. [Caricare un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#caricare-un-plug-in "Caricare plugin")
 
 	4.2. [Struttura di un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#struttura-di-un-plug-in "Struttura plugin")
+
+5. [Il modello 3D](https://github.com/cvdlab-bio/web3d/blob/master/docs/3d.md "3d")
+
+    5.1. [Realizzazione di un modello 3D](https://github.com/cvdlab-bio/web3d/blob/master/docs/3d.md#realizzazione-di-un-modello-3d "realizzazione modello")
+
+    5.2. [Dettagli implementativi](https://github.com/cvdlab-bio/web3d/blob/master/docs/3d.md#dettagli-implementativi "dettagli 3d")

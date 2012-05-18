@@ -4,30 +4,31 @@ Per aumentare la legibilità, l'espandibilità e la manutenibilità del codice �
 
 Di seguito è riportata uno schema dell'organizzazione:
 
-    css /* contiene tutti i fogli di stile*/
-        reset.css
-        style.css
-    dicom /* Non è necessario che risieda internamente al package */
-        dicom2
-        dicom_png.php
-    docs /* Contiene tutta la documentazione */
-    js /* Contiene tutto il sorgente javascript */
-        lib /* Contiene le librerie utilizzate nel progetto */
-            jquery
-            jscolor
-            map
-        model /* Contiene il modello */
-            object
-                Point.js
-                Slice.js
-        plugins /* Contiene le implementazioni dei plug-in*/
-            aplugin
-                aplugin.js
-        view /* Contiene utilità per la gestione della vista */
-            userui.js
-        main.js /* File di inizializzazione del progetto */
-        web3d.js /* Controller/gestore degli eventi del progetto */
-    index.htm /* Un esempio funzionante del nostro progetto all'opera */
+    **css** /* contiene tutti i fogli di stile*/
+        **reset.css**
+        **style.css**
+    **dicom** /* Non è necessario che risieda internamente al package */
+        **dicom2**
+        **dicom_png.php**
+    **docs** /* Contiene tutta la documentazione */
+    **js** /* Contiene tutto il sorgente javascript */
+        **lib** /* Contiene le librerie utilizzate nel progetto */
+            **jquery**
+            **jscolor**
+            **map**
+            **Three**
+        **model** /* Contiene il modello */
+            **object**
+                **Point.js**
+                **Slice.js**
+        **plugins** /* Contiene le implementazioni dei plug-in*/
+            **aplugin**
+                **aplugin.js**
+        **view** /* Contiene utilità per la gestione della vista */
+            **userui.js**
+        **main.js** /* File di inizializzazione del progetto */
+        **web3d.js** /* Controller/gestore degli eventi del progetto */
+    **index.htm** /* Un esempio funzionante del nostro progetto all'opera */
 
 ##Librerie
 Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria deve essere contenuta in una sua cartella nella quale verranno inseriti tutti i file a essa necessari.
@@ -35,7 +36,8 @@ Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria d
 Le librerie attualmente utilizzate sono:
 * `jQuery` - per la manipolazione del DOM e la gestione degli eventi;
 * `HashMap` - una semplice implementazione personale delle HashMap in javascript;
-* `jscolor` - semplice libreria per la realizzazione di color picker.
+* `jscolor` - semplice libreria per la realizzazione di color picker;
+* `Three` - per la realizzazione del modello 3d.
 
 ##Modello
 Nella cartella `model` sono presenti tutte le classi che rappresentano gli oggetti del modello dell'intero progetto.
