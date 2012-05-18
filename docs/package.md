@@ -29,7 +29,7 @@ Di seguito è riportata uno schema dell'organizzazione:
         web3d.js /* Controller/gestore degli eventi del progetto */
     index.htm /* Un esempio funzionante del nostro progetto all'opera */
 
-###Librerie
+##Librerie
 Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria deve essere contenuta in una sua cartella nella quale verranno inseriti tutti i file a essa necessari.
 
 Le librerie attualmente utilizzate sono:
@@ -37,7 +37,7 @@ Le librerie attualmente utilizzate sono:
 * `HashMap` - una semplice implementazione personale delle HashMap in javascript;
 * `jscolor` - semplice libreria per la realizzazione di color picker.
 
-###Modello
+##Modello
 Nella cartella `model` sono presenti tutte le classi che rappresentano gli oggetti del modello dell'intero progetto.
 
 L'approccio di avere un modello completamente separato dalla vista, oltre che rispettare tutte le qualità note del pattern MVC, ci hanno permesso la realizzazione di metodi molto ottimizzati e flessibili.
@@ -71,7 +71,7 @@ Alla prima reale necessità del contenuto dell'immagine, questa verrà realmente
 Questo approccio, unito al ridisegno selettivo hanno garantito, rispetto alla prima release, una diminuzione del 70% delle risorse impegnate. Questo dato risulta tangibile all'utente il quale non avverte più i redraw della canvas che rimane pertanto stabile e senza sfarfallii.
 
 
-###Vista
+##Vista
 Nella cartella `view` è presente la classe `userui.js` la quale si occupa di offrire una serie di metodi per la manipolazione della canvas e degli oggetti su di essa raffigurati.
 
 Uno degli obiettivi fondamentali di questo progetto, come in precedenza dichiarato, è quello di offrire un ambiente di lavoro intuitivo e flessibile.
@@ -83,20 +83,22 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
 #####Zoom
 Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
+
 Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
 ad una porzione della canvas sia immediato senza la necessità di continui drag.
+
 Si è prestata particolare cura nel garantire che gli oggetti rappresentati sulla canvas e il dicom di sfondo
 fossero caratterizzati da un livello di zoom coerente, preservando le proporzioni e gli allineamenti reciproci.
+
 Inoltre, caratteristica importante di questo metodo è l'invariabilità, a seguito di un'operazione di zoom,
 dello spessore delle linee disegnate dai plugin: infatti, dal momento che le linee sono rappresentate sulla canvas,
 sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazione meno efficace.
 
 
 #####Modifica dei punti
-Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
-si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
-con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della
-posizione di un elemento div.
+Questa operazione è stata effettuate senza l'impiego di elementi HTML.
+In un approccio iniziale, si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
+con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della posizione di un elemento div.
 
 Tale operazione avrebbe tuttavia richiesto un notevole impiego di risorse, a causa della possibilità
 che nella canvas vi sia un elevato numero di punti.
@@ -171,7 +173,7 @@ Questa funzione implementa il sistema di selezione di punti basato sul modello s
 #####brightness(val) e contrast(val)
 Queste funzioni gestiscono la luminosità ed il contrasto.
 
-###Controller
+##Controller
 Il controller è composto dai file `main.js` e `web3d.js`.
 
 In main.js è possibile settare i parametri di default e i plugin da istanziare durante la fase di inizializzazione dell'ide.
