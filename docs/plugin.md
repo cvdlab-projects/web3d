@@ -9,11 +9,11 @@ L'aggiunta di un plug-in può essere riassunta nei seguenti passi:
 
 2. aggiungere l'inport del file in `index.htm`, ad esempio nel caso del plug-in Polyline:
 
-    &ltscript src="js/plugins/polyline/Polyline.js"&gt&lt/script%gt
+        &lt;script src="js/plugins/polyline/Polyline.js"&gt;&lt;/script&gt;
 
 3. aggiungere in `main.js` l'istanza del plug-in alla lista dei plug-in disponibili, ad esempio nel caso di Polyline:
 
-    plugins.push(new Polyline()); /* sarà di fatto un singleton */
+        plugins.push(new Polyline()); /* sarà di fatto un singleton */
 
 ##Struttura di un plug-in
 Una classe plug-in deve almeno implementare i seguenti metodi:
@@ -72,7 +72,7 @@ Restituisce tutti i set presenti sulla slice corrente.
 Restituisce tutti i set presenti, qualsiasi sia la slice.
 
 ####toString()
-Restituisce il nome del Plug-in.
+Restituisce il nome del plug-in.
 
 ####isValidSet(set)
 Verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
@@ -85,6 +85,6 @@ Questa funzione,che restituisce true o false, decide se il plugin mostra o meno 
 ####draw(light)
 Il metodo draw disegna tutte le figure, appartenenti al plugin, della slice corrente.
 
-Il parametro booleano `light`, indica se il metodo deve effettuare un disegno completo (!light) o selettivo/incrementale (light==true).
+Il parametro booleano `light`, indica se il metodo deve effettuare un disegno completo `(!light)` o selettivo/incrementale `(light==true)`.
 
 L'approccio selettivo/incrementale permette un drastico risparmio di risorse ma può essere utilizzato solo nei casi in cui la canvas mantiene dimensioni e posizione costanti.
