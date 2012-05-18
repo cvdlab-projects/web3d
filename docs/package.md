@@ -81,83 +81,80 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
 #####Zoom
 
-  Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
-  Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
-  ad una porzione della canvas sia immediato senza la necessità di continui drag.
-  Si è prestata particolare cura nel garantire che gli oggetti rappresentati sulla canvas e il dicom di sfondo
-  fossero caratterizzati da un livello di zoom coerente, preservando le proporzioni e gli allineamenti reciproci.
-  Inoltre, caratteristica importante di questo metodo è l'invariabilità, a seguito di un'operazione di zoom,
-  dello spessore delle linee disegnate dai plugin: infatti, dal momento che le linee sono rappresentate sulla canvas,
-  sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazione meno efficace.
+Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
+Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
+ad una porzione della canvas sia immediato senza la necessità di continui drag.
+Si è prestata particolare cura nel garantire che gli oggetti rappresentati sulla canvas e il dicom di sfondo
+fossero caratterizzati da un livello di zoom coerente, preservando le proporzioni e gli allineamenti reciproci.
+Inoltre, caratteristica importante di questo metodo è l'invariabilità, a seguito di un'operazione di zoom,
+dello spessore delle linee disegnate dai plugin: infatti, dal momento che le linee sono rappresentate sulla canvas,
+sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazione meno efficace.
 
 
 #####Modifica dei punti
 
-  Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
-  si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
-  con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della
-  posizione di un elemento div.
+Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
+si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
+con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della
+posizione di un elemento div.
 
-  Tale operazione avrebbe tuttavia richiesto un notevole impiego di risorse, a causa della possibilità
-  che nella canvas vi sia un elevato numero di punti.
+Tale operazione avrebbe tuttavia richiesto un notevole impiego di risorse, a causa della possibilità
+che nella canvas vi sia un elevato numero di punti.
 
-  Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
-  canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
-  1. i div sono attualmente fuori dalla canvas;
-  2. i div rientrano nella canvas a seguito di un drag.
-
-  Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
-  selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
-  quello la cui posizione, secondo il modello, è in un intorno sufficientemente piccolo all'area dello schermo
-  cliccata dall'utente. Una volta individuato il punto, si ricerca il plugin corrispondente e viene eseguita
-  l'operazione richiesta: spostamento, cancellazione o cambio plug-in.
+Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
+canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
+1. i div sono attualmente fuori dalla canvas;
+2. i div rientrano nella canvas a seguito di un drag.
+Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
+selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
+quello la cui posizione, secondo il modello, è in un intorno sufficientemente piccolo all'area dello schermo
+cliccata dall'utente. Una volta individuato il punto, si ricerca il plugin corrispondente e viene eseguita
+l'operazione richiesta: spostamento, cancellazione o cambio plug-in.
 
 
 #####Drag della canvas
 
-  Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
-  spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
+Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
+spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
 
-  Per le proprietà della canvas sopra enunciate, risulta necessario il metodo `transformedPoint` che
-  mantiene l'allineamento tra le coordinate del mouse e l'area di lavoro selezionata al momento sulla canvas:
-  la posizione del cursorse sull'intera canvas viene calcolata come la posizione del cursore sulla porzione di
-  canvas più l'offset di spostamento della stessa rispetto alla canvas completa.
+Per le proprietà della canvas sopra enunciate, risulta necessario il metodo `transformedPoint` che
+mantiene l'allineamento tra le coordinate del mouse e l'area di lavoro selezionata al momento sulla canvas:
+la posizione del cursorse sull'intera canvas viene calcolata come la posizione del cursore sulla porzione di
+canvas più l'offset di spostamento della stessa rispetto alla canvas completa.
 
 
 #####Contrasto con soglia e luminosità
 
-  La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
+La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
 
-  Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
-  poi sul contrasto si possono schiarire i toni chiari e scurire i toni scuri. La soglia nello specifico
-  identifica la sensibilità di selezione dei toni.
+Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
+poi sul contrasto si possono schiarire i toni chiari e scurire i toni scuri. La soglia nello specifico
+identifica la sensibilità di selezione dei toni.
 
-  Il valore di default, 50, è un ottimo compromesso per una immagine DICOM.
+Il valore di default, 50, è un ottimo compromesso per una immagine DICOM.
 
-  E' possibile inoltre modificare il la luminosità dell'immagine.
+E' possibile inoltre modificare il la luminosità dell'immagine.
 
-  Questi sono strumenti molto importanti in quanto nelle immagini biomediche di differenti sezioni anatomiche
-  anche vicine possono presentare escursioni di contrasto molto elevate, con una grande significatività
-  diagnostica; quindi, la gestione dei livelli di grigio è fondamentale per un corretto esame visivo dell'immagine
-  anche al solo fine di volerne ricreare un modello 3d.
+Questi sono strumenti molto importanti in quanto nelle immagini biomediche di differenti sezioni anatomiche
+anche vicine possono presentare escursioni di contrasto molto elevate, con una grande significatività
+diagnostica; quindi, la gestione dei livelli di grigio è fondamentale per un corretto esame visivo dell'immagine
+anche al solo fine di volerne ricreare un modello 3d.
 
 ####Alcuni dei metodi più importanti di userui.js vengono descritti di seguito:
 
 #####DrawAll()
-  Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello
-  sulla canvas.
+Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello sulla canvas.
 
-  In realtà tale metodo è un manager di metodi di rappresentazione specifici di ogni plug-in, il suo obiettivo
-  è quello di selezionare e coordinare cosa deve essere rappresentato sulla canvas; il disegno vero e proprio
-  viene delegato al singolo plug-in.
+In realtà tale metodo è un manager di metodi di rappresentazione specifici di ogni plug-in, il suo obiettivo
+è quello di selezionare e coordinare cosa deve essere rappresentato sulla canvas; il disegno vero e proprio
+viene delegato al singolo plug-in.
 
-  Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta
-  agli eventi dell'utente.
+Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta agli eventi dell'utente.
 
-  `drawAll()` può essere invocato da:
-  1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
-  2. un metodo di web3d.js che si rende conto una variazione sul modello;
-  3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
+`drawAll()` può essere invocato da:
+1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
+2. un metodo di web3d.js che si rende conto una variazione sul modello;
+3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
 
 Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
 
