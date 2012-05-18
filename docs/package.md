@@ -77,9 +77,9 @@ Uno degli obiettivi fondamentali di questo progetto, come in precedenza dichiara
 
 Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, sul quale è possibile fare zoom e drag a piacimento per potersi posizionare su una porzione di lavoro specifica dalla dimensione compatibile con la finestra del browser.
 
-**Fra le funzioni di userui.js abbiamo:**
+####Fra le funzioni di userui.js abbiamo:
 
-####Zoom
+#####Zoom
 
   Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
   Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
@@ -91,7 +91,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazione meno efficace.
 
 
-####Modifica dei punti
+#####Modifica dei punti
 
   Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
   si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
@@ -113,7 +113,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   l'operazione richiesta: spostamento, cancellazione o cambio plug-in.
 
 
-####Drag della canvas
+#####Drag della canvas
 
   Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
   spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
@@ -124,7 +124,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   canvas più l'offset di spostamento della stessa rispetto alla canvas completa.
 
 
-####Contrasto con soglia e luminosità
+#####Contrasto con soglia e luminosità
 
   La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
 
@@ -141,9 +141,9 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   diagnostica; quindi, la gestione dei livelli di grigio è fondamentale per un corretto esame visivo dell'immagine
   anche al solo fine di volerne ricreare un modello 3d.
 
-**Alcuni dei metodi più importanti di userui.js vengono descritti di seguito:**
+####Alcuni dei metodi più importanti di userui.js vengono descritti di seguito:
 
-####DrawAll()
+#####DrawAll()
   Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello
   sulla canvas.
 
@@ -169,17 +169,12 @@ Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relat
 Oltre che sul modello può intervenire sulla vista, implementando di fatto il livello di controllo.
 
 
-Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:**
+####Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:
 
 La funzione di inizializzazione....
 
-La funzione `eventsManager()` gestisce tutti gli eventi di interazione dell'utente per le seguenti operazioni:
- -color picking
- -draw
- -selezione del plugin
- -selezione e cancellazione di punti
- -selezione e modifica di set di punti
- -drag and drop di punti.
+#####eventsManager()
+intercetta tutti gli eventi di interazione dell'utente effettuando un dispatch alle varie funzioni di gestione.
 
 
 
