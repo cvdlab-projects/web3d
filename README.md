@@ -31,6 +31,6 @@ Progetto web3d
     
 4. [Plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md "Plugin")
 
-	4.1. [Caricare un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#caricare-plugin "Caricare plugin")
+	4.1. [Caricare un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#caricare-un-plug-in "Caricare plugin")
 
-	4.2. [Struttura di un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#struttura "Struttura")
+	4.2. [Struttura di un plug-in](https://github.com/cvdlab-bio/web3d/blob/master/docs/plugin.md#struttura-di-un-plug-in "Struttura plugin")
