@@ -33,8 +33,8 @@ Di seguito è riportata uno schema dell'organizzazione:
 Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria deve essere contenuta in una sua cartella nella quale verranno inseriti tutti i file a essa necessari.
 
 Le librerie attualmente utilizzate sono:
-* `jQuery` - per la manipolazione del DOM e la gestione degli eventi.
-* `HashMap` - una semplice implementazione personale delle HashMap in javascript.
+* `jQuery` - per la manipolazione del DOM e la gestione degli eventi;
+* `HashMap` - una semplice implementazione personale delle HashMap in javascript;
 * `jscolor` - semplice libreria per la realizzazione di color picker.
 
 ###Modello
@@ -45,6 +45,7 @@ L'approccio di avere un modello completamente separato dalla vista, oltre che ri
 Nello specifico è possibile effettuare considerevoli variazioni sugli oggetti del modello senza che queste si ripercuotano né sulla canvas né sugli elementi dell'html.
 
 Alcuni oggetti, inoltre, possono implementare cache e recupero lazy di informazioni.
+
 
 ####Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:
 #####Point
@@ -77,10 +78,10 @@ Uno degli obiettivi fondamentali di questo progetto, come in precedenza dichiara
 
 Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, sul quale è possibile fare zoom e drag a piacimento per potersi posizionare su una porzione di lavoro specifica dalla dimensione compatibile con la finestra del browser.
 
+
 ####Fra le funzioni di userui.js abbiamo:
 
 #####Zoom
-
 Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
 Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
 ad una porzione della canvas sia immediato senza la necessità di continui drag.
@@ -92,7 +93,6 @@ sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazio
 
 
 #####Modifica dei punti
-
 Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
 si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
 con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della
@@ -103,8 +103,11 @@ che nella canvas vi sia un elevato numero di punti.
 
 Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
 canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
+
 1. i div sono attualmente fuori dalla canvas;
+
 2. i div rientrano nella canvas a seguito di un drag.
+
 Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
 selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
 quello la cui posizione, secondo il modello, è in un intorno sufficientemente piccolo all'area dello schermo
@@ -113,7 +116,6 @@ l'operazione richiesta: spostamento, cancellazione o cambio plug-in.
 
 
 #####Drag della canvas
-
 Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
 spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
 
@@ -124,7 +126,6 @@ canvas più l'offset di spostamento della stessa rispetto alla canvas completa.
 
 
 #####Contrasto con soglia e luminosità
-
 La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
 
 Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
@@ -152,8 +153,11 @@ viene delegato al singolo plug-in.
 Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta agli eventi dell'utente.
 
 `drawAll()` può essere invocato da:
+
 1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
+
 2. un metodo di web3d.js che si rende conto una variazione sul modello;
+
 3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
 
 Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
@@ -177,14 +181,19 @@ Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relat
 ####Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:
 
 #####getWeb3d()
-
 Questa funzione è la prima ad essere invocata, svolge le seguenti importanti operazioni:
-* individua l'elemento html, avente id `web3d-ide`, nel quale si vuole inserire l'ide;
-* inizializza le variabili globali a cui gli altri oggetti faranno riferimento, tra queste le più importanti sono: `canvas`, `ctx` e `form`;
-* avvia la creazione della tavolozza degli strumenti a destra;
-* avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
-* setta la slice corrente;
-* avvia il gestore degli eventi `eventsManager()`
+
+1. individua l'elemento html, avente id `web3d-ide`, nel quale si vuole inserire l'ide;
+
+2. inizializza le variabili globali a cui gli altri oggetti faranno riferimento, tra queste le più importanti sono: `canvas`, `ctx` e `form`;
+
+3. avvia la creazione della tavolozza degli strumenti a destra;
+
+4. avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
+
+5. setta la slice corrente;
+
+6. avvia il gestore degli eventi `eventsManager()`
 
 #####setBackground(i)
 Il metodo setBackground consente di impostare come corrente la slice i-esima, richiesta dall'utente tramite l'apposito strumento.
