@@ -8,9 +8,11 @@ L'aggiunta di un plug-in può essere riassunta nei seguenti passi:
 1. inserire la cartella contenente tutti i file Javascript del plug-in dentro la cartella `plugins`, come illustrato nella sezione package.
 
 2. aggiungere l'inport del file in `index.htm`, ad esempio nel caso del plug-in Polyline:
-    <script src="js/plugins/polyline/Polyline.js"></script>
+
+    &ltscript src="js/plugins/polyline/Polyline.js"&gt&lt/script%gt
 
 3. aggiungere in `main.js` l'istanza del plug-in alla lista dei plug-in disponibili, ad esempio nel caso di Polyline:
+
     plugins.push(new Polyline()); /* sarà di fatto un singleton */
 
 ##Struttura di un plug-in
@@ -21,9 +23,6 @@ Il metodo addPoint aggiunge un punto al set corrente, definito come l'ultimo uti
 
 Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con il plug-in.
 
-/*
- Il metodo mouseMove gestisce l'evento di movimento del mouse di un plugin.
- */
 ####mouseMove(x,y)
 Questo metodo gestisce, solo se necessario, l'azione da intraprendere in caso di movimento del mouse in fase di draw.
 
@@ -38,12 +37,6 @@ Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultimo set sel
 
 ####removeLast()
 Elimina l'ultimo punto inserito.
-
-/*
- Il metodo setCurSet imposta come corrente il set n della slice attuale.
- Il parametro n viene fornito dalla vista al click dell'utente.
- Il set corrente è sempre l'ultimo nella lista.
- */
 
 ####setCurSet()
 Il metodo setCurSet imposta come corrente il set `n` della slice attuale.
