@@ -7,9 +7,7 @@ L'aggiunta di un plug-in può essere riassunta nei seguenti passi:
 
 1. inserire la cartella contenente tutti i file Javascript del plug-in dentro la cartella `plugins`, come illustrato nella sezione package.
 
-2. aggiungere l'inport del file in `index.htm`, ad esempio nel caso del plug-in Polyline:
-
-        &lt;script src="js/plugins/polyline/Polyline.js"&gt;&lt;/script&gt;
+2. aggiungere l'inport del file javascript contenente l'implementazione del plug-in nell'header di `index.htm`.
 
 3. aggiungere in `main.js` l'istanza del plug-in alla lista dei plug-in disponibili, ad esempio nel caso di Polyline:
 
