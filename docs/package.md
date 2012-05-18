@@ -103,8 +103,8 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
   Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
   canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
-1. i div sono attualmente fuori dalla canvas
-2. i div rientrano nella canvas a seguito di un drag
+1. i div sono attualmente fuori dalla canvas;
+2. i div rientrano nella canvas a seguito di un drag.
 
   Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
   selezione di un punto, si è proceduto con un metodo alternativo. Si considera come punto selezionato
@@ -154,10 +154,10 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta
   agli eventi dell'utente.
 
-`drawAll()` può essere invocato da:
-1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
-2. un metodo di web3d.js che si rende conto una variazione sul modello;
-3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
+  `drawAll()` può essere invocato da:
+  1. un medoto di userui.js che si rende conto di una variazione dell'area di lavoro;
+  2. un metodo di web3d.js che si rende conto una variazione sul modello;
+  3. un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno selettivo non risulta possibile.
 
 Per il metodo `draw()` specifico di ogni plug-in si rimanda alla sezione apposita.
 
