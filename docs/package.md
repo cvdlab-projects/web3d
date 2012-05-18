@@ -37,11 +37,8 @@ Di seguito è riportata uno schema dell'organizzazione:
                 Slice.js
 
         plugins /* Contiene le implementazioni dei plug-in*/
-
             aplugin
-
                 aplugin.js
-
         view /* Contiene utilità per la gestione della vista */
 
             userui.js
