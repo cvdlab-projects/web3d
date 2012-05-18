@@ -5,48 +5,28 @@ Per aumentare la legibilità, l'espandibilità e la manutenibilità del codice �
 Di seguito è riportata uno schema dell'organizzazione:
 
     css /* contiene tutti i fogli di stile*/
-
         reset.css
-
         style.css
-
     dicom /* Non è necessario che risieda internamente al package */
-
         dicom2
-
         dicom_png.php
-
     docs /* Contiene tutta la documentazione */
-
     js /* Contiene tutto il sorgente javascript */
-
         lib /* Contiene le librerie utilizzate nel progetto */
-
             jquery
-
             jscolor
-
             map
-
         model /* Contiene il modello */
-
             object
-
                 Point.js
-
                 Slice.js
-
         plugins /* Contiene le implementazioni dei plug-in*/
             aplugin
                 aplugin.js
         view /* Contiene utilità per la gestione della vista */
-
             userui.js
-
         main.js /* File di inizializzazione del progetto */
-
         web3d.js /* Controller/gestore degli eventi del progetto */
-
     index.htm /* Un esempio funzionante del nostro progetto all'opera */
 
 ###Librerie
@@ -63,7 +43,7 @@ L'approccio di avere un modello completamente separato dalla vista, oltre che ri
 Nello specifico è possibile effettuare considerevoli variazioni sugli oggetti del modello senza che queste si ripercuotano né sulla canvas né sugli elementi dell'html.
 Alcuni oggetti, inoltre, possono implementare cache e recupero lazy di informazioni.
 
-Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:
+**Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:**
 ####Point
 E' la classe che descrive l'oggetto punto, l'unità informativa più piccola per le varie rappresentazioni.
 Per istanziare un nuovo oggetto punto è sufficiente `new Point(x,y,z)` dove x, y e z sono le sue coordinate.
@@ -71,12 +51,18 @@ Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere a
 
 ####Slice
 Rappresenta le varie slice della DICOM all'interno del nostro progetto.
+
 In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `loadGeneralConf()`, tutte le singole slice del file DICOM prescelto e per ognuna di esse verrà istanziato e popolato un oggetto Slice.
 Poichè l'immagine di una slice del DICOM può essere pesante, non è possibile:
+
 * caricare realmente tutte le immagini di un DICOM, il quale può arrivare tranquillamente a superare 300 slice;
+
 * caricare la singola slice ad ogni volta che risulta necessario un ridisegno della canvas.
+
 Per risolvere queste due problematiche, l'oggetto Slice implementa un recupero lazy con cache dello stream dell'immagine.
+
 Alla prima reale necessità del contenuto dell'immagine, questa verrà realmente caricata e il suo stream messo in cache per essere recuperato istantaneamente alle richieste successive.
+
 Questo approccio, unito al ridisegno selettivo hanno garantito, rispetto alla prima release, una diminuzione del 70% delle risorse impegnate. Questo dato risulta tangibile all'utente il quale non avverte più i redraw della canvas che rimane pertanto stabile e senza sfarfallii.
 
 
@@ -107,11 +93,15 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
   con l'obiettivo di aggiornare il disegno sulla canvas a seguito di una variazione della
   posizione di un elemento div.
+
   Tale operazione avrebbe tuttavia richiesto un notevole impiego di risorse, a causa della possibilità
   che nella canvas vi sia un elevato numero di punti.
+
   Inoltre tale approccio risulta abbastanza instabile soprattutto quando si sta lavorando con una
   canvas ipoteticamente illimitata, avremmo dovuto gestire i seguenti casi:
+
     * i div sono attualmente fuori dalla canvas
+
     * i div rientrano nella canvas a seguito di un drag
 
   Poichè tutte le figure sulla canvas sono solo la rappresentazione del modello sottostante, per la
@@ -137,26 +127,34 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
   poi sul contrasto si possono schiarire i toni chiari e scurire i toni scuri. La soglia nello specifico
   identifica la sensibilità di selezione dei toni.
+
   Il valore di default, 50, è un ottimo compromesso per una immagine DICOM.
   E' possibile inoltre modificare il la luminosità dell'immagine.
+
   Questi sono strumenti molto importanti in quanto nelle immagini biomediche di differenti sezioni anatomiche
   anche vicine possono presentare escursioni di contrasto molto elevate, con una grande significatività
   diagnostica; quindi, la gestione dei livelli di grigio è fondamentale per un corretto esame visivo dell'immagine
   anche al solo fine di volerne ricreare un modello 3d.
 
-Alcuni dei metodi più importanti di **userui.js** vengono descritti di seguito:
+**Alcuni dei metodi più importanti di **userui.js** vengono descritti di seguito:**
+
 ####DrawAll()
   Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello
   sulla canvas.
+
   In realtà tale metodo è un manager di metodi di rappresentazione specifici di ogni plug-in, il suo obiettivo
   è quello di selezionare e coordinare cosa deve essere rappresentato sulla canvas; il disegno vero e proprio
   viene delegato al singolo plug-in.
+
   Questo approccio è necessario in quanto ogni plug-in ha una sua personale rappresentazione e risposta
   agli eventi dell'utente.
 
   `drawAll()` può essere invocato da:
+  
     * un medoto di userui.js che si rende conto di una variazione dell'area di lavoro
+
     * un metodo di web3d.js che si rende conto una variazione sul modello
+
     * un metodo di un plug-in che ritiene opportuno effettuare un ridisegno completo, magari perchè il disegno
     selettivo non risulta possibile.
 
