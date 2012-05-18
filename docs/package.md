@@ -3,31 +3,54 @@ Package
 Per aumentare la legibilità, l'espandibilità e la manutenibilità del codice è stata rispettata una rigida strutturazione del package basata sul pattern MVC.
 
 Di seguito è riportata uno schema dell'organizzazione:
-    css /* contiene tutti i fogli di stile*/
-        reset.css
-        style.css
-    dicom /* Non è necessario che risieda internamente al package */
-        dicom2
-        dicom_png.php
-    docs /* Contiene tutta la documentazione */
-    js /* Contiene tutto il sorgente javascript */
-        lib /* Contiene le librerie utilizzate nel progetto */
-            jquery
-            jscolor
-            map
-        model /* Contiene il modello */
-            object
-                Point.js
-                Slice.js
-        plugins /* Contiene le implementazioni dei plug-in*/
-            aplugin
-                aplugin.js
-        view /* Contiene utilità per la gestione della vista */
-            userui.js
-        main.js /* File di inizializzazione del progetto */
-        web3d.js /* Controller/gestore degli eventi del progetto */
-    index.htm /* Un esempio funzionante del nostro progetto all'opera */
 
+    css /* contiene tutti i fogli di stile*/
+
+        reset.css
+
+        style.css
+
+    dicom /* Non è necessario che risieda internamente al package */
+
+        dicom2
+
+        dicom_png.php
+
+    docs /* Contiene tutta la documentazione */
+
+    js /* Contiene tutto il sorgente javascript */
+
+        lib /* Contiene le librerie utilizzate nel progetto */
+
+            jquery
+
+            jscolor
+
+            map
+
+        model /* Contiene il modello */
+
+            object
+
+                Point.js
+
+                Slice.js
+
+        plugins /* Contiene le implementazioni dei plug-in*/
+
+            aplugin
+
+                aplugin.js
+
+        view /* Contiene utilità per la gestione della vista */
+
+            userui.js
+
+        main.js /* File di inizializzazione del progetto */
+
+        web3d.js /* Controller/gestore degli eventi del progetto */
+
+    index.htm /* Un esempio funzionante del nostro progetto all'opera */
 
 ###Librerie
 Nella cartella `lib` sono presenti tutte le librerie utilizzate. Ogni libreria deve essere contenuta in una sua cartella nella quale verranno inseriti tutti i file a essa necessari.
@@ -44,12 +67,12 @@ Nello specifico è possibile effettuare considerevoli variazioni sugli oggetti d
 Alcuni oggetti, inoltre, possono implementare cache e recupero lazy di informazioni.
 
 Di seguito vengono mostrati gli oggetti presenti attualmente nel modello e le loro caratteristiche, verrà tralasciata la descrizione dei metodi getter e setter:
-**Point**
+####Point
 E' la classe che descrive l'oggetto punto, l'unità informativa più piccola per le varie rappresentazioni.
 Per istanziare un nuovo oggetto punto è sufficiente `new Point(x,y,z)` dove x, y e z sono le sue coordinate.
 Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere al numero della slice corrente `cur_z`;
 
-**Slice**
+####Slice
 Rappresenta le varie slice della DICOM all'interno del nostro progetto.
 In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `loadGeneralConf()`, tutte le singole slice del file DICOM prescelto e per ognuna di esse verrà istanziato e popolato un oggetto Slice.
 Poichè l'immagine di una slice del DICOM può essere pesante, non è possibile:
@@ -69,7 +92,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
 
 **userui.js** in particolare offre dei metodi generici per la gestione della canvas:
 
-  -Zoom
+####Zoom
 
   Lo zoom viene effettuato allo scroll del mouse su tutta la canvas e sugli oggetti su di essa presenti.
   Con il puntatore è possibile selezionare il punto sul quale effettuare lo zoom in modo che l'accesso
@@ -81,7 +104,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   sarebbero soggette anch'esse alla variazione di dimensioni, rendendo l'interazione meno efficace.
 
 
-  -Modifica dei punti
+####Modifica dei punti
 
   Questa operazione è stata effettuate senza l'impiego di elementi HTML. In un approccio iniziale,
   si era ipotizzato di associare ad ogni punto di ogni figura rappresentata un elemento div,
@@ -101,7 +124,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   l'operazione richiesta: spostamento, cancellazione o cambio plug-in.
 
 
-  -Drag della canvas
+####Drag della canvas
 
   Con l'operazione di drag è possibile spostarsi all'interno dell'area di lavoro, per evitare involontari
   spostamenti della stessa in fase di disegno, abbiamo inserito un comando apposito nell'area degli strumenti.
@@ -111,7 +134,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   canvas più l'offset di spostamento della stessa rispetto alla canvas completa.
 
 
-  -Contrasto con soglia e luminosità
+####Contrasto con soglia e luminosità
 
   La modifica del contrasto dell'immagine DICOM di sfondo può essere effettuata manualmente dall'utente.
   Può, inoltre, essere impostata una soglia che farà da filtro per il contrasto: agendo sulla soglia e
@@ -125,7 +148,7 @@ Nello specifico la canvas è stata pensata come uno spazio di lavoro infinito, s
   anche al solo fine di volerne ricreare un modello 3d.
 
 Alcuni dei metodi più importanti di **userui.js** vengono descritti di seguito:
-  -DrawAll()
+####DrawAll()
   Il metodo più importante della classe userui.js è `drawAll()` che si occupa di rappresentare tutto il modello
   sulla canvas.
   In realtà tale metodo è un manager di metodi di rappresentazione specifici di ogni plug-in, il suo obiettivo
