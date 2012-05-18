@@ -3,7 +3,6 @@ Introduzione
 Web 3D Object Definition è un progetto realizzato per il corso di Informatica Biomedica tenuto dal Professor Alberto Paoluzzi, dal Professor Mauro Ceccanti, dall'Ing. Enrico Marino e dall'Ing. Federico Spini nell'A.A. 2011-2012 presso l'Università degli Studi Roma Tre - Dipartimento Informatica e Automazione.
 
 ###Obiettivi
-________________________
 L'obiettivo generale di questo progetto è la realizzazione di un ambiente/servizio completamente usufruibile da browser, quindi senza alcun tipo di installazione, per la realizzazione di modelli 2D e 3D a partire da immagini medicali DICOM.
 
 Gli obiettivi specifici di questo progetto sono quelli di permettere:
@@ -42,7 +41,6 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 * Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
 
 ###Come iniziare
-_____________________________
 Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://wbr1.webrobotics.net/infobio/](http://wbr1.webrobotics.net/infobio/?dicom=example.dcm&frames=133 "infobio webrobotics.net").
 
 Nell'url è necessario specificare i seguenti parametri:
@@ -72,7 +70,6 @@ Altri strumenti messi a disposizione:
 * `Colore delle linee` - varia il colore delle linee con un comodo color picker.
 
 ###Autori
-_____________________________
 Gli autori di questo progetto sono:
 * [Massimo Candela](https://github.com/MaxCam "Massimo Candela"), mat. 281191
 * [Daniele Malta](https://github.com/ ""), mat.
