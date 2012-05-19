@@ -118,7 +118,7 @@ Polyline.prototype.removeCurSet=function(){
 }
 
 /*
- Restituisce il set corrente.
+ Restituisce il set n nella slice corrente.
  */
 Polyline.prototype.getSet=function(n){
     return this.sets.get(cur_z)[n];
@@ -139,7 +139,7 @@ Polyline.prototype.getAllSets=function(){
 }
 
 /*
- Restituisce il tipo del plugin
+ Restituisce il nome del plugin
  */
 Polyline.prototype.toString=function(){
     return "Polyline";

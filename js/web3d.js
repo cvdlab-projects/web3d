@@ -26,7 +26,7 @@ function getWeb3d(){
 }
 
 /*
- Il metodo getPluginSelect posiziona i pulsanti di input nell'IDE.
+ Il metodo getPluginSelect posiziona i pulsanti di input nell'IDE per la selezione del plug-in.
  */
 function getPluginSelect(){
     var out='Select plugin: <select id=\"web3d_plugins\">';
@@ -71,7 +71,7 @@ function loadGeneralConf(){
         alert('File dicom non selezionato');
     else{
         for (var i=0;i<num;i++){
-            var url="http://wbr1.webrobotics.net/infobio/dicom/dicom_png.php?file="+dicom+"&frame="+(i+1);
+            var url=url_dicom+"dicom_png.php?file="+dicom+"&frame="+(i+1);
             var slice=new Slice();
             slice.setImg(url);
             backgrounds.push(slice);
@@ -247,53 +247,8 @@ function rightClick(event){
 
 }
 
-/*
- Il metodo drawAll disegna l'immagine di sfondo e invoca su ogni Plugin e ogni Point il metodo draw()
- per il disegno delle figure.
- Viene invocato ogni volta che si verifica una variazione del dominio.
- */
-function drawAll(){
-    clearCanvas();
-    var i=cur_z;
-    if (backgrounds[i].getBytecode()){
-        ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
-    }else{
-        backgrounds[i].setBytecode(new Image());
-        backgrounds[i].getBytecode().onload = function(){
-            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
-        }
-        backgrounds[i].getBytecode().src = backgrounds[i].getImg();
-    }
-    for (var n=0;n<plugins.length;n++){
-        plugins[n].draw();
-
-        if (plugins[n].drawPoints()){
-            var tmp=plugins[n].getSets();
-            for (var i=0;i<tmp.length;i++){
-                var tmp2=tmp[i];
-                for (var z=0;z<tmp2.length;z++){
-                    tmp2[z].draw();
-                }
-            }
-        }
-    }
-    contrastStatic(parseInt(el_contrast.val()));
-    brightnessStatic(parseInt(el_brightness.val()));
-
-}
-
 Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
     return this.push.apply(this, rest);
 };
-
-/*
- Ripristina la canvas alle condizioni iniziali.
- */
-function clearCanvas(){
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.restore();
-}

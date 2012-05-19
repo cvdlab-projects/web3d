@@ -124,7 +124,7 @@ Polygon.prototype.removeSet=function(n){
 }
 
 /*
- Restituisce il set corrente.
+ Restituisce il set n della slice corrente.
  */
 Polygon.prototype.getSet=function(n){
     return this.sets.get(cur_z)[n];
