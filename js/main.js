@@ -22,6 +22,11 @@ var lineColor="blue";
 var paint=false;
 var el_contrast;
 var el_brightness;
+
+//parte 3D
+ var sliceSize=5;
+ var backgroundColor=0x0000FF;
+ 
 /*
 ogni plugin è contenuto nella cartella plugins ed ha un suo file .js
 Per caricarli basta aggiungere un nuovo oggetto plugin all'array plugins.
