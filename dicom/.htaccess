@@ -1,0 +1,13 @@
+allow from all
+
+<files "dicom2"> 
+order deny,allow 
+deny from all 
+</files>
+
+
+<files "*.dcm">
+order deny,allow
+deny from all
+</files>
+
