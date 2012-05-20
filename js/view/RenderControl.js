@@ -14,7 +14,7 @@ function init3D()
 
 function Release3D()
 {
-	$('#web3d-ide-canvas').css("display","none");
+	$('#web3d-ide-canvas').css("display","inline");
 	renderItem=null;
 }
 
