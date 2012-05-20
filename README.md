@@ -10,13 +10,17 @@ Progetto web3d
 
 	1.4. [Autori](https://github.com/cvdlab-bio/web3d/blob/master/docs/intro.md#autori "Autori")
 
-2. [Il formato DICOM](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md "dicom")
+2. [Lo standard DICOM](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#lo-standard-dicom "DICOM")
 
-	2.1. [Panoramica](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#panoramica "Panoramica")
+	2.1. [Introduzione](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#introduzione "Introduzione")
 
-	2.2. [Il protocollo](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#il-protocollo "Protocollo")
+	2.2. [DICOM: oggetti e servizi](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#il-dicom-oggetti-e-servizi "Oggetti e servizi")
 
-	2.3. [Da DICOM a png](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#da-dicom-a-png "dicom2png")
+	2.3. [La comunicazione su rete](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#da-dicom-a-png "la-comunicazione-su-rete")
+	
+	2.4 [Il file DICOM](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#da-dicom-a-png "il-file-dicom")
+	
+	2.4.1 [Accesso ai file DICOM](https://github.com/cvdlab-bio/web3d/blob/master/docs/dicom.md#da-dicom-a-png "accesso-ai-file-dicom")
 
 3. [Package](https://github.com/cvdlab-bio/web3d/blob/master/docs/package.md "Package")
 
