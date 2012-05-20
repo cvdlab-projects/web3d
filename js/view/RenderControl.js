@@ -10,11 +10,17 @@ function init3D()
 
 	backW = canvas.width;
 	backH = canvas.height;
-	$('#web3d-ide-canvas').remove();
+	$('#web3d-ide-canvas').css("display","none");
 	
 	
 	renderItem = new RenderControl('web3d-ide-container',1024,768,  sliceSize);
     animate();
+}
+
+function Release3D()
+{
+	$('#web3d-ide-canvas').css("display","inline");
+	renderItem=null;
 }
 
 function RenderControl(tagName,width,height, size) {
@@ -77,9 +83,12 @@ RenderControl.prototype.SetShape = function (polylines, size) {
 	var j;
     for (i = 0; i < polylines.size(); i++) {
 		var cur=polylines.get(i);
-		for(j = 0; j < cur.length;j++)
+		if(cur!=null)
 		{
-			this.AddStrato(cur[j], i * size, size,i);
+			for(j = 0; j < cur.length;j++)
+			{
+				this.AddStrato(cur[j], i * size, size,i);
+			}
 		}
     }
 	
