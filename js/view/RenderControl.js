@@ -12,10 +12,11 @@ function init3D()
     animate();
 }
 
-function Release3D()
+function release3D()
 {
 	$('#web3d-ide-canvas').css("display","inline");
 	renderItem=null;
+	$('#canvas3D').remove();
 }
 
 function RenderControl(tagName,width,height, size) {
@@ -51,6 +52,8 @@ function RenderControl(tagName,width,height, size) {
 		stencil: true,
 		preserveDrawingBuffer: false
 	});
+	
+	this.renderer.domElement.setAttribute("id", "canvas3D");
 	
     this.renderer.setSize(width, height);
     this.trackball = new THREE.TrackballControls(this.camera, this.renderer.domElement);
