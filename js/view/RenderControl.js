@@ -1,15 +1,10 @@
 ﻿
 
 var renderItem;
-var width=0;
-var height=0;
-var backW;
-var backH;
+
 function init3D()
 {
 
-	backW = canvas.width;
-	backH = canvas.height;
 	$('#web3d-ide-canvas').css("display","none");
 	
 	
@@ -33,7 +28,7 @@ function RenderControl(tagName,width,height, size) {
 	this.totP=0;
 
     var trackball;
-    tag=document.getElementById(tagName);
+    var tag=document.getElementById(tagName);
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(35, width / height, 1, 10000);
@@ -65,7 +60,7 @@ function RenderControl(tagName,width,height, size) {
 
 	for(i=0;i<3;i++)
 	{
-		polylines = plugins[i].getAllSets();
+		var polylines = plugins[i].getAllSets();
 	
 		if (polylines != null)
 			this.SetShape(polylines, size);
@@ -105,11 +100,9 @@ RenderControl.prototype.AddStrato = function (points, z, size,level) {
 	var texture = THREE.ImageUtils.loadTexture(backgrounds[level].getImg());
 	
 	
-	wx = backgrounds[level].getWidth();
-	wy = backgrounds[level].getHeight();
+	var wx = backgrounds[level].getWidth();
+	var wy = backgrounds[level].getHeight();
 	
-	px=backW/wx;
-	py=backH/wy;
 	
 	var material = new THREE.MeshBasicMaterial({map: texture});
 	material.map.needsUpdate = true; 
@@ -118,7 +111,7 @@ RenderControl.prototype.AddStrato = function (points, z, size,level) {
 	
 	
 	path.moveTo(points[0].getX(), points[0].getY());
-	
+	var i;
 	for (i = 1; i < points.length; i++) {
 		
 		path.lineTo(points[i].getX(), points[i].getY());
@@ -142,12 +135,12 @@ RenderControl.prototype.AddStrato = function (points, z, size,level) {
 	
 	for(i=0;i<solid.faces.length;i++)
 	{
-		v1 = solid.vertices[solid.faces[i].a];
-		v2 = solid.vertices[solid.faces[i].b];
-		v3 = solid.vertices[solid.faces[i].c];
-		solid.faceVertexUvs[0][i][0]=	new THREE.UV((v1.x*px)/backW,(v1.y*py)/backH);
-		solid.faceVertexUvs[0][i][1]=	new THREE.UV((v2.x*px)/backW,(v2.y*py)/backH);
-		solid.faceVertexUvs[0][i][2]=	new THREE.UV((v3.x*px)/backW,(v3.y*py)/backH);
+		var v1 = solid.vertices[solid.faces[i].a];
+		var v2 = solid.vertices[solid.faces[i].b];
+		var v3 = solid.vertices[solid.faces[i].c];
+		solid.faceVertexUvs[0][i][0]=	new THREE.UV(v1.x/wx,v1.y/wy);
+		solid.faceVertexUvs[0][i][1]=	new THREE.UV(v2.x/wx,v2.y/wy);
+		solid.faceVertexUvs[0][i][2]=	new THREE.UV(v3.x/wx,v3.y/wy);
 	}
 	
 	
