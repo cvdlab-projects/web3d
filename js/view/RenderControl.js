@@ -98,8 +98,9 @@ RenderControl.prototype.SetShape = function (polylines, size) {
 RenderControl.prototype.AddStrato = function (points, z, size,level) {
 
 	
-	if(points==null)
+	if(points==null || points.length==0)
 		return;
+	
 	
 	var texture = THREE.ImageUtils.loadTexture(backgrounds[level].getImg());
 	
@@ -119,11 +120,12 @@ RenderControl.prototype.AddStrato = function (points, z, size,level) {
 	path.moveTo(points[0].getX(), points[0].getY());
 	
 	for (i = 1; i < points.length; i++) {
-		if(points[i].getX()!=points[0].getX() && points[i].getY()!=points[0].getY())
-		{
-			path.lineTo(points[i].getX(), points[i].getY());
-		}
+		
+		path.lineTo(points[i].getX(), points[i].getY());
+	
     }
+	path.lineTo(points[0].getX(), points[0].getY());
+
 	
 	for(i=0;i<points.length;i++)
 	{
