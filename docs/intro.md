@@ -74,6 +74,8 @@ Altri strumenti messi a disposizione:
 ##Autori
 Gli autori di questo progetto sono:
 * [Massimo Candela](https://github.com/MaxCam "Massimo Candela"), mat. 281191
-* [Daniele Malta](https://github.com/ ""), mat.
-* [Elisabetta Melis](https://github.com/ ""), mat.
-* [Lorena Nacchia](https://github.com/ ""), mat.
+* [Lorena Nacchia](https://github.com/LoryRm ""), mat. 256680
+* [Elisabetta Melis](https://github.com/20thCenturyFox "")
+* [Daniele Malta](https://github.com/ "")
+
+
