@@ -1,4 +1,4 @@
-Introduzione
+﻿Introduzione
 ============
 Web 3D Object Definition è un progetto realizzato per il corso di Informatica Biomedica tenuto dal Professor Alberto Paoluzzi, dal Professor Mauro Ceccanti, dall'Ing. Enrico Marino e dall'Ing. Federico Spini nell'A.A. 2011-2012 presso l'Università degli Studi Roma Tre - Dipartimento Informatica e Automazione.
 
@@ -74,8 +74,8 @@ Altri strumenti messi a disposizione:
 ##Autori
 Gli autori di questo progetto sono:
 * [Massimo Candela](https://github.com/MaxCam "Massimo Candela"), mat. 281191
-* [Lorena Nacchia](https://github.com/LoryRm ""), mat. 256680
-* [Elisabetta Melis](https://github.com/20thCenturyFox "")
-* [Daniele Malta](https://github.com/ "")
+* [Lorena Nacchia](https://github.com/LoryRm "Lorena Nacchia"), mat. 256680
+* [Elisabetta Melis](https://github.com/20thCenturyFox "Elisabetta Melis")
+* [Daniele Malta](https://github.com/ "Daniele Malta")
 
 
