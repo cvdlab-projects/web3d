@@ -114,14 +114,12 @@ function eventsManager(){
         cur_action=$(this).val();
         if (cur_action=='drag'||cur_action=='edit')
             canvas.css('cursor', 'pointer');
-        else if (cur_plugin){
-            if (cur_action=='draw'){
-                $('#web3d_plugins').val(cur_plugin.getId());
-                canvas.css('cursor', 'crosshair');
-            }else
-                canvas.css('cursor', 'auto');
-            drawAll();
-        }
+        else if (cur_action=='draw' && cur_plugin){
+            $('#web3d_plugins').val(cur_plugin.getId());
+            canvas.css('cursor', 'crosshair');
+        }else
+            canvas.css('cursor', 'auto');
+        drawAll();
     });
 
     $('#lineColor').live('change',function(){

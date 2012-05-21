@@ -25,8 +25,27 @@ Freepol.prototype.addPoint=function(point){
  Permette, ad esempio, di specificare l'azione da svolgere in caso si verifichino gli eventi click e mousemove contemporaneamente.
  */
 Freepol.prototype.mouseMove=function(x,y){
-    this.getCurSet().push(new Point(x,y,cur_z));
+    this.pathSempl(new Point(x,y,cur_z));
     this.draw(true);
+}
+
+/*
+ Metodo aggiuntivo per il path semplification
+ */
+Freepol.prototype.pathSempl=function(point){
+    var p1=this.getCurSet()[this.getCurSet().length-1];
+    var p2=this.getCurSet()[this.getCurSet().length-2];
+    if (!p1 || !p2)
+        this.getCurSet().push(point);
+    else{
+        var m1=(p2.getX()-p1.getX())/(p2.getY()-p1.getY());
+        var m2=(point.getX()-p1.getX())/(point.getY()-p1.getY());
+
+        if (m1!=m2)
+            this.getCurSet().push(point);
+        else
+            console.log('Punto semplificato!');
+    }
 }
 
 /*
