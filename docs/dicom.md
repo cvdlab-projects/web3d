@@ -38,12 +38,12 @@ Un file DICOM può essere visto come un pacchetto, un insieme strutturato di dat
 
 L'insieme di attributi che formano l'intestazione possono essere raggruppati in base alla relazione che esiste tra di loro e vanno a formare le IOD. Nel primo gruppo di attributi sono presenti informazioni quali l'anagrafica del paziente (nome, ID, data di nascita, sesso, ecc.); nel secondo gruppo sono presenti le caratteristiche delle diverse metodiche di analisi (modalità) costituenti lo studio diagnostico (data, ora, medico referente, ecc.); nel terzo gruppo, definito serie, vengono raccolti i dati che descrivono le collezioni di immagini provenienti da ogni modalità diagnostica con i relativi parametri di acquisizione (numero della serie, tipo di modalità, ecc.); infine, il quarto gruppo contiene gli attributi descrittivi delle immagini come la dimensione della matrice, la profondità del pixel, l'interpretazione fotometrica ecc. 
 
-###Accesso ai file DICOM
+##Accesso ai file DICOM
 I file DICOM possiedono un elevato contenuto informativo, in quanto raccolgono non solo dati relativi al paziente (anagrafica, esami diagnostici, cartelle cliniche, ecc...) ma anche riguardanti lo scambio degli stessi nella rete ospedaliera.
 Inoltre, la presenza di particolari referti, quali immagini radiologiche di TAC, RMN e fluoroscopia, può portare il file  ad avere dimensioni superiori ai 300 MB.
 Appare quindi difficoltosa la gestione di una tale mole di dati lato client con JavaScript, per il quantitativo di dati da scaricare ed elaborare.
 
-Si è scelto a tale scopo di delegare l'apertura dei DICOM ad uno strumento specifico, sviluppato da Sebastien Barre e liberamente disponibile su web all'indirizzo www.barre.nom.fr per Windows e Linux, denominato dicom.
+Si è scelto a tale scopo di delegare l'apertura dei DICOM ad uno strumento specifico, sviluppato da Sebastien Barre e liberamente disponibile su web all'indirizzo www.barre.nom.fr per Windows e Linux, denominato dicom2.
 
 Tale strumento è stato commutato in un servizio generico online mediante uno script PHP che le fa da wrapper (anche per ragioni di sicurezza).
 L'input dello script è un intero `n`, indice delle slice, e l'URL di un file DICOM; l'output è costituito dall'immagine relativa alla slice `n` richiesta in formato png.
