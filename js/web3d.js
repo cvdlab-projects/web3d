@@ -58,7 +58,7 @@ function setBackground(i) {
         }
         backgrounds[i].getBytecode().src = backgrounds[i].getImg();
     }
-
+    $('#web3d-comment').val(backgrounds[i].getComment());
 }
 
 /*
@@ -111,11 +111,11 @@ getWeb3d();
  */
 function eventsManager(){
     $('.actions').live('click',function(){
-        if (cur_plugin){
-            cur_action=$(this).val();
-            if (cur_action=='drag'||cur_action=='edit')
-                canvas.css('cursor', 'pointer');
-            else if (cur_action=='draw'){
+        cur_action=$(this).val();
+        if (cur_action=='drag'||cur_action=='edit')
+            canvas.css('cursor', 'pointer');
+        else if (cur_plugin){
+            if (cur_action=='draw'){
                 $('#web3d_plugins').val(cur_plugin.getId());
                 canvas.css('cursor', 'crosshair');
             }else
@@ -127,6 +127,10 @@ function eventsManager(){
     $('#lineColor').live('change',function(){
         lineColor=$(this).val();
         drawAll();
+    });
+
+    $('#web3d-comment').live('change',function(){
+        backgrounds[cur_z].setComment($(this).val());
     });
 
     $('#pointColor').live('change',function(){

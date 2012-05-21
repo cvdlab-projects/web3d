@@ -49,6 +49,13 @@ html{
     margin-top: 5px;
     width:100%;
     clear:both;
+    text-align: center;
+}
+
+#web3d-comment{
+    float:right;
+    width:180px;
+    height:150px;
 }
 
 .point{

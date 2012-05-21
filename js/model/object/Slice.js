@@ -4,9 +4,14 @@ function Slice(){
     this.width=0;
     this.height=0;
     this.bytecode;
+    this.comment="";
 }
 
 //setter
+Slice.prototype.setComment=function(str){
+    this.comment=str;
+}
+
 Slice.prototype.setImg=function(file){
     this.img=file;
 }
@@ -20,6 +25,14 @@ Slice.prototype.setHeight=function(height){
 }
 
 //getter
+Slice.prototype.getComment=function(){
+    return this.comment;
+}
+
+Slice.prototype.getComment=function(){
+    return this.comment;
+}
+
 Slice.prototype.getImg=function(){
     return this.img;
 }

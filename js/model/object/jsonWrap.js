@@ -6,8 +6,25 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function jsonWrap(string){
-    var obj=JSON.parse(string);
+function jsonWrap(){
+    this.comments=new Array();
+    for (var n=0;n<backgrounds.length;n++){
+        this.comments.push(backgrounds[n].getComment());
+    }
+    this.plugins=plugins;
+}
+
+//non serve il prototype perchè è una funzione a se, non serve creare l'oggetto.
+function jsonParser(string){
+    var wrap=JSON.parse(string);
+    for (var c=0;c<backgrounds.length;c++){
+        var separator="";
+        if (backgrounds[c].getComment().length>0)
+            separator="\n";
+        backgrounds[c].setComment(backgrounds[c].getComment()+separator+wrap.comments[c]);
+    }
+    $('#web3d-comment').val(backgrounds[cur_z].getComment());
+    var obj=wrap.plugins;
     for (var i=0;i<obj.length;i++){
         var tmp=obj[i];
         var sets=new Map();
@@ -28,12 +45,10 @@ function jsonWrap(string){
                             }
                             plugins[n].addSet(tmp2,sets.keySet()[p]);
                         }
-
                     }
                 }
-
             }
         }
     }
-
 }
+

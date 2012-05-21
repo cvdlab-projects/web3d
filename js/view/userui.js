@@ -284,8 +284,8 @@ function clearCanvas(){
 
 function getJson(){
     if (!$('#jsonarea').length){
-        var json=JSON.stringify(plugins);
-        $('body').append('<div id=\"jsonarea\"><div><input type="button" value="Applica" onclick="jsonWrap($(\'#jsonarea textarea\').val());drawAll();"/><input type="button" value="Chiudi" onclick="$(\'#jsonarea\').remove();"/></div><textarea>'+json+'</textarea></div>');
+        var json=JSON.stringify(new jsonWrap());
+        $('body').append('<div id=\"jsonarea\"><div><input type="button" value="Aggiungi" onclick="jsonParser($(\'#jsonarea textarea\').val());drawAll();"/><input type="button" value="Chiudi" onclick="$(\'#jsonarea\').remove();"/></div><textarea>'+json+'</textarea></div>');
         $('#jsonarea').css("left",Math.floor(($('body').width()/2)-($('#jsonarea').width()/2)));
     }
 }
