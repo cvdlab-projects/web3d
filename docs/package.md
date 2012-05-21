@@ -16,11 +16,13 @@ Di seguito è riportata uno schema dell'organizzazione:
       |   |   |-jquery
       |   |   |-jscolor
       |   |   |-map
-      |   |   |-Three
+      |   |   |-json
+      |   |   |-three
       |   |-model    /* Contiene il modello */
       |   |   |-object
       |   |       |-Point.js
       |   |       |-Slice.js
+      |   |       |-jsonWrap.js
       |   |-plugins    /* Contiene le implementazioni dei plug-in*/
       |   |   |-aplugin
       |   |       |-aplugin.js
@@ -37,6 +39,7 @@ Le librerie attualmente utilizzate sono:
 * `jQuery` - per la manipolazione del DOM e la gestione degli eventi;
 * `HashMap` - una semplice implementazione personale delle HashMap in javascript;
 * `jscolor` - semplice libreria per la realizzazione di color picker;
+* `json` - si occupa della conversione da oggetto javascript a formato json e viceversa;
 * `Three` - per la realizzazione del modello 3d.
 
 ##Modello
@@ -72,6 +75,8 @@ Alla prima reale necessità del contenuto dell'immagine, questa verrà realmente
 
 Questo approccio, unito al ridisegno selettivo hanno garantito, rispetto alla prima release, una diminuzione del 70% delle risorse impegnate. Questo dato risulta tangibile all'utente il quale non avverte più i redraw della canvas che rimane pertanto stabile e senza sfarfallii.
 
+#####jsonWrap
+Questo oggetto si occupa di salvare temporaneamente ed elaborare l'input proveniente dal json editor. A partire da tale input riesce ad aggiungere figure alla sessione di lavoro corrente.
 
 ##Vista
 Nella cartella `view` è presente la classe `userui.js` la quale si occupa di offrire una serie di metodi per la manipolazione della canvas e degli oggetti su di essa raffigurati.

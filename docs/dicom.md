@@ -12,7 +12,7 @@ A partire dal 1983, i più grandi esponenti negli Stati Uniti nel settore della 
 
 
 ##DICOM: oggetti e servizi
-Lo standard DICOM definisce un ambiente object oriented, in cui cioè le informazioni e le funzioni che operano su di esse sono raggruppate in categorie facilmente gestibili, definite appunto oggetti: la progettazione object oriented consente di produrre software meno complesso e, soprattutto, più facilmente aggiornabile di quanto non avvenga con approcci più datati, ad esempio di tipo procedurale. 
+Lo standard DICOM definisce un ambiente object oriented, in cui cioè le informazioni e le funzioni che operano su di esse sono raggruppate in categorie facilmente gestibili, definite appunto oggetti.
 
 Una __Application Entity__ è un’applicazione che interagisce con altre su una rete, o tramite memorie di massa removibili, adoperando il protocollo DICOM. In particolare una AE è un __Service Class User__ quando richiede servizi DICOM in un ambiente interconnesso, comportandosi quindi come un client, mentre è un __Service Class Provider__ quando fornisce tali servizi, comportandosi quindi come server.
 
@@ -41,14 +41,13 @@ L'insieme di attributi che formano l'intestazione possono essere raggruppati in 
 ###Accesso ai file DICOM
 I file DICOM possiedono un elevato contenuto informativo, in quanto raccolgono non solo dati relativi al paziente (anagrafica, esami diagnostici, cartelle cliniche, ecc...) ma anche riguardanti lo scambio degli stessi nella rete ospedaliera.
 Inoltre, la presenza di particolari referti, quali immagini radiologiche di TAC, RMN e fluoroscopia, può portare il file  ad avere dimensioni superiori ai 300 MB.
-Appare quindi difficoltosa la gestione di una tale mole di dati con una semplice applicazione JavaScript.
+Appare quindi difficoltosa la gestione di una tale mole di dati lato client con JavaScript, per il quantitativo di dati da scaricare ed elaborare.
 
-Si è scelto a tale scopo di delegare l'apertura dei DICOM ad un programma specifico, sviluppato da Sebastien Barre e liberamente disponibile su web all'indirizzo www.barre.nom.fr per Windows e Linux, denominato dicom2.exe.
+Si è scelto a tale scopo di delegare l'apertura dei DICOM ad uno strumento specifico, sviluppato da Sebastien Barre e liberamente disponibile su web all'indirizzo www.barre.nom.fr per Windows e Linux, denominato dicom.
 
-Tale libreria è stata resa disponibile su internet come servizio generico mediante uno script PHP che le fa da wrapper.
-L'input dello script è un intero n, indice delle slice, e l'URL di un file DICOM; l'output è costituito dall'immagine relativa alla slice n richiesta in formato png. 
-Al fine di ottimizzare il caricamento delle immagini, viene effettuata una memorizzazione delle stesse in cache.
-Inoltre, si effettua parsing dell'input per gestire gli errori e prevenire la code injection.
+Tale strumento è stato commutato in un servizio generico online mediante uno script PHP che le fa da wrapper (anche per ragioni di sicurezza).
+L'input dello script è un intero `n`, indice delle slice, e l'URL di un file DICOM; l'output è costituito dall'immagine relativa alla slice `n` richiesta in formato png.
+Al fine di ottimizzare l'estrazione delle immagini, viene effettuata una memorizzazione delle stesse in cache.
 
 
 

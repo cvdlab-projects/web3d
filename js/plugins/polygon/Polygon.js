@@ -4,12 +4,13 @@
  Per ogni slice è possibile inserire più set di punti, cioè definire più Polygon sullo stesso livello.
  */
 function Polygon(){
+    this.name="Polygon";
     this.sets=new Map();
     this.id=plugins.length;
 }
 
 /*
- Ritorna l'id dell'istanza del plugin all'interno dell'IDE.
+ Ritorna l'id univoco dell'istanza del plugin all'interno dell'IDE.
  */
 Polygon.prototype.getId=function(){
     return this.id;
@@ -18,7 +19,7 @@ Polygon.prototype.getId=function(){
 
 /*
  Il metodo addPoint aggiunge un punto al set corrente, definito come l'ultimo utilizzato dall'utente.
- Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con questo plugin.
+ Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con il plug-in.
  */
 Polygon.prototype.addPoint=function(point){
 
@@ -34,14 +35,16 @@ Polygon.prototype.addPoint=function(point){
 }
 
 /*
- Il metodo mouseMove gestisce l'evento di movimento del mouse di un plugin.
+ Questo metodo gestisce, solo se necessario, l'azione da intraprendere in caso di movimento del mouse in fase di draw.
+ Permette, ad esempio, di specificare l'azione da svolgere in caso si verifichino gli eventi click e mousemove contemporaneamente.
  */
 Polygon.prototype.mouseMove=function(x,y){
     return false;
 }
 
 /*
- Il metodo removePoint elimina dal set corrente il punto selezionato dall'utente.
+ Il metodo removePoint elimina dal set corrente il punto numero n.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente
  */
 Polygon.prototype.removePoint=function(n){
 //se il punto è un estremo
@@ -56,7 +59,7 @@ Polygon.prototype.removePoint=function(n){
 }
 
 /*
- Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultima poligono modificata.
+ Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultimo set selezionato.
  */
 Polygon.prototype.getCurSet=function(){
     if (!this.sets.get(cur_z)){
@@ -68,16 +71,18 @@ Polygon.prototype.getCurSet=function(){
     return this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
 }
 
+/*
+ Elimina l'ultimo punto inserito.
+ */
 Polygon.prototype.removeLast=function(){
     this.getCurSet().pop();
 }
 
 /*
  Il metodo setCurSet imposta come corrente il set n della slice attuale.
- Il parametro n viene fornito dalla vista al click dell'utente.
- Il set corrente è sempre l'ultimo nella lista.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente.
+ Il set corrente è sempre l'ultimo nella lista dei set della slice corrente.
  */
-
 Polygon.prototype.setCurSet=function(n){
     var tmp=this.sets.get(cur_z)[n];
     this.sets.get(cur_z)[n]=this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
@@ -85,7 +90,7 @@ Polygon.prototype.setCurSet=function(n){
 }
 
 /*
- Il metodo endSet permette all'utente di specificare quando un disegno è finito.
+ Il metodo endSet permette di specificare quando un disegno è finito.
  */
 Polygon.prototype.endSet=function(){
     var p=new Array();
@@ -93,17 +98,21 @@ Polygon.prototype.endSet=function(){
 }
 
 /*
- Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
+ Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice z, dopo aver effettuato un controllo di compatibilità.
  */
 Polygon.prototype.addSet=function(set,z){
     var result=this.isValidSet(set);
-    if (result)
+    if (result){
+        if (!this.sets.get(z)){
+            this.sets.put(z,new Array());
+        }
         this.sets.get(z).push(set);
+    }
     return result;
 }
 
 /*
- Elimina il set corrente.
+ Elimina il set corrente, ovvero l'ultima figura selezionata.
  */
 Polygon.prototype.removeCurSet=function(){
     this.sets.get(cur_z).pop();
@@ -118,6 +127,7 @@ Polyline.prototype.removeCurSet=function(){
 
 /*
  Elimina il set n dalla slice corrente, cioè cancella la figura n.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente.
  */
 Polygon.prototype.removeSet=function(n){
     this.sets.get(cur_z).remove(n);
@@ -145,13 +155,14 @@ Polygon.prototype.getAllSets=function(){
 }
 
 /*
- Restituisce il tipo del plugin
+ Restituisce il nome del plugin
  */
 Polygon.prototype.toString=function(){
-    return "Polygon";
+    return this.name;
 }
+
 /*
- verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
+ Verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
  Es: Un quadrato non può avere un set di più di quattro punti.
  */
 Polygon.prototype.isValidSet=function(set){
@@ -166,14 +177,16 @@ Polygon.prototype.isValidSet=function(set){
 }
 
 /*
- Questa funzione decide se il plugin mostra o meno i punti tracciati.
+ Questa funzione,che restituisce true o false, decide se il plugin mostra o meno i punti tracciati.
  */
 Polygon.prototype.drawPoints=function(){
     return true;
 }
 
 /*
- Il metodo draw disegna tutte le figure appartenenti al plugin nella slice corrente.
+ Il metodo draw disegna tutte le figure, appartenenti al plugin, della slice corrente.
+ Il parametro booleano light, indica se il metodo deve effettuare un disegno completo (!light) o selettivo/incrementale (light==true).
+ L'approccio selettivo/incrementale permette un drastico risparmio di risorse ma può essere utilizzato solo nei casi in cui la canvas mantiene dimensioni e posizione costanti.
  */
 Polygon.prototype.draw=function(){
     var out="";

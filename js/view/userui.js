@@ -243,6 +243,7 @@ function brightnessStatic(d) {
 function drawAll(){
     clearCanvas();
     var i=cur_z;
+    ctx.lineWidth = linewidth;
     if (backgrounds[i].getBytecode()){
         ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
     }else{
@@ -278,4 +279,13 @@ function clearCanvas(){
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.restore();
+}
+
+
+function getJson(){
+    if (!$('#jsonarea').length){
+        var json=JSON.stringify(plugins);
+        $('body').append('<div id=\"jsonarea\"><div><input type="button" value="Applica" onclick="jsonWrap($(\'#jsonarea textarea\').val());drawAll();"/><input type="button" value="Chiudi" onclick="$(\'#jsonarea\').remove();"/></div><textarea>'+json+'</textarea></div>');
+        $('#jsonarea').css("left",Math.floor(($('body').width()/2)-($('#jsonarea').width()/2)));
+    }
 }

@@ -7,8 +7,10 @@
     <script src="js/lib/jquery/jquery.min.js"></script>
     <script src="js/lib/map/HashMap.js"></script>
     <script src="js/lib/three/Three.js"></script>
+    <script src="js/lib/json/json2.js"></script>
     <script src="js/model/object/Point.js"></script>
     <script src="js/model/object/Slice.js"></script>
+    <script src="js/model/object/jsonWrap.js"></script>
     <script src="js/lib/jscolor/jscolor.js"></script>
     <script src="js/plugins/polyline/Polyline.js"></script>
     <script src="js/plugins/polygon/Polygon.js"></script>
@@ -61,10 +63,10 @@
             <input type="button" class="selectFrame" value="+1"/>
         </div>
         <div class="clearBoth">
-            <input type="button" class="selectFrame" value="Visualizza 3D" onclick="init3D();" />
+            <input type="button" id="web3d-3d-button" value="Visualizza 3D" onclick="init3D();" />
         </div>
-		<div class="clearBoth">
-            <input type="button" class="selectFrame" value="Torna al 2D" onclick="release3D();" />
+        <div class="clearBoth">
+            <input type="button" value="Json editor" onclick="getJson();" />
         </div>
     </div>
     <div></div>

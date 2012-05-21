@@ -111,15 +111,17 @@ getWeb3d();
  */
 function eventsManager(){
     $('.actions').live('click',function(){
-        cur_action=$(this).val();
-        if (cur_action=='drag'||cur_action=='edit')
-            canvas.css('cursor', 'pointer');
-        else if (cur_action=='draw'){
-            $('#web3d_plugins').val(cur_plugin.getId());
-            canvas.css('cursor', 'crosshair');
-        }else
-            canvas.css('cursor', 'auto');
-        drawAll();
+        if (cur_plugin){
+            cur_action=$(this).val();
+            if (cur_action=='drag'||cur_action=='edit')
+                canvas.css('cursor', 'pointer');
+            else if (cur_action=='draw'){
+                $('#web3d_plugins').val(cur_plugin.getId());
+                canvas.css('cursor', 'crosshair');
+            }else
+                canvas.css('cursor', 'auto');
+            drawAll();
+        }
     });
 
     $('#lineColor').live('change',function(){

@@ -64,3 +64,20 @@ html{
 .color{
     width:50px;
 }
+
+#jsonarea{
+    width:610px;
+    height:410px;
+    position:absolute;
+    top:0px;
+    background:#C0C0C0;
+    text-align: center;
+}
+#jsonarea div{
+    float:right;
+    clear:both;
+}
+#jsonarea textarea{
+    width:590px;
+    height:370px;
+}

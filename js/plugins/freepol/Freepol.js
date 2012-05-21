@@ -4,6 +4,7 @@
  Per ogni slice è possibile inserire più set di punti, cioè definire più Freepol sullo stesso livello.
  */
 function Freepol(){
+    this.name="Freepol";
     this.sets=new Map();
     this.id=plugins.length;
     this.drawed=0;
@@ -11,7 +12,7 @@ function Freepol(){
 
 /*
  Il metodo addPoint aggiunge un punto al set corrente, definito come l'ultimo utilizzato dall'utente.
- Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con questo plugin.
+ Prima di inserire un punto viene verificata la compatibilità geometrica del nuovo set con il plug-in.
  */
 Freepol.prototype.addPoint=function(point){
     this.getCurSet().push(point);
@@ -20,7 +21,8 @@ Freepol.prototype.addPoint=function(point){
 }
 
 /*
- Il metodo mouseMove gestisce l'evento di movimento del mouse di un plugin.
+ Questo metodo gestisce, solo se necessario, l'azione da intraprendere in caso di movimento del mouse in fase di draw.
+ Permette, ad esempio, di specificare l'azione da svolgere in caso si verifichino gli eventi click e mousemove contemporaneamente.
  */
 Freepol.prototype.mouseMove=function(x,y){
     this.getCurSet().push(new Point(x,y,cur_z));
@@ -28,7 +30,8 @@ Freepol.prototype.mouseMove=function(x,y){
 }
 
 /*
- Il metodo removePoint elimina dal set corrente il punto selezionato dall'utente.
+ Il metodo removePoint elimina dal set corrente il punto numero n.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente
  */
 Freepol.prototype.removePoint=function(n){
 //se il punto è un estremo
@@ -43,7 +46,7 @@ Freepol.prototype.removePoint=function(n){
 }
 
 /*
- Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultima polilinea modificata.
+ Il metodo getCurSet restituisce il set corrente di punti, cioè l'ultimo set selezionato.
  */
 Freepol.prototype.getCurSet=function(){
     if (!this.sets.get(cur_z)){
@@ -55,16 +58,18 @@ Freepol.prototype.getCurSet=function(){
     return this.sets.get(cur_z)[this.sets.get(cur_z).length-1];
 }
 
+/*
+ Elimina l'ultimo punto inserito.
+ */
 Freepol.prototype.removeLast=function(){
     this.getCurSet().pop();
 }
 
 /*
  Il metodo setCurSet imposta come corrente il set n della slice attuale.
- Il parametro n viene fornito dalla vista al click dell'utente.
- Il set corrente è sempre l'ultimo nella lista.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente.
+ Il set corrente è sempre l'ultimo nella lista dei set della slice corrente.
  */
-
 Freepol.prototype.setCurSet=function(n){
     this.drawed=0;
     var tmp=this.sets.get(cur_z)[n];
@@ -72,8 +77,9 @@ Freepol.prototype.setCurSet=function(n){
     this.sets.get(cur_z)[this.sets.get(cur_z).length-1]=tmp;
 }
 
+
 /*
- Il metodo endSet permette all'utente di specificare quando un disegno è finito.
+ Il metodo endSet permette di specificare quando un disegno è finito.
  */
 Freepol.prototype.endSet=function(){
     if (this.getCurSet().length>0){
@@ -85,27 +91,28 @@ Freepol.prototype.endSet=function(){
 
 /*
  Elimina il set n dalla slice corrente, cioè cancella la figura n.
+ Il parametro n viene fornito dalla cooperazione di vista e controller al click dell'utente.
  */
 Freepol.prototype.removeSet=function(n){
     this.sets.get(cur_z).remove(n);
 }
 
 /*
- Ritorna l'id dell'istanza del plugin all'interno dell'IDE.
+ Ritorna l'id univoco dell'istanza del plugin all'interno dell'IDE.
  */
 Freepol.prototype.getId=function(){
     return this.id;
 }
 
 /*
- Elimina il set corrente.
+ Elimina il set corrente, ovvero l'ultima figura selezionata.
  */
 Freepol.prototype.removeCurSet=function(){
     this.sets.get(cur_z).pop();
 }
 
 /*
- Restituisce il set corrente.
+ Restituisce il set n della slice corrente.
  */
 Freepol.prototype.getSet=function(n){
     return this.sets.get(cur_z)[n];
@@ -126,13 +133,14 @@ Freepol.prototype.getAllSets=function(){
 }
 
 /*
- Restituisce il tipo del plugin
+ Restituisce il nome del plugin
  */
 Freepol.prototype.toString=function(){
-    return "Freepol";
+    return this.name;
 }
+
 /*
- verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
+ Verifica se il set di punti fornito dall'utente è compatibile con il disegno da tracciare.
  Es: Un quadrato non può avere un set di più di quattro punti.
  */
 Freepol.prototype.isValidSet=function(set){
@@ -145,12 +153,16 @@ Freepol.prototype.isValidSet=function(set){
 
     return result;
 }
+
 /*
- Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin.
+ Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice z, dopo aver effettuato un controllo di compatibilità.
  */
 Freepol.prototype.addSet=function(set,z){
     var result=this.isValidSet(set);
     if (result){
+        if (!this.sets.get(z)){
+            this.sets.put(z,new Array());
+        }
         this.sets.get(z).push(set);
         this.drawed=0;
     }
@@ -158,7 +170,7 @@ Freepol.prototype.addSet=function(set,z){
 }
 
 /*
- Questa funzione decide se il plugin mostra o meno i punti tracciati.
+ Questa funzione,che restituisce true o false, decide se il plugin mostra o meno i punti tracciati.
  */
 Freepol.prototype.drawPoints=function(){
     if (cur_action=='draw' || cur_action=='drag')
@@ -168,7 +180,9 @@ Freepol.prototype.drawPoints=function(){
 }
 
 /*
- Il metodo draw disegna tutte le figure appartenenti al plugin nella slice corrente.
+ Il metodo draw disegna tutte le figure, appartenenti al plugin, della slice corrente.
+ Il parametro booleano light, indica se il metodo deve effettuare un disegno completo (!light) o selettivo/incrementale (light==true).
+ L'approccio selettivo/incrementale permette un drastico risparmio di risorse ma può essere utilizzato solo nei casi in cui la canvas mantiene dimensioni e posizione costanti.
  */
 Freepol.prototype.draw=function(light){
     //migliora le prestazioni
