@@ -140,46 +140,39 @@ function trackTransforms(ctx){
  */
 function selectPoint(x,y){
     var d=3;
-    var selected=false;
-    for (var n=0;n<plugins.length && !selected;n++){
+    var id_p=-1;
+    for (var n=0;n<plugins.length;n++){
         var tmp=plugins[n].getSets();
-        for (var i=0;i<tmp.length && !selected;i++){
+        for (var i=0;i<tmp.length;i++){
             var tmp2=tmp[i];
             var m=ctx.transformedPoint(x,y);
-            for (var z=0;z<tmp2.length && !selected;z++){
+            for (var z=0;z<tmp2.length;z++){
                 var p=tmp2[z];
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d) &&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     selected_point=p;
-                    selected=true;
                     plugins[n].setCurSet(i);
                     cur_plugin=plugins[n];
                     $('#web3d_plugins').val(cur_plugin.getId());
-                    drag=true;
+                    id_p=z;
                 }
             }
         }
     }
+    if (id_p>-1){
+        selected=true;
+        drag=true;
+    }
+    return id_p;
 }
+
 /*
  Come il metodo precedente, per l'operazione di cancellazione.
  */
 function deletePoint(x,y){
-    var selected=false;
-    var d=3;
-    for (var n=0;n<plugins.length && !selected;n++){
-        var tmp=plugins[n].getSets();
-        for (var i=0;i<tmp.length && !selected;i++){
-            var tmp2=tmp[i];
-            var m=ctx.transformedPoint(x,y);
-            for (var z=0;z<tmp2.length && !selected;z++){
-                var p=tmp2[z];
-                if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
-                    plugins[n].setCurSet(i);
-                    plugins[n].removePoint(z);
-                    drawAll();
-                }
-            }
-        }
+    var p=selectPoint(x,y);
+    if (p>-1){
+        cur_plugin.removePoint(p);
+        drawAll();
     }
 }
 
@@ -295,8 +288,8 @@ function getJson(){
 }
 
 /*
-Applica i disegni sulla slice corrente alla slice successiva.
-*/
+ Applica i disegni sulla slice corrente alla slice successiva.
+ */
 function applNext(){
     for (var n=0;n<plugins.length;n++){
         var sets=plugins[n].getSets();
