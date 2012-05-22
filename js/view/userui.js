@@ -294,7 +294,10 @@ function getJson(){
     }
 }
 
-function applSucc(){
+/*
+Applica i disegni sulla slice corrente alla slice successiva.
+*/
+function applNext(){
     for (var n=0;n<plugins.length;n++){
         var sets=plugins[n].getSets();
         for (var i=0;i<sets.length;i++){

@@ -180,6 +180,9 @@ Questa funzione implementa il sistema di selezione di punti basato sul modello s
 #####brightness(val) e contrast(val)
 Queste funzioni gestiscono la luminosità ed il contrasto.
 
+#####applNext()
+Applica i disegni sulla slice corrente alla slice successiva.
+
 ##Controller
 Il controller è composto dai file `main.js` e `web3d.js`.
 
