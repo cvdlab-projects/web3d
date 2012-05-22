@@ -41,10 +41,12 @@ Freepol.prototype.pathSempl=function(point){
         var m1=(p2.getX()-p1.getX())/(p2.getY()-p1.getY());
         var m2=(point.getX()-p1.getX())/(point.getY()-p1.getY());
 
-        if (m1!=m2)
-            this.getCurSet().push(point);
-        else
+        if (m1==m2){
+            this.getCurSet().pop();
+            this.drawed--;
             console.log('Punto semplificato!');
+        }
+        this.getCurSet().push(point);
     }
 }
 
