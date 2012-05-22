@@ -59,7 +59,7 @@
         <div class="clearBoth">
             Select a DICOM Slice:<br/>
             <input type="button" class="selectFrame" value="-1" disabled="disabled"/>
-            <input type="text" id="curFrame" value="0" style="width:25px;"/>
+            <input type="text" id="curFrame" value="0" style="width:25px;" onchange="cur_z=parseInt($(this).val());setBackground(cur_z);"/>
             <input type="button" class="selectFrame" value="+1"/>
         </div>
         <div class="clearBoth">

@@ -22,6 +22,9 @@ var lineColor="blue";
 var paint=false;
 var el_contrast;
 var el_brightness;
+var frame_start;
+var dicom;
+var num_frame;
 
 /*
 Configurazione modello 3D

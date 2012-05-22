@@ -44,6 +44,10 @@ function getPluginSelect(){
  Posiziona nella canvas l'immagine DICOM caricata.
  */
 function setBackground(i) {
+    if (i< 0 || i>num_frame){
+        alert("Slice selezionata non valida!");
+        return;
+    }
     clearCanvas();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     linewidth=1;
@@ -68,13 +72,13 @@ function setBackground(i) {
  Il metodo loadGeneralConf consente di leggere e inizializzare i parametri di configurazione della slice corrente.
  */
 function loadGeneralConf(){
-    var frame_start=parseInt(getParameterByName('start'))||0;
-    var dicom=getParameterByName('dicom');
-    var num=parseInt(getParameterByName('frames'));
+    frame_start=parseInt(getParameterByName('start'))||0;
+    dicom=getParameterByName('dicom');
+    num_frame=parseInt(getParameterByName('frames'));
     if (!dicom || dicom=="")
         alert('File dicom non selezionato');
     else{
-        for (var i=0;i<num;i++){
+        for (var i=0;i<=num_frame;i++){
             var url=url_dicom+"dicom_png.php?file="+dicom+"&frame="+(i+1+frame_start);
             var slice=new Slice();
             slice.setImg(url);
