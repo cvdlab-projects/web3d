@@ -7,7 +7,7 @@ var web3d_ide;
 var url_dicom="http://wbr1.webrobotics.net/infobio/dicom/";
 var canvas;
 var form;
-var cur_z=0;        // variabile che indica la slice corrente dell'immagine
+var cur_z= 0;        // variabile che indica la slice corrente dell'immagine
 var ctx;
 var scale;
 var backgrounds = new Array();

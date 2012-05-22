@@ -68,13 +68,14 @@ function setBackground(i) {
  Il metodo loadGeneralConf consente di leggere e inizializzare i parametri di configurazione della slice corrente.
  */
 function loadGeneralConf(){
+    var frame_start=parseInt(getParameterByName('start'))||0;
     var dicom=getParameterByName('dicom');
     var num=parseInt(getParameterByName('frames'));
     if (!dicom || dicom=="")
         alert('File dicom non selezionato');
     else{
         for (var i=0;i<num;i++){
-            var url=url_dicom+"dicom_png.php?file="+dicom+"&frame="+(i+1);
+            var url=url_dicom+"dicom_png.php?file="+dicom+"&frame="+(i+1+frame_start);
             var slice=new Slice();
             slice.setImg(url);
             backgrounds.push(slice);
