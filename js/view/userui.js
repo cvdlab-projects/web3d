@@ -140,15 +140,17 @@ function trackTransforms(ctx){
  */
 function selectPoint(x,y){
     var d=3;
-    for (var n=0;n<plugins.length;n++){
+    var selected=false;
+    for (var n=0;n<plugins.length && !selected;n++){
         var tmp=plugins[n].getSets();
-        for (var i=0;i<tmp.length;i++){
+        for (var i=0;i<tmp.length && !selected;i++){
             var tmp2=tmp[i];
             var m=ctx.transformedPoint(x,y);
-            for (var z=0;z<tmp2.length;z++){
+            for (var z=0;z<tmp2.length && !selected;z++){
                 var p=tmp2[z];
-                if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
+                if ((m.x>=p.getX()-d && m.x<=p.getX()+d) &&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     selected_point=p;
+                    selected=true;
                     plugins[n].setCurSet(i);
                     cur_plugin=plugins[n];
                     $('#web3d_plugins').val(cur_plugin.getId());
@@ -162,13 +164,14 @@ function selectPoint(x,y){
  Come il metodo precedente, per l'operazione di cancellazione.
  */
 function deletePoint(x,y){
+    var selected=false;
     var d=3;
-    for (var n=0;n<plugins.length;n++){
+    for (var n=0;n<plugins.length && !selected;n++){
         var tmp=plugins[n].getSets();
-        for (var i=0;i<tmp.length;i++){
+        for (var i=0;i<tmp.length && !selected;i++){
             var tmp2=tmp[i];
             var m=ctx.transformedPoint(x,y);
-            for (var z=0;z<tmp2.length;z++){
+            for (var z=0;z<tmp2.length && !selected;z++){
                 var p=tmp2[z];
                 if ((m.x>=p.getX()-d && m.x<=p.getX()+d)&&(m.y>=p.getY()-d && m.y<=p.getY()+d)){
                     plugins[n].setCurSet(i);
@@ -244,32 +247,34 @@ function drawAll(){
     clearCanvas();
     var i=cur_z;
     ctx.lineWidth = linewidth;
-    if (backgrounds[i].getBytecode()){
-        ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
-    }else{
-        backgrounds[i].setBytecode(new Image());
-        backgrounds[i].getBytecode().onload = function(){
-            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
-        }
-        backgrounds[i].getBytecode().src = backgrounds[i].getImg();
-    }
-    for (var n=0;n<plugins.length;n++){
-        plugins[n].draw();
-
-        if (plugins[n].drawPoints()){
-            var tmp=plugins[n].getSets();
-            for (var i=0;i<tmp.length;i++){
-                var tmp2=tmp[i];
-                for (var z=0;z<tmp2.length;z++){
-                    tmp2[z].draw();
+    var drawPluginsF=function(){
+        for (var n=0;n<plugins.length;n++){
+            plugins[n].draw();
+            if (plugins[n].drawPoints()){
+                var tmp=plugins[n].getSets();
+                for (var i=0;i<tmp.length;i++){
+                    var tmp2=tmp[i];
+                    for (var z=0;z<tmp2.length;z++){
+                        tmp2[z].draw();
+                    }
                 }
             }
         }
     }
+    if (backgrounds[i].getBytecode()){
+        ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+        drawPluginsF();
+    }else{
+        backgrounds[i].setBytecode(new Image());
+        backgrounds[i].getBytecode().onload = function(){
+            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+            drawPluginsF();
+        }
+        backgrounds[i].getBytecode().src = backgrounds[i].getImg();
+    }
     contrastStatic(parseInt(el_contrast.val()));
     brightnessStatic(parseInt(el_brightness.val()));
 }
-
 
 /*
  Ripristina la canvas alle condizioni iniziali.
@@ -281,11 +286,24 @@ function clearCanvas(){
     ctx.restore();
 }
 
-
 function getJson(){
     if (!$('#jsonarea').length){
         var json=JSON.stringify(new jsonWrap());
         $('body').append('<div id=\"jsonarea\"><div><input type="button" value="Aggiungi" onclick="jsonParser($(\'#jsonarea textarea\').val());drawAll();"/><input type="button" value="Chiudi" onclick="$(\'#jsonarea\').remove();"/></div><textarea>'+json+'</textarea></div>');
         $('#jsonarea').css("left",Math.floor(($('body').width()/2)-($('#jsonarea').width()/2)));
+    }
+}
+
+function applSucc(){
+    for (var n=0;n<plugins.length;n++){
+        var sets=plugins[n].getSets();
+        for (var i=0;i<sets.length;i++){
+            var tmp_set=new Array();
+            for (var k=0;k<sets[i].length;k++){
+                var p=new Point(sets[i][k].getX(),sets[i][k].getY(),sets[i][k].getZ());
+                tmp_set.push(p);
+            }
+            plugins[n].addSet(tmp_set,cur_z+1);
+        }
     }
 }

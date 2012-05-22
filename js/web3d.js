@@ -50,11 +50,14 @@ function setBackground(i) {
     if (backgrounds[i].getBytecode()){
         ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
     }else{
+        $('body').prepend('<div id="alert">Loading dicom image...</div>');
         backgrounds[i].setBytecode(new Image());
         backgrounds[i].getBytecode().onload = function(){
             backgrounds[i].setWidth(this.width);
             backgrounds[i].setHeight(this.height);
-            ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
+            $('#alert').remove();
+            drawAll();
+            //ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
         }
         backgrounds[i].getBytecode().src = backgrounds[i].getImg();
     }
@@ -78,24 +81,11 @@ function loadGeneralConf(){
         }
 
     }
-    /*
-     web3d_ide.find('img').each(function(){
-     var slice=new Slice();
-     slice.setImg($(this).attr('src'));
-     slice.setHeight($(this).attr('width'));
-     slice.setWidth($(this).attr('height'));
-     backgrounds.push(slice);
-     })
-     */
 }
 
 function getParameterByName(name) {
-
-    var match = RegExp('[?&]' + name + '=([^&]*)')
-        .exec(window.location.search);
-
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-
 }
 
 getWeb3d();
