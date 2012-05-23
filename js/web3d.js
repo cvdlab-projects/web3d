@@ -161,7 +161,6 @@ function eventsManager(){
             $(this).find("option[value=s]").remove();
 
             if (old_plugin){
-                old_plugin.endSet();
                 if (cur_action=='draw'){
                     old_plugin.endSet();
                 }else if (cur_action=='edit'){
