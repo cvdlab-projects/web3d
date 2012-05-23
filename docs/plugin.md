@@ -46,8 +46,8 @@ Il set corrente è sempre l'ultimo nella lista dei set della slice corrente.
 ####endSet()
 Il metodo endSet permette di specificare quando un disegno è finito.
 
-####addSet(set,z)
-Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice `z`, dopo aver effettuato un controllo di compatibilità.
+####addSet(set,z,force)
+Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice `z`, dopo aver effettuato un controllo di compatibilità evitabile con force settato a true.
 
 ####removeSet
 Elimina il set `n` dalla slice corrente, cioè cancella la figura `n`.

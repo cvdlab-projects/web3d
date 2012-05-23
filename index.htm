@@ -34,6 +34,9 @@
             <input type="button" class="actions" value="draw"/>
             <input type="button" class="actions" value="drag"/>
         </div>
+        <div class="clearBoth">
+            <input type="button" value="Cancella disegno" onclick="cur_plugin.removeCurSet();cur_plugin.endSet();drawAll();" />
+        </div>
         <div id="form-color">
             Points color: <input id="pointColor" class="color" value="FF0505"/><br/>
             Lines color: <input id="lineColor"  class="color" value="0008FF"/>
@@ -75,6 +78,7 @@
             Commenti:
             <textarea id="web3d-comment"></textarea>
         </div>
+        <div class="clearBoth" id="alert"></div>
     </div>
     <div></div>
 </div>

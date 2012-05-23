@@ -46,7 +46,8 @@ Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indir
 Nell'url è necessario specificare i seguenti parametri:
 * `dicom` - con il nome del file DICOM da manipolare;
 * `frames` - per indicare su quanti frames si vuole operare;
-* `start` - opzionale, indica la prima slice che ci interessa del dicom.
+* `start` - opzionale, indica la prima slice che ci interessa del dicom (default 0).
+* `slicesize` - opzionale, indica lo spessore di una sezione 3D (default 2).
 
 
 **Ora siete operativi!**

@@ -1,4 +1,4 @@
-/*
+﻿/*
 Definizione delle variabili globali comuni a tutto il progetto.
 Vengono inizializzati i plugin
  */
@@ -29,8 +29,8 @@ var num_frame;
 /*
 Configurazione modello 3D
 */
-var sliceSize=5;
-var backgroundColor=0x0000FF;
+var sliceSize;
+var backgroundColor=0x4FDCFF;
 
 /*
 ogni plugin è contenuto nella cartella plugins ed ha un suo file .js

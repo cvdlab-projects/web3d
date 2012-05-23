@@ -84,7 +84,7 @@ Polyline.prototype.setCurSet=function(n){
  Il metodo endSet permette di specificare quando un disegno è finito.
  */
 Polyline.prototype.endSet=function(){
-    if (this.getCurSet().length>0){
+    if (!this.getCurSet() || this.getCurSet().length>0){
         var p=new Array();
         this.sets.get(cur_z).push(p);
     }
@@ -93,9 +93,9 @@ Polyline.prototype.endSet=function(){
 /*
  Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice z, dopo aver effettuato un controllo di compatibilità.
  */
-Polyline.prototype.addSet=function(set,z){
+Polyline.prototype.addSet=function(set,z,force){
     var result=this.isValidSet(set);
-    if (result){
+    if (result || force){
         if (!this.sets.get(z)){
             this.sets.put(z,new Array());
         }

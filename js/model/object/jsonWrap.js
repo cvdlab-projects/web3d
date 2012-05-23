@@ -44,6 +44,7 @@ function jsonParser(string){
                                 tmp2.push(new Point(set1[l][lh].x,set1[l][lh].y,set1[l][lh].z));
                             }
                             plugins[n].addSet(tmp2,sets.keySet()[p]);
+                            plugins[n].addSet(new Array(),sets.keySet()[p],true);
                         }
                     }
                 }

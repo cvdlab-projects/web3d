@@ -48,18 +48,21 @@ function setBackground(i) {
         alert("Slice selezionata non valida!");
         return;
     }
+    if (cur_plugin){
+        cur_plugin.endSet();
+    }
     clearCanvas();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     linewidth=1;
     if (backgrounds[i].getBytecode()){
         ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
     }else{
-        $('body').prepend('<div id="alert">Loading dicom image...</div>');
+        $('#alert').html('Loading dicom image....');
         backgrounds[i].setBytecode(new Image());
         backgrounds[i].getBytecode().onload = function(){
             backgrounds[i].setWidth(this.width);
             backgrounds[i].setHeight(this.height);
-            $('#alert').remove();
+            $('#alert').html('');
             drawAll();
             //ctx.drawImage(backgrounds[i].getBytecode(), 0, 0, backgrounds[i].getWidth(), backgrounds[i].getHeight());
         }
@@ -74,6 +77,7 @@ function setBackground(i) {
 function loadGeneralConf(){
     frame_start=parseInt(getParameterByName('start'))||0;
     dicom=getParameterByName('dicom');
+    sliceSize=parseInt(getParameterByName('slicesize'))||2;
     num_frame=parseInt(getParameterByName('frames'));
     if (!dicom || dicom=="")
         alert('File dicom non selezionato');
@@ -157,6 +161,7 @@ function eventsManager(){
             $(this).find("option[value=s]").remove();
 
             if (old_plugin){
+                old_plugin.endSet();
                 if (cur_action=='draw'){
                     old_plugin.endSet();
                 }else if (cur_action=='edit'){
@@ -172,12 +177,14 @@ function eventsManager(){
     canvas.live('mouseup',function(event){
         drag=false;
         paint=false;
+        $('#alert').html('');
     });
 
     canvas.live('mousemove',function(event){
         if (paint==true && cur_action=='draw' && cur_plugin){
             var p = ctx.transformedPoint(event.offsetX , event.offsetY);
             cur_plugin.mouseMove(p.x,p.y);
+            $('#alert').html('x: '+p.x+' y: '+p.y);
         }
 
         if (drag==true && cur_action=='edit'){
@@ -185,6 +192,7 @@ function eventsManager(){
             selected_point.setX(p.x);
             selected_point.setY(p.y);
             drawAll();
+            $('#alert').html('x: '+p.x+' y: '+p.y);
         }
     });
 

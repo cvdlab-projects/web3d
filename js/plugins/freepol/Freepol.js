@@ -35,19 +35,17 @@ Freepol.prototype.mouseMove=function(x,y){
 Freepol.prototype.pathSempl=function(point){
     var p1=this.getCurSet()[this.getCurSet().length-1];
     var p2=this.getCurSet()[this.getCurSet().length-2];
-    if (!p1 || !p2)
-        this.getCurSet().push(point);
-    else{
+    if (p1 && p2){
         var m1=(p2.getX()-p1.getX())/(p2.getY()-p1.getY());
         var m2=(point.getX()-p1.getX())/(point.getY()-p1.getY());
 
-        if (m1==m2){
+        if (m1==m2 || -m1==m2){
             this.getCurSet().pop();
             this.drawed--;
             console.log('Punto semplificato!');
         }
-        this.getCurSet().push(point);
     }
+    this.getCurSet().push(point);
 }
 
 /*
@@ -103,7 +101,7 @@ Freepol.prototype.setCurSet=function(n){
  Il metodo endSet permette di specificare quando un disegno è finito.
  */
 Freepol.prototype.endSet=function(){
-    if (this.getCurSet().length>0){
+    if (!this.getCurSet() || this.getCurSet().length>0){
         var p=new Array();
         this.sets.get(cur_z).push(p);
         this.drawed=0;
@@ -178,9 +176,9 @@ Freepol.prototype.isValidSet=function(set){
 /*
  Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice z, dopo aver effettuato un controllo di compatibilità.
  */
-Freepol.prototype.addSet=function(set,z){
+Freepol.prototype.addSet=function(set,z, force){
     var result=this.isValidSet(set);
-    if (result){
+    if (result || force){
         if (!this.sets.get(z)){
             this.sets.put(z,new Array());
         }

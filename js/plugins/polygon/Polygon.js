@@ -93,16 +93,18 @@ Polygon.prototype.setCurSet=function(n){
  Il metodo endSet permette di specificare quando un disegno è finito.
  */
 Polygon.prototype.endSet=function(){
-    var p=new Array();
-    this.sets.get(cur_z).push(p);
+    if (!this.getCurSet() || this.getCurSet().length>0){
+        var p=new Array();
+        this.sets.get(cur_z).push(p);
+    }
 }
 
 /*
  Il metodo addSet viene utilizzato per aggiungere set completi, anche provenienti da altri plugin, alla slice z, dopo aver effettuato un controllo di compatibilità.
  */
-Polygon.prototype.addSet=function(set,z){
+Polygon.prototype.addSet=function(set,z,force){
     var result=this.isValidSet(set);
-    if (result){
+    if (result || force){
         if (!this.sets.get(z)){
             this.sets.put(z,new Array());
         }
@@ -115,13 +117,6 @@ Polygon.prototype.addSet=function(set,z){
  Elimina il set corrente, ovvero l'ultima figura selezionata.
  */
 Polygon.prototype.removeCurSet=function(){
-    this.sets.get(cur_z).pop();
-}
-
-/*
- Elimina il set corrente.
- */
-Polyline.prototype.removeCurSet=function(){
     this.sets.get(cur_z).pop();
 }
 

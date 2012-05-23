@@ -139,7 +139,7 @@ function trackTransforms(ctx){
  senza ricorrere alla rappresentazione con elementi HTML.
  */
 function selectPoint(x,y){
-    var d=3;
+    var d=1;
     var id_p=-1;
     for (var n=0;n<plugins.length;n++){
         var tmp=plugins[n].getSets();
@@ -161,6 +161,9 @@ function selectPoint(x,y){
     if (id_p>-1){
         selected=true;
         drag=true;
+    }else{
+        selected=false;
+        $('#alert').html('');
     }
     return id_p;
 }
@@ -181,7 +184,6 @@ function contrast(val) {
     if (val==true)
         adjustment=2;
     contrastStatic(adjustment);
-
 }
 
 function contrastStatic(adjustment) {
