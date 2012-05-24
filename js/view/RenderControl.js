@@ -1,15 +1,20 @@
 ﻿var is3d=false;
 var renderItem;
 
+$('#backgroundColor').live('change',function(){
+        backgroundColor=$(this).val();
+});
+
 function init3D()
 {
     if (is3d)
+	{
         release3D();
-    else{
+    }
+	else{
         is3d=true;
         $('#web3d-ide-canvas').css("display","none");
         $('#web3d-3d-button').val("Chiudi 3D");
-
         renderItem = new RenderControl('web3d-ide-container',1024,768,  sliceSize);
         animate();
     }
@@ -47,11 +52,13 @@ function RenderControl(tagName,width,height, size) {
     this.camera.position.y = 0;
     this.camera.position.x = 0;
     this.scene.add(this.camera);
-
+	
+	backgroundColor=$('#backgroundColor').val();
+	
     this.renderer = new THREE.WebGLRenderer({
         antialias: false,
         canvas: document.createElement( 'canvas' ),
-        clearColor: backgroundColor,
+        clearColor: '0x' + backgroundColor,
         clearAlpha: 1,
         maxLights: 1,
         stencil: true,
@@ -99,7 +106,7 @@ RenderControl.prototype.SetShape = function (polylines, size) {
 }
 
 RenderControl.prototype.AddStrato = function (points, z, size,level) {
-    if(points==null || points.length==0)
+    if(points==null || points.length<3)
         return;
 
     var texture = THREE.ImageUtils.loadTexture(backgrounds[level].getImg());
@@ -165,12 +172,13 @@ RenderControl.prototype.AddStrato = function (points, z, size,level) {
 
 
 function animate() {
+	
     requestAnimationFrame(this.animate);
     renderItem.render();
 }
 
 RenderControl.prototype.render = function () {
-
+	this.renderer.setClearColorHex('0x' + backgroundColor, 1);
     this.trackball.update();
     this.renderer.render(this.scene, this.camera,null,true);
 }
