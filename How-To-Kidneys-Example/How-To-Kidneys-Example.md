@@ -1,10 +1,11 @@
-HOW TO KIDNEYS EXAMPLE
+HOW-TO KIDNEYS EXAMPLE
 ======================
 
 ## Step 1
 
-Dopo aver caricato il file multislicer DICOM sul server di riferimento (http://wbr1.webrobotics.net/infobio/?dicom=example6.dcm&start=19&frames=47&slicesize=1 ), si è iniziato a lavorare sull’oggetto di nostro interesse (nel nostro caso i Reni).
-Per prima cosa , una volta aperta la slice di partenza, tramite la funzionalità di zoom (implementata con lo scroll del mouse) si è potuto focalizzare il nostro interesse sull’oggetto su cui volevamo lavorare centrandolo inoltre nella CANVAS tramite il comando DRAG.
+Prima di iniziare questo esempio, si è caricato il file multislicer DICOM sul server di riferimento all'indirizzo:
+http://wbr1.webrobotics.net/infobio/?dicom=example6.dcm&start=19&frames=47&slicesize=1 
+Successivamente, si è iniziato a lavorare sull’oggetto di nostro interesse (nel nostro caso i Reni), aprendo dapprima la slice di partenza, e successivamente ,tramite la funzionalità di zoom (implementata con lo scroll del mouse) si è potuto focalizzare il nostro interesse sull’oggetto su cui volevamo lavorare centrandolo inoltre nella CANVAS tramite il comando DRAG.
 FIGURA 1
 
 ## Step 2
