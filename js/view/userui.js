@@ -139,7 +139,7 @@ function trackTransforms(ctx){
  senza ricorrere alla rappresentazione con elementi HTML.
  */
 function selectPoint(x,y){
-    var d=1;
+    var d=1.2;
     var id_p=-1;
     for (var n=0;n<plugins.length;n++){
         var tmp=plugins[n].getSets();

@@ -23,18 +23,19 @@ function getWeb3d(){
 
     setBackground(cur_z);
     eventsManager();
+    $('.form-3d').hide();
 }
 
 /*
  Il metodo getPluginSelect posiziona i pulsanti di input nell'IDE per la selezione del plug-in.
  */
 function getPluginSelect(){
-    var out='Select plugin: <select id=\"web3d_plugins\">';
+    var out='<div class=\"clearBoth form-2d\">Select plugin: <select id=\"web3d_plugins\">';
     out+='<option value="s">Select..</option>';
     for (var n=0;n<plugins.length;n++) {
         out+='<option value="'+n+'">'+plugins[n].toString()+'</option>';
     }
-    out+='</select>';
+    out+='</select></div>';
     return out;
 }
 
@@ -77,7 +78,7 @@ function setBackground(i) {
 function loadGeneralConf(){
     frame_start=parseInt(getParameterByName('start'))||0;
     dicom=getParameterByName('dicom');
-    sliceSize=parseInt(getParameterByName('slicesize'))||2;
+    sliceSize=parseInt($('#sliceSize').val())||2;
     num_frame=parseInt(getParameterByName('frames'));
     if (!dicom || dicom=="")
         alert('File dicom non selezionato');
@@ -133,6 +134,18 @@ function eventsManager(){
     $('#pointColor').live('change',function(){
         pointColor=$(this).val();
         drawAll();
+    });
+
+    $('#backgroundColor').live('change',function(){
+        backgroundColor=$(this).val();
+    });
+
+    $('#sliceSize').live('change',function(){
+        sliceSize=$(this).val();
+        if (is3d){
+            init3D();
+            init3D();
+        }
     });
 
     $('.selectFrame').live('click',function(){
