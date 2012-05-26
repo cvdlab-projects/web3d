@@ -1,4 +1,4 @@
-﻿﻿var is3d=false;
+﻿var is3d=false;
 var renderItem;
 var checked=false;
 

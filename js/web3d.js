@@ -126,7 +126,7 @@ function eventsManager(){
         lineColor=$(this).val();
         drawAll();
     });
-	
+
     $('#web3d-comment').live('change',function(){
         backgrounds[cur_z].setComment($(this).val());
     });
