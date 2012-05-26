@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/lib/map/HashMap.js"></script>
+    <script src="js/lib/three/Three.js"></script>
+    <script src="js/lib/json/json2.js"></script>
+    <script src="js/model/object/Point.js"></script>
+    <script src="js/model/object/Slice.js"></script>
+    <script src="js/model/object/jsonWrap.js"></script>
+    <script src="js/lib/jscolor/jscolor.js"></script>
+    <script src="js/plugins/polyline/Polyline.js"></script>
+    <script src="js/plugins/polygon/Polygon.js"></script>
+    <script src="js/plugins/freepol/Freepol.js"></script>
+    <script src="js/main.js"></script>
+    <title>Progetto Biomedica - web3d</title>
+
+</head>
+
+
+<body>
+
+<div id="web3d-ide">
+    <div id="web3d-ide-container">
+        <canvas id="web3d-ide-canvas" width="1024" height="768">Your browser doesn't support HTML5 Canvas.</canvas>
+    </div>
+    <div id="form-div">
+        <div class="clearBoth  form-2d">
+            <input type="button" class="actions" value="edit"/>
+            <input type="button" class="actions" value="delete"/><br/>
+            <input type="button" class="actions" value="draw"/>
+            <input type="button" class="actions" value="drag"/>
+        </div>
+        <div class="clearBoth  form-2d">
+            <input type="button" value="Cancella disegno" onclick="cur_plugin.removeCurSet();cur_plugin.endSet();drawAll();" />
+        </div>
+        <div id="form-color" class="form-2d">
+            Points color: <input id="pointColor" class="color" value="FF0505"/><br/>
+            Lines color: <input id="lineColor"  class="color" value="0008FF"/>
+        </div>
+        <div class="clearBoth form-2d">
+            Contrast:
+            <input type="button" class="inpsel" value="-2"  onclick="contrast(false);"/>
+            <input type="text" id="contrast" value="0" style="width:25px;"/>
+            <input type="button" class="inpsel" value="+2" onclick="contrast(true);"/>
+        </div>
+        <div class="clearBoth form-2d">
+            Threshold:
+            <input type="button" class="inpsel" value="-1"/>
+            <input type="text" id="threshold" value="50" style="width:25px;"/>
+            <input type="button" class="inpsel" value="+1"/>
+        </div>
+        <div class="clearBoth form-2d">
+            Brightness:
+            <input type="button" class="inpsel" value="-1" onclick="brightness(false);"/>
+            <input type="text" id="brightness" value="0" style="width:25px;"/>
+            <input type="button" class="inpsel" value="+1" onclick="brightness(true);"/>
+        </div>
+        <div class="clearBoth form-2d">
+            Select a DICOM Slice:<br/>
+            <input type="button" class="selectFrame" value="-1" disabled="disabled"/>
+            <input type="text" id="curFrame" value="0" style="width:25px;" onchange="cur_z=parseInt($(this).val());setBackground(cur_z);"/>
+            <input type="button" class="selectFrame" value="+1"/>
+        </div>
+        <div class="clearBoth form-2d">
+            <input type="button" value="Applica a successiva" onclick="applNext()" />
+        </div>
+        <div class="clearBoth">
+            <input type="button" id="web3d-3d-button" value="Apri 3D" onclick="init3D();"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Colore di sfondo:
+            <input id="backgroundColor"  class="color" value="4FDCFF"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Spessore slice:
+            <input type="text" id="sliceSize" value="1" style="width:25px;"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Modo 3D:<br/>
+            <input type="radio" name="mode3D" value="Riempimento" onclick="ChangeMode(false);" checked="checked"/> Riempimento<br/>
+            <input type="radio" name="mode3D" value="Contorno" onclick="ChangeMode(true);"/> Contorno
+        </div>
+        <div class="clearBoth">
+            <input type="button" value="Json editor" onclick="getJson();" />
+        </div>
+        <div class="clearBoth">
+            Commenti:
+            <textarea id="web3d-comment"></textarea>
+        </div>
+        <div class="clearBoth" id="alert"></div>
+    </div>
+    <div></div>
+</div>
+<div id="settings" style="display:none;">
+    <div><label for="scrollingX">ScrollingX: </label><input type="checkbox" id="scrollingX" checked/></div>
+    <div><label for="scrollingY">ScrollingY: </label><input type="checkbox" id="scrollingY" checked/></div>
+    <div><label for="animating">Animating: </label><input type="checkbox" id="animating" checked/></div>
+    <div><label for="bouncing">Bouncing: </label><input type="checkbox" id="bouncing" checked/></div>
+    <div><label for="locking">Locking: </label><input type="checkbox" id="locking" checked/></div>
+
+    <div><label for="zooming">Zooming: </label><input type="checkbox" id="zooming" checked/></div>
+    <div><label for="minZoom">Min Zoom: </label><input type="text" id="minZoom" size="5" value="0.5"/></div>
+    <div><label for="maxZoom">Max Zoom: </label><input type="text" id="maxZoom" size="5" value="3"/></div>
+    <div><label for="zoomLevel">Zoom Level: </label><input type="text" id="zoomLevel" size="5"/></div>
+    <div><button id="zoom">Zoom to Level</button><button id="zoomIn">+</button><button id="zoomOut">-</button></div>
+
+    <div><label for="scrollLeft">Scroll Left: </label><input type="text" id="scrollLeft" size="9"/></div>
+    <div><label for="scrollTop">Scroll Top: </label><input type="text" id="scrollTop" size="9"/></div>
+    <div><button id="scrollTo">Scroll to Coords</button></div>
+
+    <div><button id="scrollByUp">&uarr;</button><button id="scrollByDown">&darr;</button><button id="scrollByLeft">&larr;</button><button id="scrollByRight">&rarr;</button></div>
+</div>
+<script src="js/view/userui.js"></script>
+<script src="js/view/RenderControl.js"></script>
+<script src="js/web3d.js"></script>
+</body>
+</html>
