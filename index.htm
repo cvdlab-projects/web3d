@@ -28,52 +28,61 @@
         <canvas id="web3d-ide-canvas" width="1024" height="768">Your browser doesn't support HTML5 Canvas.</canvas>
     </div>
     <div id="form-div">
-        <div class="clearBoth">
+        <div class="clearBoth  form-2d">
             <input type="button" class="actions" value="edit"/>
             <input type="button" class="actions" value="delete"/><br/>
             <input type="button" class="actions" value="draw"/>
             <input type="button" class="actions" value="drag"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth  form-2d">
             <input type="button" value="Cancella disegno" onclick="cur_plugin.removeCurSet();cur_plugin.endSet();drawAll();" />
         </div>
-        <div id="form-color">
+        <div id="form-color" class="form-2d">
             Points color: <input id="pointColor" class="color" value="FF0505"/><br/>
             Lines color: <input id="lineColor"  class="color" value="0008FF"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth form-2d">
             Contrast:
             <input type="button" class="inpsel" value="-2"  onclick="contrast(false);"/>
             <input type="text" id="contrast" value="0" style="width:25px;"/>
             <input type="button" class="inpsel" value="+2" onclick="contrast(true);"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth form-2d">
             Threshold:
             <input type="button" class="inpsel" value="-1"/>
             <input type="text" id="threshold" value="50" style="width:25px;"/>
             <input type="button" class="inpsel" value="+1"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth form-2d">
             Brightness:
             <input type="button" class="inpsel" value="-1" onclick="brightness(false);"/>
             <input type="text" id="brightness" value="0" style="width:25px;"/>
             <input type="button" class="inpsel" value="+1" onclick="brightness(true);"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth form-2d">
             Select a DICOM Slice:<br/>
             <input type="button" class="selectFrame" value="-1" disabled="disabled"/>
             <input type="text" id="curFrame" value="0" style="width:25px;" onchange="cur_z=parseInt($(this).val());setBackground(cur_z);"/>
             <input type="button" class="selectFrame" value="+1"/>
         </div>
-        <div class="clearBoth">
+        <div class="clearBoth form-2d">
             <input type="button" value="Applica a successiva" onclick="applNext()" />
         </div>
-		
-		<div class="clearBoth">
-		<br/>
-		 
-            <input type="button" id="web3d-3d-button" value="Apri 3D" onclick="init3D();" />
-			<input id="backgroundColor"  class="color" value="0000FF"/>
+        <div class="clearBoth">
+            <input type="button" id="web3d-3d-button" value="Apri 3D" onclick="init3D();"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Colore di sfondo:
+            <input id="backgroundColor"  class="color" value="4FDCFF"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Spessore slice:
+            <input type="text" id="sliceSize" value="1" style="width:25px;"/>
+        </div>
+        <div class="clearBoth form-3d">
+            Modo 3D:<br/>
+            <input type="radio" name="mode3D" value="Riempimento" onclick="ChangeMode(false);" checked="checked"/> Riempimento<br/>
+            <input type="radio" name="mode3D" value="Contorno" onclick="ChangeMode(true);"/> Contorno
         </div>
         <div class="clearBoth">
             <input type="button" value="Json editor" onclick="getJson();" />
