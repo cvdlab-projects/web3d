@@ -2,28 +2,39 @@
 var renderItem;
 var checked=false;
 
-function ChangeMode(mode){
-    checked=mode;
-    init3D();
-    init3D();
+	$('#backgroundColor').live('change',function(){
+        backgroundColor=$(this).val();
+	});
+
+
+  function mousewheel( event )
+  {
+      renderItem.camera.translateZ( event.wheelDeltaY );
+  }
+
+function ChangeMode()
+{
+	checked=!checked;
+	if(!checked)
+		$('#mode3D').val("Riempimento");
+	else
+		$('#mode3D').val("Contorno");
 }
 
 function init3D()
 {
     if (is3d)
-    {
+	{
         release3D();
-        $('.form-3d').hide();
-        $('.form-2d').show();
     }
-    else{
+	else{
         is3d=true;
-        $('.form-3d').show();
-        $('.form-2d').hide();
         $('#web3d-ide-canvas').css("display","none");
         $('#web3d-3d-button').val("Chiudi 3D");
-        renderItem = new RenderControl('web3d-ide-container',1024,768);
+        renderItem = new RenderControl('web3d-ide-container',1024,768,  sliceSize);
         animate();
+		
+		
     }
 }
 
@@ -36,7 +47,7 @@ function release3D()
     $('#canvas3D').remove();
 }
 
-function RenderControl(tagName,width,height) {
+function RenderControl(tagName,width,height, size) {
 
     this.camera;
     this.scene;
@@ -59,9 +70,9 @@ function RenderControl(tagName,width,height) {
     this.camera.position.y = 0;
     this.camera.position.x = 0;
     this.scene.add(this.camera);
-
-    backgroundColor=$('#backgroundColor').val();
-
+	
+	backgroundColor=$('#backgroundColor').val();
+	
     this.renderer = new THREE.WebGLRenderer({
         antialias: false,
         canvas: document.createElement( 'canvas' ),
@@ -79,13 +90,14 @@ function RenderControl(tagName,width,height) {
 
 
     tag.appendChild(this.renderer.domElement);
-
+	size=$('#sliceSize').val();
+	
     for(i=0;i<3;i++)
     {
         var polylines = plugins[i].getAllSets();
 
         if (polylines != null)
-            this.SetShape(polylines, sliceSize);
+            this.SetShape(polylines, size);
     }
 
     cx=this.curX/this.totP;
@@ -93,9 +105,11 @@ function RenderControl(tagName,width,height) {
 
     this.trackball.target.set( cx, cy, 0 );
 
+	this.renderer.domElement.addEventListener('DOMMouseScroll', mousewheel, false);
+	this.renderer.domElement.addEventListener('mousewheel', mousewheel, false);
 }
 
-RenderControl.prototype.SetShape = function (polylines, sliceSize) {
+RenderControl.prototype.SetShape = function (polylines, size) {
     var i;
     var j;
     for (i = 0; i < polylines.size(); i++) {
@@ -104,11 +118,12 @@ RenderControl.prototype.SetShape = function (polylines, sliceSize) {
         {
             for(j = 0; j < cur.length;j++)
             {
-                if (checked)
-                    this.AddLayer(cur[j], i * sliceSize, sliceSize);
-                else
-                    this.AddStrato(cur[j], i * sliceSize, sliceSize,i);
-
+				checked=false;
+				if (checked) 
+					this.AddLayer(cur[j], i * size, size);
+				else
+					this.AddStrato(cur[j], i * size, size,i);
+				
             }
         }
     }
@@ -116,63 +131,63 @@ RenderControl.prototype.SetShape = function (polylines, sliceSize) {
 
 }
 
-RenderControl.prototype.AddLayer=function(points,z)
+RenderControl.prototype.AddLayer=function(points,z,size)
 {
-    if(points==null || points.length<3)
+   if(points==null || points.length<3)
         return;
+	
+	
+	var path = new THREE.Geometry();
 
-
-    var path = new THREE.Geometry();
-
-    var i;
-    for(i=0;i<points.length-1;i++)
-    {
-        var v1 = new THREE.Vector3(points[i].getX(),points[i].getY(),0);
-        var v2 = new THREE.Vector3(points[i+1].getX(),points[i+1].getY(),0);
-        var v4 = new THREE.Vector3(points[i].getX(),points[i].getY(),sliceSize);
-        var v3 = new THREE.Vector3(points[i+1].getX(),points[i+1].getY(),sliceSize);
-
-        path.vertices.push(v1);
-        path.vertices.push(v2);
-        path.vertices.push(v3);
-        path.vertices.push(v4);
-
-        path.faces.push( new THREE.Face4( i*4+0, i*4+1, i*4+2,i*4+3 ) );
-    }
-
-    i=points.length-1;
-    var v1 = new THREE.Vector3(points[i].getX(),points[i].getY(),0);
-    var v2 = new THREE.Vector3(points[0].getX(),points[0].getY(),0);
-    var v4 = new THREE.Vector3(points[i].getX(),points[i].getY(),sliceSize);
-    var v3 = new THREE.Vector3(points[0].getX(),points[0].getY(),sliceSize);
-
-    path.vertices.push(v1);
-    path.vertices.push(v2);
-    path.vertices.push(v3);
-    path.vertices.push(v4);
-
-    path.faces.push( new THREE.Face4( i*4+0, i*4+1, i*4+2,i*4+3 ) );
-
-
-    for(i=0;i<points.length;i++)
+	var i;
+	for(i=0;i<points.length-1;i++)
+	{
+		var v1 = new THREE.Vector3(points[i].getX(),points[i].getY(),0);
+		var v2 = new THREE.Vector3(points[i+1].getX(),points[i+1].getY(),0);
+		var v4 = new THREE.Vector3(points[i].getX(),points[i].getY(),size);
+		var v3 = new THREE.Vector3(points[i+1].getX(),points[i+1].getY(),size);
+		
+		path.vertices.push(v1);
+		path.vertices.push(v2);
+		path.vertices.push(v3);
+		path.vertices.push(v4);
+		
+		path.faces.push( new THREE.Face4( i*4+0, i*4+1, i*4+2,i*4+3 ) );		
+	}
+	
+	i=points.length-1;
+	var v1 = new THREE.Vector3(points[i].getX(),points[i].getY(),0);
+	var v2 = new THREE.Vector3(points[0].getX(),points[0].getY(),0);
+	var v4 = new THREE.Vector3(points[i].getX(),points[i].getY(),size);
+	var v3 = new THREE.Vector3(points[0].getX(),points[0].getY(),size);
+		
+	path.vertices.push(v1);
+	path.vertices.push(v2);
+	path.vertices.push(v3);
+	path.vertices.push(v4);
+		
+	path.faces.push( new THREE.Face4( i*4+0, i*4+1, i*4+2,i*4+3 ) );
+		
+	
+	for(i=0;i<points.length;i++)
     {
         this.curX+=points[i].getX();
         this.curY+=points[i].getY();
         this.totP++;
     }
-
-    var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+	
+	var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
     path.computeFaceNormals();
-
-
+	
+	
     var mesh = new THREE.Mesh( path, material );
     mesh.position.z = z;
     mesh.doubleSided=true;
-    this.scene.add(mesh);
-
+	this.scene.add(mesh);
+	
 }
 
-RenderControl.prototype.AddStrato = function (points, z,level) {
+RenderControl.prototype.AddStrato = function (points, z, size,level) {
     if(points==null || points.length<3)
         return;
 
@@ -206,7 +221,7 @@ RenderControl.prototype.AddStrato = function (points, z,level) {
     }
     var shapes = path.toShapes();
 
-    var solid = new THREE.ExtrudeGeometry(shapes, { amount: sliceSize, bevelEnabled: false,
+    var solid = new THREE.ExtrudeGeometry(shapes, { amount: size, bevelEnabled: false,
         extrudeMaterial: 0,
         material: 1
     });
@@ -239,13 +254,13 @@ RenderControl.prototype.AddStrato = function (points, z,level) {
 
 
 function animate() {
-
+	
     requestAnimationFrame(this.animate);
     renderItem.render();
 }
 
 RenderControl.prototype.render = function () {
-    this.renderer.setClearColorHex('0x' + backgroundColor, 1);
+	this.renderer.setClearColorHex('0x' + backgroundColor, 1);
     this.trackball.update();
     this.renderer.render(this.scene, this.camera,null,true);
 }
