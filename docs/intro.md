@@ -41,13 +41,12 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 * Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
 
 ##Come iniziare
-Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://wbr1.webrobotics.net/infobio/](http://wbr1.webrobotics.net/infobio/?dicom=example.dcm&frames=133 "infobio webrobotics.net").
+Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://web3d.dia.uniroma3.it](http://web3d.dia.uniroma3.it/?dicom=example.dcm&frames=20 "web3d sul dia").
 
 Nell'url è necessario specificare i seguenti parametri:
 * `dicom` - con il nome del file DICOM da manipolare;
 * `frames` - per indicare su quanti frames si vuole operare;
 * `start` - opzionale, indica la prima slice che ci interessa del dicom (default 0).
-* `slicesize` - opzionale, indica lo spessore di una sezione 3D (default 2).
 
 
 **Ora siete operativi!**
@@ -66,12 +65,15 @@ E' importante ricordare le seguenti operazioni con il mouse:
 * `doppio click` - chiusura di un set durante un'azione di **draw**;
 * `scroll` - effettua zoom-in e zoom-out su tutta l'area di lavoro.
 
-Altri strumenti messi a disposizione:
+Alcuni degli strumenti messi a disposizione:
 * `Contrast` - varia il constrasto dell'immagine;
 * `Threshold` - varia la soglia di contrasto. Agendo sulla soglia e poi sul contrasto si possono schiarire i toni chiari e scurire i toni scuri. La soglia nello specifico identifica la sensibilità di selezione dei toni. Il valore di default, 50, è un ottimo compromesso per una immagine DICOM;
 * `Brightness` - varia la luminosità dell'immagine;
 * `Colore dei punti` - varia il colore dei punti con un comodo color picker;
 * `Colore delle linee` - varia il colore delle linee con un comodo color picker.
+* `Applica a successiva` - applica i disegni correnti alla slice successiva.
+* `Apri 3D` - ottieni il modello 3D.
+* `Json editor` - ottieni il json del modello oppure recupera/aggiungi una sessione di lavoro precedente.
 
 ##Autori
 Gli autori di questo progetto sono:
