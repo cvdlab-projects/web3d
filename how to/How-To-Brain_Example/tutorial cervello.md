@@ -32,21 +32,21 @@ Polyline consente di costruire una linea spezzata, i cui punti vengono impressi 
 Analogamente, Polygon permette di generare una figura geometrica che si richiude su se stessa automaticamente, sfruttando le polilinee.
 Infine, Freepol costituisce il disegno a mano libera. 
 
-![Figura 2 Polyline](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura2.png)
+![Figura 2 Polyline](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura2.png?raw=true)
 
-![Figura 3 Polygon](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura3.png)
+![Figura 3 Polygon](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura3.png?raw=true)
 
-![Figura 4 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura4.png)
+![Figura 4 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura4.png?raw=true)
 
 Punti e linee hanno colori diversi per garantire una maggiore visibilità, ed essi possono essere modificati a piacimento
 inserendo nell'apposita casella il relativo codice esadecimale.
 
-![Figura 5 Color selection]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura5.png)
+![Figura 5 Color selection](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura5.png?raw=true)
 
 #Iniziamo a disegnare
 Eseguiti i passi elencati nelle sezioni precedenti è sufficiente scegliere dal menù a tendina `Select plugin` la tipologia di disegno da effettuare e quindi cliccare sul tasto `draw`. Data la complessità geometrica del profilo dell'encefalo, è consigliabile  di avvalersi del disegno a mano libera freepol.
 
-![Figura 6 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura6.png)
+![Figura 6 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura6.png?raw=true)
 
 Come si vede nella figura, il profilo è molto accurato e le curve tracciate sono fluide e continue, grazie all'impiego di un numero elevato di punti rispetto alle altre due modalità operative. Si può osservare che tra questi ultimi sono stati eliminati quelli superflui, garantendo il risparmio delle risorse impiegate e preservando la qualità.
 Una volta terminato il disegno, è necessario effettuare un doppio click in prossimità dell'ultimo punto tracciato; senza questa operazione, la figura non si riterrà conclusa e un eventuale nuovo punto verrà congiunto all'insieme esistente.
