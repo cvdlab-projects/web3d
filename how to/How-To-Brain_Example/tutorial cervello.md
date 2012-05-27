@@ -69,6 +69,9 @@ Cliccare sul tasto `delete`, quindi cliccare sui punti da eliminare. La linea ve
 ###Cancellazione della figura
 Cliccare su `cancella disegno` e verrà eliminata l'ultima figura inserita.
 
+#Il modello 3d
+Le indagini diagnostiche di TC e MR consistono in una scansione progressiva perpendicolare al piano di appoggio della parte anatomica sotto esame, in modo tale che questa venga 'affettata' in modo più o meno fitto dipendentemente dalla risoluzione spaziale desiderata.
+In questo modo si ottengono le slice di cui si è parlato finora; allineando le slice tra loro e presentandole in sequenza è possibile ottenere una figura solida che approssima il volume dell'organo considerato.
 
 
 
