@@ -114,7 +114,7 @@ RenderControl.prototype.SetShape = function (polylines) {
                 if (checked)
                     this.AddLayer(cur[j], i * sliceSize);
                 else
-                    this.AddStrato(cur[j], i * sliceSize,i);
+                    this.AddStrato(cur[j], i * sliceSize, i);
 
             }
         }
@@ -179,14 +179,14 @@ RenderControl.prototype.AddLayer=function(points,z)
 
 }
 
-RenderControl.prototype.AddStrato = function (points, z,level) {
+RenderControl.prototype.AddStrato = function (points, z, level) {
     if(points==null || points.length<3)
         return;
 
     var texture = THREE.ImageUtils.loadTexture(backgrounds[level].getImg());
 
-    var wx = backgrounds[level].getWidth();
-    var wy = backgrounds[level].getHeight();
+    var wx = backgrounds[0].getWidth();
+    var wy = backgrounds[0].getHeight();
 
 
     var material = new THREE.MeshBasicMaterial({map: texture});
@@ -237,13 +237,7 @@ RenderControl.prototype.AddStrato = function (points, z,level) {
     var mesh = new THREE.Mesh(solid, material);
     mesh.position.z = z;
     this.scene.add(mesh);
-
-
-
 }
-
-
-
 
 function animate() {
 
