@@ -90,7 +90,7 @@ function RenderControl(tagName,width,height) {
         var polylines = plugins[i].getAllSets();
 
         if (polylines != null)
-            this.SetShape(polylines, sliceSize);
+            this.SetShape(polylines);
     }
 
     cx=this.curX/this.totP;
@@ -102,7 +102,7 @@ function RenderControl(tagName,width,height) {
 
 }
 
-RenderControl.prototype.SetShape = function (polylines, sliceSize) {
+RenderControl.prototype.SetShape = function (polylines) {
     var i;
     var j;
     for (i = 0; i < polylines.size(); i++) {
