@@ -17,7 +17,7 @@ Del DICOM originario sono state selezionate solo le slice 5-120, specificando ne
 Dopo aver caricato il file, è subito possibile iniziare ad effettuare le prime operazioni. Può essere utile spostare l'immagine al centro della canvas ed ingrandirla, per evidenziare le parti di interesse, eventualmente usufruendo anche dello strumento per la regolazione della luminosità e del contrasto.
 Il drag dell'immagine si esegue semplicemente cliccando sul tasto drag e poi trascinandola, mentre lo zoom si effettua mediante scroll del tasto centrale del mouse.
 
-![Figura 1 Ambiente di lavoro]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura1.png)
+![Figura 1 Ambiente di lavoro](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura1.png)
 
 #Lo strumento di disegno
 Cuore dell'applicazione, lo strumento di disegno è stato pensato per consentire all'utente di effettuare operazioni di
@@ -32,11 +32,11 @@ Polyline consente di costruire una linea spezzata, i cui punti vengono impressi 
 Analogamente, Polygon permette di generare una figura geometrica che si richiude su se stessa automaticamente, sfruttando le polilinee.
 Infine, Freepol costituisce il disegno a mano libera. 
 
-![Figura 2 Polyline]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura2.png)
+![Figura 2 Polyline](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura2.png)
 
-![Figura 3 Polygon]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura3.png)
+![Figura 3 Polygon](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura3.png)
 
-![Figura 4 Freepol]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura4.png)
+![Figura 4 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura4.png)
 
 Punti e linee hanno colori diversi per garantire una maggiore visibilità, ed essi possono essere modificati a piacimento
 inserendo nell'apposita casella il relativo codice esadecimale.
@@ -46,7 +46,7 @@ inserendo nell'apposita casella il relativo codice esadecimale.
 #Iniziamo a disegnare
 Eseguiti i passi elencati nelle sezioni precedenti è sufficiente scegliere dal menù a tendina `Select plugin` la tipologia di disegno da effettuare e quindi cliccare sul tasto `draw`. Data la complessità geometrica del profilo dell'encefalo, è consigliabile  di avvalersi del disegno a mano libera freepol.
 
-![Figura 6 Freepol]: (https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura6.png)
+![Figura 6 Freepol](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura6.png)
 
 Come si vede nella figura, il profilo è molto accurato e le curve tracciate sono fluide e continue, grazie all'impiego di un numero elevato di punti rispetto alle altre due modalità operative. Si può osservare che tra questi ultimi sono stati eliminati quelli superflui, garantendo il risparmio delle risorse impiegate e preservando la qualità.
 Una volta terminato il disegno, è necessario effettuare un doppio click in prossimità dell'ultimo punto tracciato; senza questa operazione, la figura non si riterrà conclusa e un eventuale nuovo punto verrà congiunto all'insieme esistente.
