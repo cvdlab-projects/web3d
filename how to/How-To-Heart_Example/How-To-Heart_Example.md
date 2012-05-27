@@ -122,7 +122,7 @@ Per farlo bisogna posizionarsi nel centro del punto che si desidera rimuovere.
 E’ inoltre possibile rimuovere l’ultima linea tracciata premendo il tasto Cancella disegno
 
 </br>  
-![Cancella disegno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine16b.png?raw=true "Cancella disegno")
+![Cancella disegno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine16B.png?raw=true "Cancella disegno")
 </br>  
 
 Se lo applichiamo all’esempio appena mostrato otteniamo il seguente risultato:
