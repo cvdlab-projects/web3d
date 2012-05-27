@@ -70,8 +70,14 @@ Cliccare sul tasto `delete`, quindi cliccare sui punti da eliminare. La linea ve
 Cliccare su `cancella disegno` e verrà eliminata l'ultima figura inserita.
 
 #Il modello 3d
-Le indagini diagnostiche di TC e MR consistono in una scansione progressiva perpendicolare al piano di appoggio della parte anatomica sotto esame, in modo tale che questa venga 'affettata' in modo più o meno fitto dipendentemente dalla risoluzione spaziale desiderata.
-In questo modo si ottengono le slice di cui si è parlato finora; allineando le slice tra loro e presentandole in sequenza è possibile ottenere una figura solida che approssima il volume dell'organo considerato.
+Le indagini diagnostiche di TC e MR consistono in una scansione progressiva della parte anatomica sotto esame lungo un asse, in modo tale che questa venga 'affettata' in modo più o meno fitto dipendentemente dalla risoluzione spaziale desiderata.
+Così si ottengono le slice di cui si è parlato finora; allineando le slice tra loro e presentandole in sequenza è possibile ottenere una figura solida che approssima il volume dell'organo considerato.
+Una volta effettuate le selezioni dei contorni per un certo numero di immagini, si può cliccare sul tasto `Apri 3d`.
+
+![Figura 7 Ambiente 3d](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura7.png?raw=true)
+
+
+
 
 
 
