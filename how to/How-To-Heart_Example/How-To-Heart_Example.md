@@ -1,6 +1,6 @@
 HOW-TO HEART EXAMPLE
 ======================
-Questa sezione è dedicata all’utilizzo dell’editor grafico finalizzato alla realizzazione di modelli 3D a partire da file Dicom opportunamente estratti, convertiti in immagini (nel nostro esempio in formato png) e quindi caricati sul server del dipartimento di Informatica e Automazione di Roma3 attraverso cui è possibile accedere all’applicazione.
+Questa sezione è dedicata all’utilizzo dell’editor grafico finalizzato alla realizzazione di modelli 3D a partire da file Dicom opportunamente estratti, convertiti in immagini (nel nostro esempio in formato png) e quindi caricati sul server del dipartimento di Informatica e Automazione dell'Università di Roma3 attraverso cui è possibile accedere all’applicazione.
 
 Per iniziare a lavorare è opportuno utilizzare un Browser compatibile con WebGl e Html5. 
 
