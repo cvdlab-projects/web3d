@@ -10,13 +10,17 @@ Una volta aperto un browser compatibile con Html5, è possibile accedere all’e
 
 Accedendo alla pagina verrà visualizzato il seguente messaggio di alert:
 
+
 ![Alert](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine1.png?raw=true "Alert")
+
 
 Per poter lavorare sulle immagini Dicom sarà necessario modificare l’url, specificando il nome del file Dicom su cui si intende lavorare e una delle slice di cui il file Dicom si compone.
 
 Si procede quindi come segue:
 
+
 ![Url](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine2.png?raw=true "Url")
+
 
 In questo caso specifico abbiamo aperto il file Dicom caricato precedentemente sul server con nome example7.dcm e visualizzato la prima delle 50 slice (frames = 50) di cui il file è composto.
 
@@ -26,12 +30,18 @@ A questo punto è possibile iniziare a lavorare sulle immagini utilizzando l’e
 
 Per poter lavorare in modo ottimale è possibile effettuare il drag dell’immagine selezionando il tasto Drag sul pannello posto sulla destra.
 
+
 ![Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine3.png?raw=true "Drag")
+
 
 In questo modo sarà possibile muovere l’immagine all’interno della Canvas premendo il tasto sinistro del mouse e trascinando l’immagine.
 
+
 ![Prima del Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine4.png?raw=true "Prima del Drag")
+
+
 ![Dopo il Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine5.png?raw=true "Dopo il Drag")
+
 
 E’ inoltre possibile effettuare lo zoom delle immagini mediante lo scroll del tasto centrale del mouse.
 
