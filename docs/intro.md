@@ -81,5 +81,6 @@ Gli autori di questo progetto sono:
 * [Lorena Nacchia](https://github.com/LoryRm "Lorena Nacchia"), mat. 256680
 * [Elisabetta Melis](https://github.com/20thCenturyFox "Elisabetta Melis")
 * [Daniele Malta](https://github.com/ "Daniele Malta")
+* [Sabrina Valentini](https://github.com/sabrinav "Sabrina Valentini"), mat. 240937
 
 
