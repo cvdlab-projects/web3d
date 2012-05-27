@@ -112,9 +112,9 @@ RenderControl.prototype.SetShape = function (polylines) {
             for(j = 0; j < cur.length;j++)
             {
                 if (checked)
-                    this.AddLayer(cur[j], i * sliceSize, sliceSize);
+                    this.AddLayer(cur[j], i * sliceSize);
                 else
-                    this.AddStrato(cur[j], i * sliceSize, sliceSize,i);
+                    this.AddStrato(cur[j], i * sliceSize,i);
 
             }
         }
