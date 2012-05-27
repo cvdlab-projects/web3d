@@ -4,7 +4,7 @@ Vengono inizializzati i plugin
  */
 
 var web3d_ide;
-var url_dicom="http://web3d.dia.uniroma3.it/dicom/";
+var url_dicom="http://wbr1.webrobotics.net/infobio/dicom/";
 var canvas;
 var form;
 var cur_z= 0;        // variabile che indica la slice corrente dell'immagine
