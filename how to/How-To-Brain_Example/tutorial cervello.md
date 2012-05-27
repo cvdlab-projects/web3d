@@ -11,7 +11,7 @@ una volta individuata la sequenza di interesse, vengono scartate le immagini pri
 ##Conversione dei file DICOM e caricamento
 Il file scelto (GFUNCST) è disponibile al seguente indirizzo ftp://medical.nema.org/medical/dicom/Multiframe/MR/nemamfmr.imagesDG.tar.bz2.
 Una volta scaricato, esso è stato convertito nel formato png, come illustrato nella sezione https://github.com/cvdlab-bio/web3d/blob/master/docs/intro.md#installazione.
-Del DICOM originario sono state selezionate solo le slice 5-120, specificando nell'url la stringa `&frames=120&start=5`; è possibile cambiare i parametri inserendo dopo *start* la slice di inizio e dopo *frame* la slice finale. 
+Del DICOM originario sono state selezionate solo le slice 5-125, specificando nell'url la stringa `&frames=120&start=5`; è possibile cambiare i parametri inserendo dopo *start* la slice di inizio e dopo *frames* il numero di slice da selezionare dopo la prima. 
 
 #Come iniziare: l'ambiente di lavoro
 Dopo aver caricato il file, è subito possibile iniziare ad effettuare le prime operazioni. Può essere utile spostare l'immagine al centro della canvas ed ingrandirla, per evidenziare le parti di interesse, eventualmente usufruendo anche dello strumento per la regolazione della luminosità e del contrasto.
