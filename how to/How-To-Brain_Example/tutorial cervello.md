@@ -1,43 +1,40 @@
-Esempio 3
-=========
-
-Modello dell'encefalo
----------------------
+Esempio 3: Modello dell'encefalo
+================================
 
 #Acquisizione delle immagini
 Le immagini DICOM relative all'encefalo derivano da indagini diagnostiche effettuate mediante tomografia 
 computerizzata TC e risonanza magnetica MR.
-Nello sviluppo di questo modello è stato consultato l'archivio online del NEMA, in cui sono accessibili 
-file DICOM sia single che multi slice, all'indirizzo www/
-Ovviamente, per la realizzazione di un modello 3D è necessario un file DICOM multi slice, che può arrivare 
-a contenere oltre 400 immagini. Ciò si verifica, per esempio, quando viene effettuato un esame medico di 
-altissima qualità, che prevede quindi un campionamento molto fitto dell'organo da analizzare, o quando sono 
+Nello sviluppo di questo modello ï¿½ stato consultato l'archivio online del NEMA, in cui sono accessibili 
+file DICOM sia single che multi slice, all'indirizzo ftp://medical.nema.org/medical/dicom/Multiframe.
+Ovviamente, per la realizzazione di un modello 3D ï¿½ necessario un file DICOM multi slice, che puï¿½ arrivare 
+a contenere oltre 400 immagini. Ciï¿½ si verifica, per esempio, quando viene effettuato un esame medico di 
+altissima qualitï¿½, che prevede quindi un campionamento molto fitto dell'organo da analizzare, o quando sono 
 impiegate differenti proiezioni e sequenze di contrasto.
 Pertanto, va messa in atto una preselezione delle immagini da caricare, scegliendo le sole utili all'applicazione:
 una volta individuata la sequenza di interesse, vengono scartate le immagini prive di contenuto, tipicamente le 
 prime e le ultime.
 
 ##Conversione dei file DICOM e caricamento
-Il file scelto è disponibile al seguente indirizzo ftp://medical.nema.org/medical/dicom/Multiframe/MR/.
-Una volta scaricato, esso è stato convertito nel formato png, come illustrato nella sezione 
+Il file scelto (GFUNCST) ï¿½ disponibile al seguente indirizzo ftp://medical.nema.org/medical/dicom/Multiframe/MR/nemamfmr.imagesDG.tar.bz2.
+Una volta scaricato, esso ï¿½ stato convertito nel formato png, come illustrato nella sezione 
 https://github.com/cvdlab-bio/web3d/blob/master/docs/intro.md#installazione.
 Del DICOM originario sono state selezionate solo le slice 5-120, specificando nell'url la stringa 
-`&frames=120&start=5`; è possibile cambiare i parametri inserendo dopo *start* la slice di inizio e dopo *frame* 
+`&frames=120&start=5`; ï¿½ possibile cambiare i parametri inserendo dopo *start* la slice di inizio e dopo *frame* 
 la slice finale. 
 
 #Come iniziare: l'ambiente di lavoro
-Dopo aver caricato il file, è subito possibile iniziare ad effettuare le prime operazioni. Può essere utile 
+Dopo aver caricato il file, ï¿½ subito possibile iniziare ad effettuare le prime operazioni. Puï¿½ essere utile 
 spostare l'immagine al centro della canvas ed ingrandirla, per evidenziare le parti di interesse, eventualmente 
-usufruendo anche dello strumento per la regolazione della luminosità e del contrasto.
+usufruendo anche dello strumento per la regolazione della luminositï¿½ e del contrasto.
 Il drag dell'immagine si esegue semplicemente cliccando sul tasto drag e poi trascinandola, mentre lo zoom si effettua mediante scroll
 del tasto centrale del mouse.
 
-[Figura 1_Ambiente di lavoro]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura1
+[Figura 1_Ambiente di lavoro]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura1.png
 
 #Lo strumento di disegno
-Cuore dell'applicazione, lo strumento di disegno è stato pensato per consentire all'utente di effettuare operazioni di
+Cuore dell'applicazione, lo strumento di disegno ï¿½ stato pensato per consentire all'utente di effettuare operazioni di
 selezione di contorni, nell'ottica di evidenziare particolari regioni del dato biomedico.
-Sono fornite tre differenti modalità di disegno:
+Sono fornite tre differenti modalitï¿½ di disegno:
 -polyline
 -polygon
 -freepol.
@@ -45,43 +42,43 @@ Polyline consente di costruire una linea spezzata, i cui punti vengono impressi 
 Analogamente, Polygon permette di generare una figura geometrica che si richiude su se stessa automaticamente, sfruttando le polilinee.
 Infine, Freepol costituisce il disegno a mano libera. 
 
-[Figura 2_Polyline]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura2
+[Figura 2_Polyline]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura2.png
 
-[Figura 3_Polygon]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura3
+[Figura 3_Polygon]: https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura3.png
 
-[Figura 4_Freepol]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura4
+[Figura 4_Freepol]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura4.png
 
-Punti e linee hanno colori diversi per garantire una maggiore visibilità, ed essi possono essere modificati a piacimento
+Punti e linee hanno colori diversi per garantire una maggiore visibilitï¿½, ed essi possono essere modificati a piacimento
 inserendo nell'apposita casella il relativo codice esadecimale.
 
-[Figura 5_Color selection]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura5
+[Figura 5_Color selection]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura5.png
 
 #Iniziamo a disegnare
-Eseguiti i passi elencati nelle sezioni precedenti è sufficiente scegliere dal menù a tendina `Select plugin` la tipologia di disegno da 
-effettuare e quindi cliccare sul tasto `draw`. Data la complessità geometrica del profilo dell'encefalo, è consigliabile di avvalersi
+Eseguiti i passi elencati nelle sezioni precedenti ï¿½ sufficiente scegliere dal menï¿½ a tendina `Select plugin` la tipologia di disegno da 
+effettuare e quindi cliccare sul tasto `draw`. Data la complessitï¿½ geometrica del profilo dell'encefalo, ï¿½ consigliabile di avvalersi
 del disegno a mano libera freepol.
 
-[Figura 6_Freepol]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura6
+[Figura 6_Freepol]:https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain-Example/How%20To%20Images/figura6.png
 
-Come si vede nella figura, il profilo è molto accurato e le curve tracciate sono fluide e continue, grazie all'impiego di un numero elevato
-di punti rispetto alle altre due modalità operative. Si può osservare che tra questi ultimi sono stati eliminati quelli superflui,garantendo 
-il risparmio delle risorse impiegate e preservando la qualità.
-Una volta terminato il disegno, è necessario effettuare un doppio click in prossimità dell'ultimo punto tracciato; senza questa operazione, 
-la figura non si riterrà conclusa e un eventuale nuovo punto verrà congiunto all'insieme esistente.
+Come si vede nella figura, il profilo ï¿½ molto accurato e le curve tracciate sono fluide e continue, grazie all'impiego di un numero elevato
+di punti rispetto alle altre due modalitï¿½ operative. Si puï¿½ osservare che tra questi ultimi sono stati eliminati quelli superflui,garantendo 
+il risparmio delle risorse impiegate e preservando la qualitï¿½.
+Una volta terminato il disegno, ï¿½ necessario effettuare un doppio click in prossimitï¿½ dell'ultimo punto tracciato; senza questa operazione, 
+la figura non si riterrï¿½ conclusa e un eventuale nuovo punto verrï¿½ congiunto all'insieme esistente.
 ##Editing del disegno
-Errare è umano, ed è comprensibile che un disegno a mano libera, specie se effettuato con strumenti non professionali, possa comportare dei
-risultati indesiderati. Per apportare modifiche alla figura disegnata, sia in fase di creazione che dopo la chiusura del set, è sufficiente 
+Errare ï¿½ umano, ed ï¿½ comprensibile che un disegno a mano libera, specie se effettuato con strumenti non professionali, possa comportare dei
+risultati indesiderati. Per apportare modifiche alla figura disegnata, sia in fase di creazione che dopo la chiusura del set, ï¿½ sufficiente 
 selezionarla cliccando su `edit`e selezionare una tra le tre opzioni seguenti:
 -spostamento di punti
 -cancellazione di punti
 -cancellazione del disegno.
 Si consiglia di effettuare uno zoom preventivo alle operazioni di cancellazione e spostamento di punti.
 ###Spostamento di punti
-Cliccare sul punto desiderato e spostarlo nella posizione preferita. La linea verrà ricongiunta automaticamente.
+Cliccare sul punto desiderato e spostarlo nella posizione preferita. La linea verrï¿½ ricongiunta automaticamente.
 ###Cancellazione di punti
-Cliccare sul tasto `delete`, quindi cliccare sui punti da eliminare. La linea verrà ricongiunta automaticamente.
+Cliccare sul tasto `delete`, quindi cliccare sui punti da eliminare. La linea verrï¿½ ricongiunta automaticamente.
 ###Cancellazione della figura
-Cliccare su `cancella disegno` e verrà eliminata l'ultima figura inserita.
+Cliccare su `cancella disegno` e verrï¿½ eliminata l'ultima figura inserita.
 
 
 
