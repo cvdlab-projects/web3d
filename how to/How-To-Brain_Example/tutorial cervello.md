@@ -17,7 +17,7 @@ Del DICOM originario sono state selezionate solo le slice 5-120, specificando ne
 Dopo aver caricato il file, è subito possibile iniziare ad effettuare le prime operazioni. Può essere utile spostare l'immagine al centro della canvas ed ingrandirla, per evidenziare le parti di interesse, eventualmente usufruendo anche dello strumento per la regolazione della luminosità e del contrasto.
 Il drag dell'immagine si esegue semplicemente cliccando sul tasto drag e poi trascinandola, mentre lo zoom si effettua mediante scroll del tasto centrale del mouse.
 
-![Figura 1 Ambiente di lavoro](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura1.png)
+![Figura 1 Ambiente di lavoro](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura1.png?raw=true)
 
 #Lo strumento di disegno
 Cuore dell'applicazione, lo strumento di disegno è stato pensato per consentire all'utente di effettuare operazioni di
