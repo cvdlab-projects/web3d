@@ -72,9 +72,28 @@ Cliccare su `cancella disegno` e verrà eliminata l'ultima figura inserita.
 #Il modello 3d
 Le indagini diagnostiche di TC e MR consistono in una scansione progressiva della parte anatomica sotto esame lungo un asse, in modo tale che questa venga 'affettata' in modo più o meno fitto dipendentemente dalla risoluzione spaziale desiderata.
 Così si ottengono le slice di cui si è parlato finora; allineando le slice tra loro e presentandole in sequenza è possibile ottenere una figura solida che approssima il volume dell'organo considerato.
+Il principio di costruzione del nostro modello 3d è quindi il seguente. Vengono sovrapposte una sull'altra le immagini ottenute dalla selezione dei contorni 2d di tutte le slice del set di dati. Queste sono sottoposte ad estrusione lungo l'asse verticale per la generazione del volume.
+
+##L'ambiente di lavoro
 Una volta effettuate le selezioni dei contorni per un certo numero di immagini, si può cliccare sul tasto `Apri 3d`.
 
 ![Figura 7 Ambiente 3d](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura7.png?raw=true)
+
+Per una maggiore visibilità del modello, si può cambiare il colore di sfondo mediante l'apposito tool.
+Inoltre, anche lo spessore delle slice è un parametro modificabile da input, caratteristica molto importante perchè consente di adattare la forma del modello il più possibile all'originale. 
+Esistono due modalità di visualzzazione:
+
+* riempimento
+* contorno.
+
+Nella modalità riempimento, viene visualizzata la figura 3d come un solido, su cui siano state applicate le texture appartenenti alle singole immagini 2d che lo compongono.
+Invece, l'opzione contorno mostra i soli contorni delle slice che costituiscono il modello, fornendo una visione anche dell'interno cavo del volume grazie alla trasparenza. 
+
+##Il risultato finale
+Dopo aver collezionato il disegno dei bordi 2d per tutte le 121 slice che compongono il set di dati, è stato generato il modello 3d di cui vengono mostrate alcune proiezioni.
+
+
+
 
 
 
