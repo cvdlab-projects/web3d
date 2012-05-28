@@ -219,4 +219,4 @@ Intercetta tutti gli eventi di interazione dell'utente effettuando un dispatch a
 #####loadGeneralConf()
 Carica tutti i parametri necessari all'ide.
 
-Si occupa inoltre di creare gli oggetti Slice necessari impostando per ognuno di essi il path dell'immagine che verrà caricata in un secondo momento solo se necessario.
+Si occupa inoltre di creare gli oggetti Slice necessari, impostando per ognuno di essi il path dell'immagine che verrà caricata in un secondo momento, solo se necessario.
