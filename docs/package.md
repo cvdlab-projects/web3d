@@ -214,11 +214,9 @@ Il metodo setBackground consente di impostare come corrente la slice i-esima, ri
 Questo metodo è di supporto alla lettura dei parametri passati nell'url.
 
 #####eventsManager()
-intercetta tutti gli eventi di interazione dell'utente effettuando un dispatch alle varie funzioni di gestione.
+Intercetta tutti gli eventi di interazione dell'utente effettuando un dispatch alle varie funzioni di gestione.
 
+#####loadGeneralConf()
+Carica tutti i parametri necessari all'ide.
 
-
-
-
-
-
+Si occupa inoltre di creare gli oggetti Slice necessari impostando per ognuno di essi il path dell'immagine che verrà caricata in un secondo momento solo se necessario.
