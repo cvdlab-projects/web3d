@@ -106,6 +106,24 @@ Dopo aver collezionato il disegno dei bordi 2d per tutte le 121 slice che compon
 
 ![Figura 14](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura14.png?raw=true)
 
+#JSON
+Le operazioni di modifica della canvas, dal disegno all'aggiunta dei commenti, vengono memorizzate automaticamente in un file JSON accessibile semplicemente cliccando l'apposito tasto di selezione presente nel menù.
+La sezione fondamentale di questo file è quella che raccoglie per ogni tipologia (polyline, polygon, freepol) tutti i disegni presenti su ogni slice, rappresentati mediante le coordinate cartesiane dei punti, dove la z indica il numero della slice.
+Per salvare la sessione di lavoro è sufficiente aprire l'editor JSON e copiare su un file di testo le righe del codice.
+##Caricare un JSON
+Cliccare sul tasto `Json Editor`.
+Si aprirà una finestra configurata per default nel modo seguente.
+
+![Figura 15](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura15.png?raw=true)
+
+Cancellare tutto il testo presente e incollare il testo relativo al JSON da caricare.
+Quindi, cliccare sul tasto `Aggiungi`. Le modifiche memorizzate nel file verranno così applicate al set di dati specificato nel file stesso. Si può chiudere a questo punto l'editor.
+
+##Il JSON del modello
+Si può caricare il modello sviluppato cliccando al seguente link e seguendo le istruzioni di cui sopra.
+
+https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/Json%20Code/json_brain.json
+
 
 
 
