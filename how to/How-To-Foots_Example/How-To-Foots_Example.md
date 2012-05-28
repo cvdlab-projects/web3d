@@ -116,14 +116,14 @@ In questo modo sarà possibile tracciare altre Polyline o comunque utilizzare al
 Quindi premere Draw e poi disegnare, ottenendo un risultato, come quello mostrato nell’immagine che segue.
 
 </br>  
-![Draw](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine14.png?raw=true "Draw")
+![Draw](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine15.png?raw=true "Draw")
 </br>  
 </br>  
 
 Premendo il tasto Edit è possibile visualizzare i punti che abbiamo tracciato (questo nel caso in cui stiamo utilizzando la Polyline o il Plugin Polygon) o disegnati automaticamente dall’applicazione come nel caso della Freepol.
 
 </br>  
-![Edit](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine15.png?raw=true "Edit")
+![Edit](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine14.png?raw=true "Edit")
 </br>  
 </br>  
 
