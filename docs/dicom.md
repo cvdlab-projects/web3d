@@ -49,8 +49,11 @@ Tale strumento è stato commutato in un servizio generico online mediante uno sc
 L'input dello script è un intero `n`, indice delle slice, e l'URL di un file DICOM; l'output è costituito dall'immagine relativa alla slice `n` richiesta in formato png.
 Al fine di ottimizzare l'estrazione delle immagini, viene effettuata una memorizzazione delle stesse in cache.
 
-####Alcune collezioni di dicom gratuite online:
+####Alcune collezioni di dicom reperibili gratuitamente online:
 http://www.aycan.de/lp/sample-dicom-images.html
+
 http://www.barre.nom.fr/medical/samples/index.html
+
 http://support.dcmtk.org/wiki/dicom/images
+
 http://www.microdicom.com/downloads.html
