@@ -176,12 +176,12 @@ L’applicazione genererà un oggetto 3D dato dall’estrusione dell’immagine 
 Selezionando i punti, ad esempio, su 3 slice, otterremo in 3D il seguente risultato.
 
 </br>  
-![Risultato 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine24.png?raw=true "Risultato 3D")
+![Risultato 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine24.png?raw=true "Risultato 3D")
 </br>  
 L’applicazione consente inoltre di modificare il colore dello sfondo in ogni momento tramite la Color box e di aumentare o diminuire lo spessore di ogni singola slice andando a modificare il valore contenuto all’interno della text box evidenziata nell’immagine che segue.
 
 </br>  
-![Colore Sfondo](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine25.png?raw=true "Colore Sfondo")
+![Colore Sfondo](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine25.png?raw=true "Colore Sfondo")
 </br>  
 Il tasto Chiudi 3D consente invece di ritornare alla visualizzazione 2D dell’applicazione.
 
@@ -190,15 +190,15 @@ Per concludere, viene ora mostrato un esempio relativo alla ricostruzione comple
 Il risultato che si ottiene tracciando opportunamente i punti su ciascuna delle 250 slice di cui si compone il file è il seguente.
 
 </br>  
-![Piedi 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine26.png?raw=true "Piedi 3D")
+![Piedi 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine26.png?raw=true "Piedi 3D")
 </br>  
-Al seguente link https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Heart_Example/Json%20Code è disponibile il file che contiene i punti in formato Json che, ricopiati all’interno dello Json editor, consentiranno di riprodurre l’esempio appena mostrato.
+Al seguente link https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Foots_Example/Json%20Code è disponibile il file che contiene i punti in formato Json che, ricopiati all’interno dello Json editor, consentiranno di riprodurre l’esempio appena mostrato.
 
 Oltre alla visualizzazione per sezioni l’editor offre la possibilità di visualizzare il contorno 3D dell’oggetto realizzato, selezionando il tasto contorno.
 
 Il risultato che si ottiene, relativamente all’immagine appena mostrata, è il seguente.
 
 </br>  
-![Contorno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine27.png?raw=true "Contorno")
+![Contorno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine27.png?raw=true "Contorno")
 </br>  
 Selezionando infine il tasto riempimento sarà possibile ritornare alla visualizzazione 3D dell’oggetto nella sua interezza.
