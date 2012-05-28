@@ -11,36 +11,36 @@ Una volta aperto un browser compatibile con Html5, è possibile accedere all’e
 Accedendo alla pagina verrà visualizzato il seguente messaggio di alert:   
    
 </br>      
-![Alert](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine1.png?raw=true "Alert")
-
+![Alert](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine1.png?raw=true "Alert")
+</br>
 
 Per poter lavorare sulle immagini Dicom sarà necessario modificare l’url, specificando il nome del file Dicom su cui si intende lavorare e una delle slice di cui il file Dicom si compone.
 
 Si procede quindi come segue:   
 
 </br>     
-![Url](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine2.png?raw=true "Url")
+![Url](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine2.png?raw=true "Url")
 </br>  
 
-In questo caso specifico abbiamo aperto il file Dicom caricato precedentemente sul server con nome example7.dcm e visualizzato la prima delle 50 slice (frames = 50) di cui il file è composto.
+In questo caso specifico abbiamo aperto il file Dicom caricato precedentemente sul server con nome example8.dcm e visualizzato la prima delle 250 slice (frames = 250) di cui il file è composto.
 
-L’immagine visualizzata è quella del cuore; per poter lavorare su altre immagini sarà necessario aggiungere sul server il file Dicom relativo e modificare in modo opportuno il nome del dicom all’interno dell’url.
+L’immagine visualizzata è quella dei piedi; per poter lavorare su altre immagini sarà necessario aggiungere sul server il file Dicom relativo e modificare in modo opportuno il nome del dicom all’interno dell’url.
 
 A questo punto è possibile iniziare a lavorare sulle immagini utilizzando l’editor, il cui funzionamento verrà illustrato di seguito.
 
 Per poter lavorare in modo ottimale è possibile effettuare il drag dell’immagine selezionando il tasto Drag sul pannello posto sulla destra.
 
 </br>  
-![Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine3.png?raw=true "Drag")
+![Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine3.png?raw=true "Drag")
 </br>  
 
 In questo modo sarà possibile muovere l’immagine all’interno della Canvas premendo il tasto sinistro del mouse e trascinando l’immagine.
 
 </br>  
-![Prima del Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine4.png?raw=true "Prima del Drag")
+![Prima del Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine4.png?raw=true "Prima del Drag")
 </br>  
 </br>  
-![Dopo il Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine5.png?raw=true "Dopo il Drag")
+![Dopo il Drag](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine5.png?raw=true "Dopo il Drag")
 </br>  
 
 E’ inoltre possibile effettuare lo zoom delle immagini mediante lo scroll del tasto centrale del mouse.
@@ -48,22 +48,22 @@ E’ inoltre possibile effettuare lo zoom delle immagini mediante lo scroll del 
 Di seguito viene mostrato un ingrandimento e successivamente un ridimensionamento dell’immagine di esempio su cui stiamo lavorando.
 
 </br>  
-![Ingrandimento](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine6.png?raw=true "Ingrandimento")
+![Ingrandimento](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine6.png?raw=true "Ingrandimento")
 </br>  
 </br>  
-![Ridimensionamento](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine7.png?raw=true "Ridimensionamento")
+![Ridimensionamento](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine7.png?raw=true "Ridimensionamento")
 </br>  
 Poiché le immagini Dicom risultano spesso molto scure, l’editor offre la possibilità di aumentarne o comunque diminuirne la luminosità intervenendo rispettivamente sui tasti +1 e -1 della Brightness una o più volte a seconda della luminosità desiderata.
 
 </br>  
-![Brightness](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine8.png?raw=true "Brightness")
+![Brightness](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine8.png?raw=true "Brightness")
 </br>  
 L’editor offre inoltre la possibilità di intervenire sul contrasto delle immagini. Occorre prima di tutto scegliere un valore di soglia (Threshold che di default è fissato a 50); intervenendo sul +2 del tasto Contrast i colori oltre quella soglia verranno resi più scuri sulla base di quante volte viene selezionato il +2 mentre con il tasto -2 si otterrà il comportamento inverso, ovvero i colori al di sotto di quella soglia verranno resi più chiari.
 
 Portando a 60 il valore del contrasto e lasciando a 50 il valore del Threshold si ottiene il seguente risultato sull’immagine che stiamo considerando.
 
 </br>  
-![Threshold](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine9.png?raw=true "Threshold")
+![Threshold](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine9.png?raw=true "Threshold")
 </br>  
 
 Ora che l’immagine è stata modificata e resa più leggibile possiamo iniziare a tracciare i punti che ci consentiranno di selezionare la porzione dell’immagine che successivamente potremo visualizzare in 3D.
@@ -85,14 +85,14 @@ Prima di tutto selezioniamo tramite menù a tendina il plugin che intendiamo uti
 In questo caso utilizzeremo il plugin Polyline che possiamo selezionare come mostrato nell’immagine che segue:
 
 </br>  
-![Select Plugin Polyline](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine10.png?raw=true "Select Plugin Polyline")
+![Select Plugin Polyline](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine10.png?raw=true "Select Plugin Polyline")
 </br>  
 Una volta selezionato il Plugin, cliccando sul tasto Draw potremo iniziare a tracciare i punti su Canvas.
 </br>  
-![Punti tracciati](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine11.png?raw=true "Punti tracciati")
+![Punti tracciati](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine11.png?raw=true "Punti tracciati")
 </br>  
 </br>  
-![Altri punti tracciati](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine12.png?raw=true "Altri punti tracciati")
+![Altri punti tracciati](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine12.png?raw=true "Altri punti tracciati")
 </br>  
 
 Per poter chiudere la Polyline è sufficiente fare doppio click sul primo punto selezionato. 
@@ -100,61 +100,61 @@ Per poter chiudere la Polyline è sufficiente fare doppio click sul primo punto 
 In questo modo sarà possibile tracciare altre Polyline o comunque utilizzare altri Plugin come mostrato di seguito.
 
 </br>  
-![Select plugin](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine13.png?raw=true "Select plugin")
+![Select plugin](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine13.png?raw=true "Select plugin")
 </br>  
 Quindi premere Draw e poi disegnare, ottenendo un risultato, come quello mostrato nell’immagine che segue.
 
 </br>  
-![Draw](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine14.png?raw=true "Draw")
+![Draw](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine14.png?raw=true "Draw")
 </br>  
 Premendo il tasto Edit è possibile visualizzare i punti che abbiamo tracciato (questo nel caso in cui stiamo utilizzando la Polyline o il Plugin Polygon) o disegnati automaticamente dall’applicazione come nel caso della Freepol.
 
 </br>  
-![Edit](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine15.png?raw=true "Edit")
+![Edit](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine15.png?raw=true "Edit")
 </br>  
 E’ inoltre possibile in ogni momento rimuovere i punti tracciati selezionando prima il tasto Delete e poi cliccando sul punto che si desidera rimuovere. 
 
 Per farlo bisogna posizionarsi nel centro del punto che si desidera rimuovere.
 
 </br>  
-![Delete](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine16.png?raw=true "Delete")
+![Delete](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine16.png?raw=true "Delete")
 </br>  
 E’ inoltre possibile rimuovere l’ultima linea tracciata premendo il tasto Cancella disegno
 
 </br>  
-![Cancella disegno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine16B.png?raw=true "Cancella disegno")
+![Cancella disegno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine16B.png?raw=true "Cancella disegno")
 </br>  
 
 Se lo applichiamo all’esempio appena mostrato otteniamo il seguente risultato:
 
 </br>  
-![Disegno cancellato](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine17.png?raw=true "Disegno cancellato")
+![Disegno cancellato](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine17.png?raw=true "Disegno cancellato")
 </br>  
 
 E’ poi possibile modificare il colore sia dei punti che delle linee tracciate attraverso le due color box: Points Color e Lines Color.
 
 </br>  
-![Color box points](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine18.png?raw=true "Color box points")
+![Color box points](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine18.png?raw=true "Color box points")
 </br>  
 </br>  
-![Color box lines](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine19.png?raw=true "Color box lines")
+![Color box lines](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine19.png?raw=true "Color box lines")
 </br>  
 Selezionando, ad esempio, per le linee il colore verde e per i punti il colore giallo otteniamo il seguente effetto:
 
 </br>  
-![Color box punti e linee](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine20.png?raw=true "Color box punti e linee")
+![Color box punti e linee](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine20.png?raw=true "Color box punti e linee")
 </br>  
 Selezionando invece il tasto “Applica a successiva” i punti tracciati sulla slice corrente saranno applicati anche alla slice successiva.
 
 Le immagini che seguono mostrano un possibile esempio di applicazione:
 
 </br>  
-![Applica a successiva](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine21.png?raw=true "Applica a successiva")
+![Applica a successiva](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine21.png?raw=true "Applica a successiva")
 </br>  
 Dopo aver premuto il tasto “Applica a successiva”, i punti tracciati sulla slice 0 verranno riportati sulla slice 1. 
 
 </br>  
-![Applica a successiva su slice 1](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine22.png?raw=true "Applica a successiva su slice 1")
+![Applica a successiva su slice 1](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine22.png?raw=true "Applica a successiva su slice 1")
 </br>  
 Questa funzionalità evita di dover tracciare manualmente i punti più volte nel caso in cui si desidera replicare su più slice i contorni tracciati.
 
@@ -163,7 +163,7 @@ Terminata una sessione di lavoro, è possibile poi mantenere traccia del lavoro 
 Selezionando il tasto “Json editor” all’interno della pagina verrà aperta una finestra contenente i punti in formato Json che sono stati tracciati.
 
 </br>  
-![Json editor](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Heart_Example/How%20To%20Images/Immagine23.png?raw=true "Json editor")
+![Json editor](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine23.png?raw=true "Json editor")
 </br>  
 Per tenere traccia del modello è possibile salvare i punti in un qualunque file di testo. Nel momento in cui andremo a riaprire l’applicazione all’url relativo al file Dicom di interesse, visualizzando il Json Editor e incollando il contenuto del file di testo al suo interno, selezionando in seguito il tasto Aggiungi vedremo tracciati sulle immagini i punti che avevamo disegnato nelle precedenti sessioni di lavoro.
 
@@ -185,7 +185,7 @@ L’applicazione consente inoltre di modificare il colore dello sfondo in ogni m
 </br>  
 Il tasto Chiudi 3D consente invece di ritornare alla visualizzazione 2D dell’applicazione.
 
-Per concludere, viene ora mostrato un esempio relativo alla ricostruzione in 3D di due piedi a partire da un file Dicom composto da circa 250 slice.
+Per concludere, viene ora mostrato un esempio relativo alla ricostruzione completa in 3D dei due piedi di cui abbiamo visto negli esempi precedenti le slice 2D.
 
 Il risultato che si ottiene tracciando opportunamente i punti su ciascuna delle 250 slice di cui si compone il file è il seguente.
 
