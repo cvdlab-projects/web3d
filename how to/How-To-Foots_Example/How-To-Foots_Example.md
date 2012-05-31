@@ -225,16 +225,24 @@ Per concludere, viene ora mostrato un esempio relativo alla ricostruzione comple
 Il risultato che si ottiene tracciando opportunamente i punti su ciascuna delle 250 slice di cui si compone il file è mostrato nelle seguenti immagini.
 
 </br>  
-![Piedi 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine26.png?raw=true "Piedi 3D")
+![Piedi 3D](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_01.png?raw=true "Piedi 3D")
 </br>  
 </br>  
 </br>  
-![Piedi 3D-2](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine28.png?raw=true "Piedi 3D-2")
+![Piedi 3D-2](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_02.png?raw=true "Piedi 3D-2")
 </br>  
 </br>  
 </br>  
-![Piedi 3D-3](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine29.png?raw=true "Piedi 3D-3")
+![Piedi 3D-3](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_03.png?raw=true "Piedi 3D-3")
 </br>  
+</br>
+![Piedi 3D-4](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_05.png?raw=true "Piedi 3D-3")
+</br>  
+</br>
+![Piedi 3D-5](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_06.png?raw=true "Piedi 3D-3")
+</br>  
+</br>  
+
 
 Al seguente link https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Foots_Example/Json%20Code è disponibile il file che contiene i punti in formato Json che, ricopiati all’interno dello Json editor, consentiranno di riprodurre l’esempio appena mostrato.
 
@@ -243,8 +251,18 @@ Oltre alla visualizzazione per sezioni l’editor offre la possibilità di visua
 Il risultato che si ottiene, relativamente all’immagine appena mostrata, è il seguente.
 
 </br>  
-![Contorno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Immagine27.png?raw=true "Contorno")
+![Contorno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_08.png?raw=true "Contorno")
 </br>  
 </br>  
+</br>  
+![Contorno 2](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_10.png?raw=true "Contorno")
+</br>  
+</br>  
+</br>  
+![Contorno](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Foots_Example/How%20To%20Images/Piede_11.png?raw=true "Contorno")
+</br>  
+</br>  
+
+
 
 Selezionando infine il tasto riempimento sarà possibile ritornare alla visualizzazione 3D dell’oggetto nella sua interezza.
