@@ -92,19 +92,22 @@ Invece, l'opzione contorno mostra i soli contorni delle slice che costituiscono 
 ##Il risultato finale
 Dopo aver collezionato il disegno dei bordi 2d per tutte le 121 slice che compongono il set di dati, è stato generato il modello 3d di cui vengono mostrate alcune proiezioni.
 
-![Figura 8](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura8.png?raw=true)
+![Figura 8](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_01.png?raw=true)
 
-![Figura 9](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura9.png?raw=true)
+![Figura 9](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_02.png?raw=true)
 
-![Figura 10](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura10.png?raw=true)
+![Figura 10](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_03.png?raw=true)
 
-![Figura 11](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura11.png?raw=true)
+![Figura 11](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_11.png?raw=true)
 
-![Figura 12](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura12.png?raw=true)
+![Figura 12](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_12.png?raw=true)
 
-![Figura 13](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura13.png?raw=true)
+![Figura 13](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_06.png?raw=true)
 
-![Figura 14](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/figura14.png?raw=true)
+![Figura 14](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_07.png?raw=true)
+
+![Figura 15](https://github.com/cvdlab-bio/web3d/blob/master/how%20to/How-To-Brain_Example/How%20To%20Images/Cervello_08.png?raw=true)
+
 
 #JSON
 Le operazioni di modifica della canvas, dal disegno all'aggiunta dei commenti, vengono memorizzate automaticamente in un file JSON accessibile semplicemente cliccando l'apposito tasto di selezione presente nel menù.
