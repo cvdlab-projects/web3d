@@ -38,7 +38,7 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 * Assicurarsi che il web server supporti php5 (comunque l'eventuale implementazione in altro linguaggio risulta estremamente banale);
 * Scaricare sul server, in una locazione a piacere, lo strumento `dicom2` dal sito [http://www.barre.nom.fr/medical/dicom2/](http://www.barre.nom.fr/medical/dicom2/ "dicom2") disponibile sia per windows che per linux, configurando in modo adeguato i pemessi;
 * Editare il file `dicom_png.php` ed impostare la posizione di dicom2, di default impostato alla stessa cartella in cui si trova lo script;
-* Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default impostato alla stessa cartella in cui si trova lo script.
+* Editare il file `dicom_png.php` ed impostare la posizione della collezione di file DICOM, di default sources/.
 
 ##Come iniziare
 Per iniziare ad operare con il nostro ambiente è possibile collegarsi all'indirizzo [http://web3d.dia.uniroma3.it](http://web3d.dia.uniroma3.it/?dicom=example.dcm&frames=20 "web3d sul dia").
