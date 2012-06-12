@@ -12,7 +12,7 @@ if (preg_match('/^[a-zA-Z0-9]*\.dcm$/',$file)!=1 || $frame<1) {
 
 $dir=str_replace(".dcm","",$file);
 
-if (!file_exists($cache.$dir))
+if (!file_exists($cache.$dir) && file_exists($sources$file))
 	mkdir($cache.$dir);
 
 if (!file_exists("$cache$dir/$frame.png")){
