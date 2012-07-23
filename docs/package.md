@@ -188,7 +188,7 @@ Il controller è composto dai file `main.js` e `web3d.js`.
 
 In main.js è possibile settare i parametri di default e i plugin da istanziare durante la fase di inizializzazione dell'ide.
 
-Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relative modifiche sugli oggetti del modello. Oltre che sul modello può intervenire sulla vista, implementando di fatto il livello di controllo.
+Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relative modifiche sugli oggetti del modello.
 
 ####Vengono riportate di seguito le descrizioni di alcuni metodi di web3d.js:
 
@@ -203,7 +203,7 @@ Questa funzione è la prima ad essere invocata, svolge le seguenti importanti op
 
 4. avvia la funzione `loadGeneralConf()` per il caricamento dei parametri di configurazione;
 
-5. setta la slice corrente;
+5. setta la slice iniziale;
 
 6. avvia il gestore degli eventi `eventsManager()`
 
