@@ -28,7 +28,7 @@ Per quanto concerne il semplice utilizzo invece, non essendo necessaria l'instal
 ####Per installare il servizio
 
 * Scaricare l'intero progetto e caricarlo su un web server.
-* Assicurarsi che `url_dicom` dentro il file `js/main.js` punti all'effettivo servizio di conversione per file DICOM.
+* Configurare i valori di default dentro `js/config.js`, in particolare assicurarsi che `url_dicom` punti all'effettivo servizio di conversione per file DICOM.
 
 **ATTENZIONE:** su alcuni browser (es. Chrome) viene effettuato un controllo same-origin che in alcuni casi può bloccare, per motivi di sicurezza, il metodo getImageData utilizzato per le sole funzioni di constrasto e luminosità. Per evitare tale controllo installare il servizio di conversione immagine e l'ambiente sullo stesso dominio.
 
