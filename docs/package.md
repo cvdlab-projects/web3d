@@ -28,6 +28,7 @@ Di seguito è riportata uno schema dell'organizzazione:
       |   |       |-aplugin.js
       |   |-view    /* Contiene utilità per la gestione della vista */
       |   |   |-userui.js
+      |   |-config.js    /* File di configurazione del progetto */
       |   |-main.js    /* File di inizializzazione del progetto */
       |   |-web3d.js    /* Controller/gestore degli eventi del progetto */
       |-index.htm    /* Un esempio funzionante del nostro progetto all'opera */
@@ -186,7 +187,7 @@ Applica i disegni presenti sulla slice corrente alla slice successiva.
 ##Controller
 Il controller è composto dai file `main.js` e `web3d.js`.
 
-In main.js è possibile settare i parametri di default e i plugin da istanziare durante la fase di inizializzazione dell'ide.
+In main.js è possibile settare i plugin da istanziare durante la fase di inizializzazione dell'ide.
 
 Il file web3d.js invece gestisce l'interazione con l'utente effettuando le relative modifiche sugli oggetti del modello.
 
