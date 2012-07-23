@@ -58,7 +58,7 @@ E' la classe che descrive l'oggetto punto, l'unità informativa più piccola per
 
 Per istanziare un nuovo oggetto punto è sufficiente `new Point(x,y,z)` dove x, y e z sono le sue coordinate.
 
-Poichè il nostro ambiente lavora una slice a volta, la z dovrà corrispondere al numero della slice corrente `cur_z`.
+Poichè il nostro ambiente permette di lavorare su una slice a volta, la z, in fase di inizializzazione, dovrà corrispondere al numero della slice corrente `cur_z`.
 
 #####Slice
 Rappresenta le varie slice della DICOM all'interno del nostro progetto.
@@ -67,7 +67,7 @@ In fase di inizializzazione dell'ide verranno individuati, ad opera del metodo `
 
 Poichè l'immagine di una slice del DICOM può essere pesante, non è possibile:
 * caricare realmente tutte le immagini di un DICOM, il quale può arrivare tranquillamente a superare 300 slice;
-* caricare la singola slice ad ogni volta che risulta necessario un ridisegno della canvas.
+* caricare la singola slice ogni volta che risulta necessario un ridisegno della canvas.
 
 Per risolvere queste due problematiche, l'oggetto Slice implementa un recupero lazy con cache dello stream dell'immagine.
 
