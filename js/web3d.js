@@ -80,6 +80,7 @@ function loadGeneralConf(){
     dicom=getParameterByName('dicom');
     sliceSize=parseInt($('#sliceSize').val())||2;
     num_frame=parseInt(getParameterByName('frames'));
+    //alert
     if (!dicom || dicom=="")
         alert('File dicom non selezionato');
     else{
