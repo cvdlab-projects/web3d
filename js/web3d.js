@@ -78,20 +78,30 @@ function setBackground(i) {
 function loadGeneralConf(){
     frame_start=parseInt(getParameterByName('start'))||0;
     dicom=getParameterByName('dicom');
+    image = getParameterByName('image');
     sliceSize=parseInt($('#sliceSize').val())||2;
     num_frame=parseInt(getParameterByName('frames'));
     //alert
-    if (!dicom || dicom=="")
-        alert('File dicom non selezionato');
-    else{
+    /*if (!dicom || dicom=="" || !image || image=="")
+        alert('File dicom non selezionato');*/
+    if (dicom!="" && dicom) {
         for (var i=0;i<=num_frame;i++){
             var url=url_dicom+"dicom_png.php?file="+dicom+"&frame="+(i+1+frame_start);
             var slice=new Slice();
             slice.setImg(url);
             backgrounds.push(slice);
+            alert('dicom');
         }
-
     }
+
+    else if (image!="" && image){
+            var url=url_image+image;
+            var slice=new Slice();
+            slice.setImg(url);
+            backgrounds.push(slice);
+    }
+    else 
+         alert('File dicom non selezionato');
 }
 
 function getParameterByName(name) {
