@@ -5,6 +5,10 @@ File di configurazione per le variabili non ricavabili dalla form o per i valori
 /* posizione del servizio di elaborazione dicom */
 var url_dicom="http://wbr1.webrobotics.net/infobio/dicom/";
 
+/* posizione della cartella immagini*/
+var url_image = "http://localhost/web3d/images/";
+//var url_dicom="http://wbr1.webrobotics.net/infobio/images/";
+
 /* slice di default*/
 var cur_z= 0;
 
