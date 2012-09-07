@@ -88,7 +88,7 @@ function loadGeneralConf(){
             var slice=new Slice();
             slice.setImg(url);
             backgrounds.push(slice);
-            alert('dicom');
+
         }
     }
 
